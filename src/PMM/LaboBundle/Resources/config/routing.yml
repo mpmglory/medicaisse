@@ -1,0 +1,11 @@
+pmm_labo_serologie:
+    resource: "@PMMLaboBundle/Resources/config/routing/serologie.yml"
+    prefix:   /serologie
+
+pmm_labo_pcvpu:
+    resource: "@PMMLaboBundle/Resources/config/routing/pcvpu.yml"
+    prefix:   /pcvpu
+    
+pmm_labo_bulletin:
+    resource: "@PMMLaboBundle/Resources/config/routing/bulletin.yml"
+    prefix:   /bulletin

@@ -1,0 +1,24 @@
+serologie_index:
+    path:     /
+    defaults: { _controller: "PMMLaboBundle:Serologie:index" }
+    methods:  GET
+
+serologie_show:
+    path:     /{id}/show
+    defaults: { _controller: "PMMLaboBundle:Serologie:show" }
+    methods:  GET
+
+serologie_new:
+    path:     /new
+    defaults: { _controller: "PMMLaboBundle:Serologie:new" }
+    methods:  [GET, POST]
+
+serologie_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PMMLaboBundle:Serologie:edit" }
+    methods:  [GET, POST]
+
+serologie_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PMMLaboBundle:Serologie:delete" }
+    methods:  DELETE

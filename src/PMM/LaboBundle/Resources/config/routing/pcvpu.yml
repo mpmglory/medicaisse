@@ -1,0 +1,24 @@
+pcvpu_index:
+    path:     /
+    defaults: { _controller: "PMMLaboBundle:PcvPu:index" }
+    methods:  GET
+
+pcvpu_show:
+    path:     /{id}/show
+    defaults: { _controller: "PMMLaboBundle:PcvPu:show" }
+    methods:  GET
+
+pcvpu_new:
+    path:     /new
+    defaults: { _controller: "PMMLaboBundle:PcvPu:new" }
+    methods:  [GET, POST]
+
+pcvpu_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PMMLaboBundle:PcvPu:edit" }
+    methods:  [GET, POST]
+
+pcvpu_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PMMLaboBundle:PcvPu:delete" }
+    methods:  DELETE

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Bulletins list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for bulletin in bulletins %}
+            <tr>
+                <td><a href="{{ path('bulletin_show', { 'id': bulletin.id }) }}">{{ bulletin.id }}</a></td>
+                <td>{% if bulletin.date %}{{ bulletin.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ bulletin.amount }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('bulletin_show', { 'id': bulletin.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('bulletin_edit', { 'id': bulletin.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('bulletin_new') }}">Create a new bulletin</a>
+        </li>
+    </ul>
+{% endblock %}

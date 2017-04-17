@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Serologie</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ serologie.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if serologie.date %}{{ serologie.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Vih</th>
+                <td>{{ serologie.vih }}</td>
+            </tr>
+            <tr>
+                <th>Also</th>
+                <td>{{ serologie.also }}</td>
+            </tr>
+            <tr>
+                <th>Crp</th>
+                <td>{{ serologie.crp }}</td>
+            </tr>
+            <tr>
+                <th>Tpha</th>
+                <td>{{ serologie.tpha }}</td>
+            </tr>
+            <tr>
+                <th>Vdrl</th>
+                <td>{{ serologie.vdrl }}</td>
+            </tr>
+            <tr>
+                <th>Aghbs</th>
+                <td>{{ serologie.agHbs }}</td>
+            </tr>
+            <tr>
+                <th>Toxoigg</th>
+                <td>{{ serologie.toxoIgg }}</td>
+            </tr>
+            <tr>
+                <th>Widaltest</th>
+                <td>{{ serologie.widalTest }}</td>
+            </tr>
+            <tr>
+                <th>Rubeole</th>
+                <td>{{ serologie.rubeole }}</td>
+            </tr>
+            <tr>
+                <th>Hcv</th>
+                <td>{{ serologie.hcv }}</td>
+            </tr>
+            <tr>
+                <th>Chlamydia</th>
+                <td>{{ serologie.chlamydia }}</td>
+            </tr>
+            <tr>
+                <th>Fr</th>
+                <td>{{ serologie.fr }}</td>
+            </tr>
+            <tr>
+                <th>Selles</th>
+                <td>{{ serologie.selles }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ serologie.price }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('serologie_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('serologie_edit', { 'id': serologie.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

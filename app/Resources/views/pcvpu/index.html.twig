@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Pcvpus list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Etatcol</th>
+                <th>Leucorrhees</th>
+                <th>Etatfrais</th>
+                <th>Efcellulesepitheliales</th>
+                <th>Efleucocytes</th>
+                <th>Efgermes</th>
+                <th>Efelementslevuriformes</th>
+                <th>Eftrichononasvaginalis</th>
+                <th>Efcluecell</th>
+                <th>Etatcolore</th>
+                <th>Eccellulesepitheliales</th>
+                <th>Ecpolynucleaires</th>
+                <th>Ecbacillesgramnegatif</th>
+                <th>Ecbacillesgrampositif</th>
+                <th>Eccoccigrampositif</th>
+                <th>Eccoccigramnegatif</th>
+                <th>Ecsporesmycosiques</th>
+                <th>Ecfilamentsmyceliens</th>
+                <th>Ecfloredoderiein</th>
+                <th>Koh</th>
+                <th>Ph</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pcvPu in pcvPus %}
+            <tr>
+                <td><a href="{{ path('pcvpu_show', { 'id': pcvPu.id }) }}">{{ pcvPu.id }}</a></td>
+                <td>{% if pcvPu.date %}{{ pcvPu.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ pcvPu.etatCol }}</td>
+                <td>{{ pcvPu.leucorrhees }}</td>
+                <td>{{ pcvPu.etatFrais }}</td>
+                <td>{{ pcvPu.efCellulesEpitheliales }}</td>
+                <td>{{ pcvPu.efLeucocytes }}</td>
+                <td>{{ pcvPu.efGermes }}</td>
+                <td>{{ pcvPu.efElementsLevuriformes }}</td>
+                <td>{{ pcvPu.efTrichononasVaginalis }}</td>
+                <td>{{ pcvPu.efClueCell }}</td>
+                <td>{{ pcvPu.etatColore }}</td>
+                <td>{{ pcvPu.ecCellulesEpitheliales }}</td>
+                <td>{{ pcvPu.ecPolynucleaires }}</td>
+                <td>{{ pcvPu.ecBacillesGramNegatif }}</td>
+                <td>{{ pcvPu.ecBacillesGramPositif }}</td>
+                <td>{{ pcvPu.ecCocciGramPositif }}</td>
+                <td>{{ pcvPu.ecCocciGramNegatif }}</td>
+                <td>{{ pcvPu.ecSporesMycosiques }}</td>
+                <td>{{ pcvPu.ecFilamentsMyceliens }}</td>
+                <td>{{ pcvPu.ecFloreDoderiein }}</td>
+                <td>{{ pcvPu.koh }}</td>
+                <td>{{ pcvPu.ph }}</td>
+                <td>{{ pcvPu.price }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('pcvpu_show', { 'id': pcvPu.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('pcvpu_edit', { 'id': pcvPu.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('pcvpu_new') }}">Create a new pcvPu</a>
+        </li>
+    </ul>
+{% endblock %}

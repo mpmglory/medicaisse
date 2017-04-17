@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Pcvpu</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ pcvPu.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if pcvPu.date %}{{ pcvPu.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Etatcol</th>
+                <td>{{ pcvPu.etatCol }}</td>
+            </tr>
+            <tr>
+                <th>Leucorrhees</th>
+                <td>{{ pcvPu.leucorrhees }}</td>
+            </tr>
+            <tr>
+                <th>Etatfrais</th>
+                <td>{{ pcvPu.etatFrais }}</td>
+            </tr>
+            <tr>
+                <th>Efcellulesepitheliales</th>
+                <td>{{ pcvPu.efCellulesEpitheliales }}</td>
+            </tr>
+            <tr>
+                <th>Efleucocytes</th>
+                <td>{{ pcvPu.efLeucocytes }}</td>
+            </tr>
+            <tr>
+                <th>Efgermes</th>
+                <td>{{ pcvPu.efGermes }}</td>
+            </tr>
+            <tr>
+                <th>Efelementslevuriformes</th>
+                <td>{{ pcvPu.efElementsLevuriformes }}</td>
+            </tr>
+            <tr>
+                <th>Eftrichononasvaginalis</th>
+                <td>{{ pcvPu.efTrichononasVaginalis }}</td>
+            </tr>
+            <tr>
+                <th>Efcluecell</th>
+                <td>{{ pcvPu.efClueCell }}</td>
+            </tr>
+            <tr>
+                <th>Etatcolore</th>
+                <td>{{ pcvPu.etatColore }}</td>
+            </tr>
+            <tr>
+                <th>Eccellulesepitheliales</th>
+                <td>{{ pcvPu.ecCellulesEpitheliales }}</td>
+            </tr>
+            <tr>
+                <th>Ecpolynucleaires</th>
+                <td>{{ pcvPu.ecPolynucleaires }}</td>
+            </tr>
+            <tr>
+                <th>Ecbacillesgramnegatif</th>
+                <td>{{ pcvPu.ecBacillesGramNegatif }}</td>
+            </tr>
+            <tr>
+                <th>Ecbacillesgrampositif</th>
+                <td>{{ pcvPu.ecBacillesGramPositif }}</td>
+            </tr>
+            <tr>
+                <th>Eccoccigrampositif</th>
+                <td>{{ pcvPu.ecCocciGramPositif }}</td>
+            </tr>
+            <tr>
+                <th>Eccoccigramnegatif</th>
+                <td>{{ pcvPu.ecCocciGramNegatif }}</td>
+            </tr>
+            <tr>
+                <th>Ecsporesmycosiques</th>
+                <td>{{ pcvPu.ecSporesMycosiques }}</td>
+            </tr>
+            <tr>
+                <th>Ecfilamentsmyceliens</th>
+                <td>{{ pcvPu.ecFilamentsMyceliens }}</td>
+            </tr>
+            <tr>
+                <th>Ecfloredoderiein</th>
+                <td>{{ pcvPu.ecFloreDoderiein }}</td>
+            </tr>
+            <tr>
+                <th>Koh</th>
+                <td>{{ pcvPu.koh }}</td>
+            </tr>
+            <tr>
+                <th>Ph</th>
+                <td>{{ pcvPu.ph }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ pcvPu.price }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('pcvpu_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('pcvpu_edit', { 'id': pcvPu.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

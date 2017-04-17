@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Serologies list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Vih</th>
+                <th>Also</th>
+                <th>Crp</th>
+                <th>Tpha</th>
+                <th>Vdrl</th>
+                <th>Aghbs</th>
+                <th>Toxoigg</th>
+                <th>Widaltest</th>
+                <th>Rubeole</th>
+                <th>Hcv</th>
+                <th>Chlamydia</th>
+                <th>Fr</th>
+                <th>Selles</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for serologie in serologies %}
+            <tr>
+                <td><a href="{{ path('serologie_show', { 'id': serologie.id }) }}">{{ serologie.id }}</a></td>
+                <td>{% if serologie.date %}{{ serologie.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ serologie.vih }}</td>
+                <td>{{ serologie.also }}</td>
+                <td>{{ serologie.crp }}</td>
+                <td>{{ serologie.tpha }}</td>
+                <td>{{ serologie.vdrl }}</td>
+                <td>{{ serologie.agHbs }}</td>
+                <td>{{ serologie.toxoIgg }}</td>
+                <td>{{ serologie.widalTest }}</td>
+                <td>{{ serologie.rubeole }}</td>
+                <td>{{ serologie.hcv }}</td>
+                <td>{{ serologie.chlamydia }}</td>
+                <td>{{ serologie.fr }}</td>
+                <td>{{ serologie.selles }}</td>
+                <td>{{ serologie.price }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('serologie_show', { 'id': serologie.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('serologie_edit', { 'id': serologie.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('serologie_new') }}">Create a new serologie</a>
+        </li>
+    </ul>
+{% endblock %}

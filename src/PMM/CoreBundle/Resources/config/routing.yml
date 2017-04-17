@@ -1,0 +1,3 @@
+pmm_core_patient:
+    resource: "@PMMCoreBundle/Resources/config/routing/patient.yml"
+    prefix:   /patient
