@@ -12,6 +12,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Hematologie
 {
+    
+    /**
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Bulletin", mappedBy="hematologie", cascade={"persist", "remove"})
+     */
+    private $bulletin;
+    
     /**
      * @var int
      *
@@ -64,14 +70,39 @@ class Hematologie
     }
 
 
+
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Hematologie
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 
     /**
@@ -147,30 +178,6 @@ class Hematologie
     }
 
     /**
-     * Set date
-     *
-     * @param \DateTime $date
-     *
-     * @return Hematologie
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
-
-    /**
      * Set price
      *
      * @param float $price
@@ -192,5 +199,29 @@ class Hematologie
     public function getPrice()
     {
         return $this->price;
+    }
+
+    /**
+     * Set bulletin
+     *
+     * @param \PMM\LaboBundle\Entity\Bulletin $bulletin
+     *
+     * @return Hematologie
+     */
+    public function setBulletin(\PMM\LaboBundle\Entity\Bulletin $bulletin = null)
+    {
+        $this->bulletin = $bulletin;
+
+        return $this;
+    }
+
+    /**
+     * Get bulletin
+     *
+     * @return \PMM\LaboBundle\Entity\Bulletin
+     */
+    public function getBulletin()
+    {
+        return $this->bulletin;
     }
 }

@@ -12,6 +12,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class PcvPu
 {
+    
+    /**
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Bulletin", mappedBy="pcvPu", cascade={"persist", "remove"})
+     */
+    private $bulletin;
+    
     /**
      * @var int
      *
@@ -190,14 +196,40 @@ class PcvPu
     }
 
 
+
+
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return PcvPu
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 
     /**
@@ -705,30 +737,6 @@ class PcvPu
     }
 
     /**
-     * Set date
-     *
-     * @param \DateTime $date
-     *
-     * @return PcvPu
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
-
-    /**
      * Set price
      *
      * @param float $price
@@ -750,5 +758,29 @@ class PcvPu
     public function getPrice()
     {
         return $this->price;
+    }
+
+    /**
+     * Set bulletin
+     *
+     * @param \PMM\LaboBundle\Entity\Bulletin $bulletin
+     *
+     * @return PcvPu
+     */
+    public function setBulletin(\PMM\LaboBundle\Entity\Bulletin $bulletin = null)
+    {
+        $this->bulletin = $bulletin;
+
+        return $this;
+    }
+
+    /**
+     * Get bulletin
+     *
+     * @return \PMM\LaboBundle\Entity\Bulletin
+     */
+    public function getBulletin()
+    {
+        return $this->bulletin;
     }
 }

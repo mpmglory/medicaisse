@@ -13,7 +13,7 @@ class SerologieType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('date')->add('vih')->add('also')->add('crp')->add('tpha')->add('vdrl')->add('agHbs')->add('toxoIgg')->add('widalTest')->add('rubeole')->add('hcv')->add('chlamydia')->add('fr')->add('selles')->add('price');
+        $builder->add('vih')->add('also')->add('crp')->add('tpha')->add('vdrl')->add('agHbs')->add('toxoIgg')->add('widalTest')->add('rubeole')->add('hcv')->add('chlamydia')->add('fr')->add('selles');
     }
     
     /**

@@ -5,6 +5,12 @@ namespace PMM\LaboBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class BulletinType extends AbstractType
 {
@@ -14,13 +20,14 @@ class BulletinType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date')
-            ->add('amount')
-            ->add('patient')
-            ->add('formuleLeucocytaire')
-            ->add('hematologie')
-            ->add('pcvPu')
-            ->add('serologie');
+            ->add('patient', EntityType::class, array(
+                'class' => 'PMMCoreBundle:Patient',
+                'choice_label' => 'name',
+                'multiple' => false,
+                'expanded' => false,
+            ))
+            ->add('pcvPu', PcvPuType::class)
+            ->add('serologie', SerologieType::class);
     }
     
     /**

@@ -12,6 +12,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Hematologie
 {
+    
+    /**
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Bulletin", mappedBy="hematologie", cascade={"persist", "remove"})
+     */
+    private $bulletin;
+    
     /**
      * @var int
      *
@@ -64,86 +70,4 @@ class Hematologie
     }
 
 
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set globulesBlancs
-     *
-     * @param string $globulesBlancs
-     *
-     * @return Hematologie
-     */
-    public function setGlobulesBlancs($globulesBlancs)
-    {
-        $this->globulesBlancs = $globulesBlancs;
-
-        return $this;
-    }
-
-    /**
-     * Get globulesBlancs
-     *
-     * @return string
-     */
-    public function getGlobulesBlancs()
-    {
-        return $this->globulesBlancs;
-    }
-
-    /**
-     * Set globulesRouges
-     *
-     * @param string $globulesRouges
-     *
-     * @return Hematologie
-     */
-    public function setGlobulesRouges($globulesRouges)
-    {
-        $this->globulesRouges = $globulesRouges;
-
-        return $this;
-    }
-
-    /**
-     * Get globulesRouges
-     *
-     * @return string
-     */
-    public function getGlobulesRouges()
-    {
-        return $this->globulesRouges;
-    }
-
-    /**
-     * Set tauxHemoglobine
-     *
-     * @param string $tauxHemoglobine
-     *
-     * @return Hematologie
-     */
-    public function setTauxHemoglobine($tauxHemoglobine)
-    {
-        $this->tauxHemoglobine = $tauxHemoglobine;
-
-        return $this;
-    }
-
-    /**
-     * Get tauxHemoglobine
-     *
-     * @return string
-     */
-    public function getTauxHemoglobine()
-    {
-        return $this->tauxHemoglobine;
-    }
 }
-

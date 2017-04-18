@@ -199,8 +199,6 @@ class Bulletin
     public function setFormuleLeucocytaire(\PMM\LaboBundle\Entity\FormuleLeucocytaire $formuleLeucocytaire = null)
     {
         $this->formuleLeucocytaire = $formuleLeucocytaire;
-        
-        $formuleLeucocytaire->setBulletin($this);
 
         return $this;
     }
@@ -225,8 +223,6 @@ class Bulletin
     public function setHematologie(\PMM\LaboBundle\Entity\Hematologie $hematologie = null)
     {
         $this->hematologie = $hematologie;
-        
-        $hematologie->setBulletin($this);
 
         return $this;
     }
@@ -251,8 +247,6 @@ class Bulletin
     public function setPcvPu(\PMM\LaboBundle\Entity\PcvPu $pcvPu = null)
     {
         $this->pcvPu = $pcvPu;
-        
-        $pcvPu->setBulletin($this);
 
         return $this;
     }
@@ -277,8 +271,6 @@ class Bulletin
     public function setSerologie(\PMM\LaboBundle\Entity\Serologie $serologie = null)
     {
         $this->serologie = $serologie;
-            
-        $serologie->setBulletin($this);
 
         return $this;
     }
