@@ -41,7 +41,7 @@ class CalculAmount{
             
             $entityPrice = $em->getRepository('PMMLaboBundle:PcvPu')->find($idPrice);
             
-            if(null === $entityPrice){ 
+            if( (null === $entityPrice) || (null === $entity->getEtatCol()) ){ 
                 return;
             }
             
@@ -136,7 +136,7 @@ class CalculAmount{
         $amt = 0;
         
         if($entity instanceof Bulletin){
-/*
+
             if(null !== $entity->getFormuleLeucocytaire()){
                 
                 $entityPrice = $em->getRepository('PMMLaboBundle:FormuleLeucocytaire')->find($idPrice);
@@ -149,7 +149,7 @@ class CalculAmount{
                 $entityPrice = $em->getRepository('PMMLaboBundle:Hematologie')->find($idPrice);
 
                 $amt = $amt + floatval($entityPrice->getPrice());
-            }*/
+            }
 
             if(null !== $entity->getPcvPu()){
                 
@@ -166,6 +166,9 @@ class CalculAmount{
             }
 
             $entity->setAmount($amt);
+            
+            $em->persist($entity);
+            $em->flush();
             
         }
     }
