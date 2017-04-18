@@ -41,7 +41,7 @@ class CalculAmount{
             
             $entityPrice = $em->getRepository('PMMLaboBundle:PcvPu')->find($idPrice);
             
-            if( (null === $entityPrice) || (null === $entity->getEtatCol()) ){ 
+            if( (null === $entityPrice) || (null === $entity->getEtatCol()) || (0 === $entity->getEtatCol()) ){ 
                 return;
             }
             

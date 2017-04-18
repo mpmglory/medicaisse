@@ -26,8 +26,8 @@ class BulletinType extends AbstractType
                 'multiple' => false,
                 'expanded' => false,
             ))
-            ->add('pcvPu', PcvPuType::class)
-            ->add('serologie', SerologieType::class);
+            ->add('pcvPu', BulCreationPcvPuType::class)
+            ->add('serologie', BulCreationSerologieType::class);
     }
     
     /**

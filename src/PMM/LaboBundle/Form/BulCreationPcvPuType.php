@@ -1,0 +1,48 @@
+<?php
+
+namespace PMM\LaboBundle\Form;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
+class BulCreationPcvPuType extends AbstractType
+{
+    /**
+     * {@inheritdoc}
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('etatCol', ChoiceType::class, array(
+                'choices' => array(
+                    'NON' => null,
+                    'OUI' => '1',
+                ),
+                'expanded' => true,
+                'multiple' => false,
+                'label' => 'PCV ou PU',
+            ));
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => 'PMM\LaboBundle\Entity\PcvPu'
+        ));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return 'pmm_labobundle_pcvpu';
+    }
+
+
+}
