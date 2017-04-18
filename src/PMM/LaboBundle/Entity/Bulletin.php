@@ -13,7 +13,6 @@ use PMM\LaboBundle\Entity\Serologie;
  *
  * @ORM\Table(name="bulletin")
  * @ORM\Entity(repositoryClass="PMM\LaboBundle\Repository\BulletinRepository")
- * @ORM\HasLifecycleCallbacks()
  */
 class Bulletin
 {
@@ -59,6 +58,13 @@ class Bulletin
      * @ORM\Column(name="date", type="datetime")
      */
     private $date;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
+     */
+    private $updatedAt;
 
     /**
      * @var float
@@ -71,42 +77,10 @@ class Bulletin
     public function __construct(){
         
         $this->date = new \Datetime();
-    }
-
-
-    /**
-    * @ORM\PrePersist
-    * @ORM\PreUpdate
-    */
-    public function calculAmount(){
-
-        $amt = 0;
-        
-        if(null !== $this->formuleLeucocytaire){
-            
-            $amt += $this->formuleLeucocytaire->getPrice();
-        }
-        
-        if(null !== $this->hematologie){
-            
-            $amt +=  $this->hematologie->getPrice();
-        }
-        
-        if(null !== $this->pcvPu){
-            
-            $amt += $this->pcvPu->getPrice();
-        }
-        
-        if(null !== $this->serologie){
-            
-            $amt += $this->serologie->getPrice();
-        }
-    
-        $this->amount = $amt;
+        $this->amount = 0;
     }
 
     
-
     /**
      * Get id
      *
@@ -291,5 +265,29 @@ class Bulletin
     public function getSerologie()
     {
         return $this->serologie;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Bulletin
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }

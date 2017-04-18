@@ -58,10 +58,16 @@ class BulletinController extends Controller
     public function showAction(Bulletin $bulletin)
     {
         $deleteForm = $this->createDeleteForm($bulletin);
+        
+        /*$arrayBul = $this->getManager()
+                ->getRepository('PMMLaboBundle:Bulletin')
+                ->myFindOne($bulletin);*/
+        //$arrayBul = (array)$bulletin->getSerologie();
 
         return $this->render('bulletin/show.html.twig', array(
             'bulletin' => $bulletin,
             'delete_form' => $deleteForm->createView(),
+            //'arrayBul' => $arrayBul,
         ));
     }
 

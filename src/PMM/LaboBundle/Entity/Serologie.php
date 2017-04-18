@@ -3,6 +3,7 @@
 namespace PMM\LaboBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use PMM\LaboBundle\Entity\Bulletin;
 
 /**
  * Serologie
@@ -14,7 +15,8 @@ class Serologie
 {
     
     /**
-     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Bulletin", mappedBy="serologie", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Bulletin", mappedBy="serologie")
+     * @ORM\JoinColumn(name="bulletin_id", referencedColumnName="id")
      */
     private $bulletin;
     

@@ -14,7 +14,7 @@ class PcvPuType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('etatCol')->add('leucorrhees')->add('etatFrais')->add('efCellulesEpitheliales')->add('efLeucocytes')->add('efGermes')->add('efElementsLevuriformes')->add('efTrichononasVaginalis')->add('efClueCell')->add('etatColore')->add('ecCellulesEpitheliales')->add('ecPolynucleaires')->add('ecBacillesGramNegatif')->add('ecBacillesGramPositif')->add('ecCocciGramPositif')->add('ecCocciGramNegatif')->add('ecSporesMycosiques')->add('ecFilamentsMyceliens')->add('ecFloreDoderiein')->add('koh')->add('ph');
+            ->add('price')->add('etatCol')->add('leucorrhees')->add('etatFrais')->add('efCellulesEpitheliales')->add('efLeucocytes')->add('efGermes')->add('efElementsLevuriformes')->add('efTrichononasVaginalis')->add('efClueCell')->add('etatColore')->add('ecCellulesEpitheliales')->add('ecPolynucleaires')->add('ecBacillesGramNegatif')->add('ecBacillesGramPositif')->add('ecCocciGramPositif')->add('ecCocciGramNegatif')->add('ecSporesMycosiques')->add('ecFilamentsMyceliens')->add('ecFloreDoderiein')->add('koh')->add('ph');
     }
     
     /**

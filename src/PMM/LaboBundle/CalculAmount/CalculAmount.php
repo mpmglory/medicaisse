@@ -9,6 +9,7 @@ use PMM\LaboBundle\Entity\Hematologie;
 use PMM\LaboBundle\Entity\Serologie;
 use PMM\LaboBundle\Entity\PcvPu;
 
+
 class CalculAmount{
     
     public function prePersist(LifecycleEventArgs $args){
@@ -17,25 +18,6 @@ class CalculAmount{
         $em = $args->getObjectManager();
         $idPrice = 1;
         $amt = 0;        
-                
-/*        if($entity instanceof FormuleLeucocytaire){
-            
-            $entityPrice = $em->getRepository('PMMLaboBundle:FormuleLeucocytaire')->find($idPrice);
-            
-            if(null === $entityPrice){ 
-                return;
-            }
-            
-        }*/
-        
-/*        if($entity instanceof Hematologie){
-            
-            $entityPrice = $em->getRepository('PMMLaboBundle:Hematologie')->find($idPrice);
-            
-            if(null === $entityPrice){ 
-                return;
-            }
-        }*/
         
         if($entity instanceof PcvPu){
             
@@ -125,7 +107,6 @@ class CalculAmount{
             
             $entity->setPrice($amt); 
         }
-
     }
     
     public function postPersist(LifecycleEventArgs $args){
@@ -134,35 +115,25 @@ class CalculAmount{
         $em = $args->getObjectManager();
         $idPrice = 1;
         $amt = 0;
+        $prix = 0;
         
         if($entity instanceof Bulletin){
+            
+            $thisPcvPu = $entity->getPcvPu();
+            $thisSero = $entity->getSerologie();
 
-            if(null !== $entity->getFormuleLeucocytaire()){
+            if(null !== $thisPcvPu){
                 
-                $entityPrice = $em->getRepository('PMMLaboBundle:FormuleLeucocytaire')->find($idPrice);
+                $prix = floatval($thisPcvPu->getPrice());
 
-                $amt = $amt + floatval($entityPrice->getPrice());
+                $amt = $amt + floatval($prix);
             }
 
-            if(null !== $entity->getHematologie()){
+            if(null !== $thisSero){
                 
-                $entityPrice = $em->getRepository('PMMLaboBundle:Hematologie')->find($idPrice);
+                $prix = floatval($thisSero->getPrice());
 
-                $amt = $amt + floatval($entityPrice->getPrice());
-            }
-
-            if(null !== $entity->getPcvPu()){
-                
-                $entityPrice = $em->getRepository('PMMLaboBundle:PcvPu')->find($idPrice);
-
-                $amt = $amt + floatval($entityPrice->getPrice());
-            }
-
-            if(null !== $entity->getSerologie()){
-                
-                $entityPrice = $em->getRepository('PMMLaboBundle:Serologie')->find($idPrice);
-
-                $amt = $amt + floatval($entityPrice->getPrice());
+                $amt = $amt + floatval($prix);
             }
 
             $entity->setAmount($amt);
