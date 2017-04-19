@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Bulletin</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ bulletin.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if bulletin.date %}{{ bulletin.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Patient</th>
+                <td>{{ bulletin.patient.name }}</td>
+            </tr>
+            <tr>
+                <th>Examens</th>
+                {#<td>
+                    <ol>
+                    {% if bulletin.formuleLeucocytaire is not null %}
+                    <li>Formule Leucocytaire</li>
+                    {% endif %}
+                    {% if bulletin.hematologie is not null %}
+                    <li>Hematologie</li>
+                    {% endif %}
+                    {% if bulletin.pcvPu is not null and bulletin.pcvPu.price != 0 %}
+                    <li>PCV ou PU</li>
+                    {% endif %}
+                    {% if bulletin.serologie is not null and bulletin.serologie.price != 0 %}
+                    <li>Serologie</li>
+                        {% for exam in arrayBul %}
+                        </ul>
+                        {% if exam is not null %}<li>{{exam.name}}</li>{% endif %}
+                        </ul>
+                        {% endfor %}
+                    {% endif %}
+                    </ol>
+                </td>#}
+                
+            </tr>
+            <tr>
+                <th>Amount</th>
+                <td>{{ bulletin.amount }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('bulletin_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('bulletin_edit', { 'id': bulletin.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

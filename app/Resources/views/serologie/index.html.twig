@@ -31,7 +31,7 @@
             <tr>
                 <td><a href="{{ path('serologie_show', { 'id': serologie.id }) }}">{{ serologie.id }}</a></td>
                 <td>{% if serologie.date %}{{ serologie.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if serologie.bulletin %}Bulletin num {{ serologie.bulletin.id }}{% endif %}</td>
+                <td>{% if serologie.bulletin %}Bul {{ serologie.bulletin.id }}{% endif %}</td>
                 <td>{{ serologie.vih }}</td>
                 <td>{{ serologie.also }}</td>
                 <td>{{ serologie.crp }}</td>

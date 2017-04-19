@@ -22,3 +22,13 @@ bulletin_delete:
     path:     /{id}/delete
     defaults: { _controller: "PMMLaboBundle:Bulletin:delete" }
     methods:  DELETE
+
+bulletin_fill:
+    path:     /{id}/fill
+    defaults: { _controller: "PMMLaboBundle:Bulletin:fill" }
+    methods:  [GET, POST]
+    
+bulletin_print:
+    path:     /{id}/print
+    defaults: { _controller: "PMMLaboBundle:Bulletin:print" }
+    methods:  [GET, POST]

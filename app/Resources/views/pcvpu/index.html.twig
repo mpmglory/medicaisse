@@ -8,6 +8,7 @@
             <tr>
                 <th>Id</th>
                 <th>Date</th>
+                <th>Bulletin</th>
                 <th>Etatcol</th>
                 <th>Leucorrhees</th>
                 <th>Etatfrais</th>
@@ -38,6 +39,7 @@
             <tr>
                 <td><a href="{{ path('pcvpu_show', { 'id': pcvPu.id }) }}">{{ pcvPu.id }}</a></td>
                 <td>{% if pcvPu.date %}{{ pcvPu.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if pcvPu.bulletin %}Bul {{ pcvPu.bulletin.id }}{% endif %}</td>
                 <td>{{ pcvPu.etatCol }}</td>
                 <td>{{ pcvPu.leucorrhees }}</td>
                 <td>{{ pcvPu.etatFrais }}</td>

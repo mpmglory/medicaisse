@@ -59,15 +59,9 @@ class BulletinController extends Controller
     {
         $deleteForm = $this->createDeleteForm($bulletin);
         
-        /*$arrayBul = $this->getManager()
-                ->getRepository('PMMLaboBundle:Bulletin')
-                ->myFindOne($bulletin);*/
-        //$arrayBul = (array)$bulletin->getSerologie();
-
         return $this->render('bulletin/show.html.twig', array(
             'bulletin' => $bulletin,
             'delete_form' => $deleteForm->createView(),
-            //'arrayBul' => $arrayBul,
         ));
     }
 
@@ -127,4 +121,32 @@ class BulletinController extends Controller
             ->getForm()
         ;
     }
+    
+    public function fillAction(Request $request, $id){
+        
+        $em = $this->getDoctrine()->getManager();
+        
+        $bul = $em->getRepository('PMMLaboBundle:Bulletin')->find($id);
+        
+        if(null === $bul){
+            throw new NotFoundException("Le bulletin numéro " .$id. " n'existe pas.");
+        }
+        
+    	$form = $this->createForm('PMM\LaboBundle\Form\BulFillType', $bul);
+			
+		if($request->isMethod('POST') && $form->handleRequest($request)->isValid()){
+            
+			$em->flush();
+			$request->getSession()->getFlashBag()
+					->add('notice', 'Remplissage reussi.');
+		
+			return $this->redirectToRoute('bulletin_show', array('id' => $id));
+		}
+        
+        return $this->render('bulletin/fill.html.twig', array(
+            'bul' => $bul,
+            'form' => $form->createView(),
+        ));
+    }
+    
 }

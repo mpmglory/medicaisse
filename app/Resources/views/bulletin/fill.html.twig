@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Remplissage Bulletin</h1>
+
+<div class="well">
+  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+  {{ form_errors(form) }}
+
+  {% if form.date is defined %}
+    {{ form_row(form.date) }}
+  {% endif %}
+
+  {% if form.pcvPu is defined %}
+  <div class="form-group">
+    {{ form_label(form.pcvPu, "PCV ou PU :", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.pcvPu) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.pcvPu, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+  {% endif %}
+    
+ {% if form.serologie is defined %}
+  <div class="form-group">
+    {{ form_label(form.serologie, "Serologie :", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.serologie) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.serologie, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+  {% endif %}
+
+  {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary btn-info'}}) }}
+
+  {{ form_end(form) }}
+</div>
+    
+
+    <ul>
+        <li>
+            <a href="{{ path('bulletin_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}
