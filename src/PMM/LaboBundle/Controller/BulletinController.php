@@ -180,4 +180,11 @@ class BulletinController extends Controller
         ));
     }
     
+    public function printAction(Bulletin $bulletin){
+        
+        return $this->render('bulletin/print.html.twig', array(
+            'bulletin' => $bulletin,
+        ));
+    }
+    
 }
