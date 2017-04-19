@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{% block title2 %}
+Nouveau bulletin</br>
+{% if bulletin.patient is not null %} Patient : {{ bulletin.patient.name }} {% endif %}
+{% endblock %}
+
 {% block body %}
     <h1>Bulletin creation</h1>
 

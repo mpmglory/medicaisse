@@ -11,6 +11,8 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 
 class BulletinType extends AbstractType
 {
@@ -28,6 +30,23 @@ class BulletinType extends AbstractType
             ))
             ->add('pcvPu', BulCreationPcvPuType::class)
             ->add('serologie', BulCreationSerologieType::class);
+        
+        $builder->addEventListener(
+            FormEvents::PRE_SET_DATA,
+            function(FormEvent $event){
+                
+                $bul = $event->getData();
+            
+                if(null === $bul){
+                    return;
+                }
+            
+                if(null !== $bul->getPatient()){
+                    $event->getForm()->remove('patient');
+                }            
+            }
+        );
+        
     }
     
     /**

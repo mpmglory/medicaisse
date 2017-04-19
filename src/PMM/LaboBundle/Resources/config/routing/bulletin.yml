@@ -12,6 +12,11 @@ bulletin_new:
     path:     /new
     defaults: { _controller: "PMMLaboBundle:Bulletin:new" }
     methods:  [GET, POST]
+    
+bulletin_custum-new:
+    path:     /{id}/new
+    defaults: { _controller: "PMMLaboBundle:Bulletin:custumNew" }
+    methods:  [GET, POST]
 
 bulletin_edit:
     path:     /{id}/edit

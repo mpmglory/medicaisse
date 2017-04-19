@@ -4,11 +4,12 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome to Medibix!{% endblock %}</title>
         {% block stylesheets %}
-            <link rel="stylesheet" href="bootstrap.min.css">
+            <link rel="stylesheet" href="/app/Resources/views/bootstrap.min.css">
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        {% block title2 %}{% endblock %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
