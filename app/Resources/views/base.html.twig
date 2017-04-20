@@ -6,12 +6,26 @@
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('bundles/pmmcore/css/main.css') }}">
             <link rel="stylesheet" href="{{ asset('bundles/pmmcore/css/bootstrap.min.css') }}">
+            <style>
+                body {
+                  padding-top: 10px;
+                }
+                [class*="col-"], footer {
+                  background-color: lightgreen;
+                  border: 2px solid black;
+                  border-radius: 6px;
+                  line-height: 40px;
+                  text-align: center;
+                }
+            </style>
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        <div class="conainer">
         {% block title2 %}{% endblock %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
+        </div>
     </body>
 </html>

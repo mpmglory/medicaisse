@@ -1,198 +1,210 @@
-{% extends 'base.html.twig' %}
-
-{% block body %}
-<div class="row">Entete du bulletin</div>
-<div class="row">
-    <div class="col-md-6">
-        <h2>NOMS: {{ bulletin.patient.name }}</h2>
-    </div>
-    <div class="col-md-6">
-        <h2>SEXE: {{ bulletin.patient.sex }}</h2>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-3">
-        <h1>LISTE DES RESULTATS</h1>
-    </div>
-    <div class="col-md-9">
-    <div class="table-responsive">
-        <table class="table table-bordered table-hover table-striped">
-            <thead>
-                <tr>
-                    <th>EXAMENS</th>
-                    <th>RESULTATS</th>
-                </tr>
-            </thead>
-            <tbody>
-                
-                {% if bulletin.pcvPu is not null %}
-                <tr>
-                    <td><div class="col-md-6">PCV</div> ou <div class="col-md-6">PU</div> </td>
-                    <td>
-                        <ol>
-                            <li>Etat de col : {{ bulletin.pcvPu.etatCol }}</li>
-                            <li>Leucorrhées : {{ bulletin.pcvPu.leucorrhees }}</li>
-                            <li>Etat frais : {{ bulletin.pcvPu.etatFrais }}</li>
-                                <ul>
-                                    <li>Cellules épithéliales : {{ bulletin.pcvPu.efCellulesEpitheliales }}</li>
-                                    <li>Leucocytes : {{ bulletin.pcvPu.efLeucocytes}}</li>
-                                    <li>Germes: mobiles ou immobiles : {{ bulletin.pcvPu.efGermes }}</li>
-                                    <li>Eléments levuriformes : {{ bulletin.pcvPu.efElementsLevuriformes }}</li>
-                                    <li>Trichononas vaginalis : {{ bulletin.pcvPu.efTrichononasVaginalis }}</li>
-                                    <li>Clue cell : {{ bulletin.pcvPu.efClueCell }}</li>
-                                </ul>
-                            <li>Etat coloré : (gram) {{ bulletin.pcvPu.etatColore }}</li>
-                                <ul>
-                                    <li>Cellules épithéliales : altérés - altérés - +altérés : {{ bulletin.pcvPu.ecCellulesEpitheliales }}</li>
-                                    <li>Polynucléaires : altérés - altérés - +altérés : {{ bulletin.pcvPu.ecPolynucleaires}}</li>
-                                    <li>Bacilles gram négatif : {{ bulletin.pcvPu.ecBacillesGramNegatif }}</li>
-                                    <li>Bacilles gram positif : {{ bulletin.pcvPu.ecBacillesGramPositif }}</li>
-                                    <li>Cocci gram positif : {{ bulletin.pcvPu.ecCocciGramPositif }}</li>
-                                    <li>Cocci gram négatif : {{ bulletin.pcvPu.ecCocciGramNegatif }}</li>
-                                    <li>Spores mycosiques : {{ bulletin.pcvPu.ecSporesMycosiques }}</li>
-                                    <li>Filaments myceliens : {{ bulletin.pcvPu.ecFilamentsMyceliens }}</li>
-                                    <li>Flore de doderien : {{ bulletin.pcvPu.ecFloreDoderiein }}</li>
-                                </ul>
-                            <li>KOH : {{ bulletin.pcvPu.koh }}</li>
-                            <li>PH : {{ bulletin.pcvPu.ph }}</li>
-                        </ol>
-                    </td>
-                </tr>
-                {% endif %}
-                
-            </tbody>
-        </table>
-    </div>
-    </div>
-</div>
-
-<div class="row">
-{% if bulletin.serologie is not null %}
-    <div class="col-md-3">
-        <h1>LISTE DES RESULTATS</h1>
-    </div>
-    <div class="col-md-9">
-    <div class="table-responsive">
-        <table class="table table-bordered table-hover table-striped">
-            <thead>
-                <h3>SEROLOGIE</h3>
-                <tr>
-                    <th>EXAMENS</th>
-                    <th>RESULTATS</th>
-                </tr>
-            </thead>
-            <tbody>
-                
-                {% if bulletin.serologie.vih is not null %}
-                <tr>
-                    <td>VIH</td>
-                    <td>  </td>
-                </tr>
-                {% endif %}
-                
-                {% if bulletin.serologie.also is not null %}
-                <tr>
-                    <td>ALSO</td>
-                    <td>  </td>
-                </tr>
-                {% endif %}
-                
-                {% if bulletin.serologie.crp is not null %}
-                <tr>
-                    <td>CRP</td>
-                    <td>  </td>
-                </tr>
-                {% endif %} 
-                
-                {% if bulletin.serologie.tpha is not null %}
-                <tr>
-                    <td>TPHA</td>
-                    <td>  </td>
-                </tr>
-                {% endif %}   
-                {% if bulletin.serologie.vdrl is not null %}
-                <tr>
-                    <td>VDRL</td>
-                    <td>  </td>
-                </tr>
-                {% endif %} 
-                
-                {% if bulletin.serologie.agHbs is not null %}
-                <tr>
-                    <td>Ag Hbs</td>
-                    <td>  </td>
-                </tr>
-                {% endif %}  
-                
-                {% if bulletin.serologie.toxoIgg is not null %}
-                <tr>
-                    <td>TOXO IgG</td>
-                    <td>  </td>
-                </tr>
-                {% endif %} 
-                
-                {% if bulletin.serologie.widalTest is not null %}
-                <tr>
-                    <td>WIDAL Test</td>
-                    <td>  </td>
-                </tr>
-                {% endif %}  
-                
-                {% if bulletin.serologie.rubeole is not null %}
-                <tr>
-                    <td>Rubeole</td>
-                    <td>  </td>
-                </tr>
-                {% endif %}   
-                
-                {% if bulletin.serologie.hcv is not null %}
-                <tr>
-                    <td>HCV</td>
-                    <td>  </td>
-                </tr>
-                {% endif %} 
-                
-                {% if bulletin.serologie.chlamydia is not null %}
-                <tr>
-                    <td>Chlamydia</td>
-                    <td>  </td>
-                </tr>
-                {% endif %} 
-                
-                {% if bulletin.serologie.fr is not null %}
-                <tr>
-                    <td>FR</td>
-                    <td>  </td>
-                </tr>
-                {% endif %}  
-                
-                {% if bulletin.serologie.selles is not null %}
-                <tr>
-                    <td>SELLES</td>
-                    <td>  </td>
-                </tr>
-                {% endif %}  
-                
-            </tbody>
-        </table>
-    </div>
-    </div>
-    </div>
-{% endif %}
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        div { padding-top: 10px;}
+    </style>
     
-<div class="row">
-    <ul>
-        <li>
-            <a href="{{ path('bulletin_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('bulletin_edit', { 'id': bulletin.id }) }}">Edit</a>
-        </li>
-    </ul>
-</div>
+    <link rel="stylesheet" href="{{ asset('bundles/pmmcore/css/bootstrap.min.css') }}">
+    <title>Bulletin de {{ bulletin.patient.name }}</title>
+</head>
+<body>
+    <div class="container">
+        <div id ="en-tete" class="row">
+            <div class="col-xs-5">
+                <center><p>MINISTERE DE LA SANTE PUBLIQUE</p></center>
+                <center><p>DELEGATION REGIONALE DU LITTORAL</p></center>
+                <center><p>DISTRICT DE SANTE DE MANJO</p></center>
+                <center><p><BOLD>HOPITAL DE DISTRICT DE MANJO</BOLD></p></center>
+                <center><p>B.P: 05  Téphone: 243 25 98 00</p></center>
+                <center><p>e-mail: hdmanjo@gmail.com</p></center>
+            </div>
+            <div class="col-xs-2">
+                </center>LOGO HD MANJO</center>
+            </div>
+            <div class="col-xs-5">
+                <center>
+                <p>REPUBLIQUE DU CAMEROUN</p>
+                <p><i>PAIX - TRAVAIL - PATRIE</i></p>
+                </center>
+            </div>
+        </div>
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped">
+                    <tr>
+                        <td><h3>NOMS: {{ bulletin.patient.name }}</h3></td>
+                        <td><h3>SEXE: {{ bulletin.patient.sex }}</h3></td>
+                    </tr>
+                    <tr>
+                        <td><h3>Né (e) le: {{ bulletin.patient.bornDate|date('d-m-Y') }}</h3></td> 
+                        <td><h3>Fait le: {{ bulletin.date|date('d-m-Y') }}</h3></td>
+                    </tr> 
+                </table>
+            </div>
+        </div>
+        {% if bulletin.pcvPu is not null %}
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>EXAMENS</th>
+                            <th>RESULTATS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-{% endblock %}
+                        
+                        <tr>
+                            <td>PCV</br> ou</br> PU</td>
+                            <td>
+                                <ol>
+                                    <li>Etat de col : {{ bulletin.pcvPu.etatCol }}</li>
+                                    <li>Leucorrhées : {{ bulletin.pcvPu.leucorrhees }}</li>
+                                    <li>Etat frais : {{ bulletin.pcvPu.etatFrais }}</li>
+                                        <ul>
+                                            <li>Cellules épithéliales : {{ bulletin.pcvPu.efCellulesEpitheliales }}</li>
+                                            <li>Leucocytes : {{ bulletin.pcvPu.efLeucocytes}}</li>
+                                            <li>Germes: mobiles ou immobiles : {{ bulletin.pcvPu.efGermes }}</li>
+                                            <li>Eléments levuriformes : {{ bulletin.pcvPu.efElementsLevuriformes }}</li>
+                                            <li>Trichononas vaginalis : {{ bulletin.pcvPu.efTrichononasVaginalis }}</li>
+                                            <li>Clue cell : {{ bulletin.pcvPu.efClueCell }}</li>
+                                        </ul>
+                                    <li>Etat coloré : (gram) {{ bulletin.pcvPu.etatColore }}</li>
+                                        <ul>
+                                            <li>Cellules épithéliales : altérés - altérés - +altérés : {{ bulletin.pcvPu.ecCellulesEpitheliales }}</li>
+                                            <li>Polynucléaires : altérés - altérés - +altérés : {{ bulletin.pcvPu.ecPolynucleaires}}</li>
+                                            <li>Bacilles gram négatif : {{ bulletin.pcvPu.ecBacillesGramNegatif }}</li>
+                                            <li>Bacilles gram positif : {{ bulletin.pcvPu.ecBacillesGramPositif }}</li>
+                                            <li>Cocci gram positif : {{ bulletin.pcvPu.ecCocciGramPositif }}</li>
+                                            <li>Cocci gram négatif : {{ bulletin.pcvPu.ecCocciGramNegatif }}</li>
+                                            <li>Spores mycosiques : {{ bulletin.pcvPu.ecSporesMycosiques }}</li>
+                                            <li>Filaments myceliens : {{ bulletin.pcvPu.ecFilamentsMyceliens }}</li>
+                                            <li>Flore de doderien : {{ bulletin.pcvPu.ecFloreDoderiein }}</li>
+                                        </ul>
+                                    <li>KOH : {{ bulletin.pcvPu.koh }}</li>
+                                    <li>PH : {{ bulletin.pcvPu.ph }}</li>
+                                </ol>
+                            </td>
+                        </tr>
+                        
 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+        {% if bulletin.serologie is not null %}
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <h3>SEROLOGIE</h3>
+                        <tr>
+                            <th>EXAMENS</th>
+                            <th>RESULTATS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
+                        {% if bulletin.serologie.vih is not null %}
+                        <tr>
+                            <td>VIH</td>
+                            <td>  </td>
+                        </tr>
+                        {% endif %}
+
+                        {% if bulletin.serologie.also is not null %}
+                        <tr>
+                            <td>ALSO</td>
+                            <td>  </td>
+                        </tr>
+                        {% endif %}
+
+                        {% if bulletin.serologie.crp is not null %}
+                        <tr>
+                            <td>CRP</td>
+                            <td>  </td>
+                        </tr>
+                        {% endif %} 
+
+                        {% if bulletin.serologie.tpha is not null %}
+                        <tr>
+                            <td>TPHA</td>
+                            <td>  </td>
+                        </tr>
+                        {% endif %}   
+                        {% if bulletin.serologie.vdrl is not null %}
+                        <tr>
+                            <td>VDRL</td>
+                            <td>  </td>
+                        </tr>
+                        {% endif %} 
+
+                        {% if bulletin.serologie.agHbs is not null %}
+                        <tr>
+                            <td>Ag Hbs</td>
+                            <td>  </td>
+                        </tr>
+                        {% endif %}  
+
+                        {% if bulletin.serologie.toxoIgg is not null %}
+                        <tr>
+                            <td>TOXO IgG</td>
+                            <td>  </td>
+                        </tr>
+                        {% endif %} 
+
+                        {% if bulletin.serologie.widalTest is not null %}
+                        <tr>
+                            <td>WIDAL Test</td>
+                            <td>  </td>
+                        </tr>
+                        {% endif %}  
+
+                        {% if bulletin.serologie.rubeole is not null %}
+                        <tr>
+                            <td>Rubeole</td>
+                            <td>  </td>
+                        </tr>
+                        {% endif %}   
+
+                        {% if bulletin.serologie.hcv is not null %}
+                        <tr>
+                            <td>HCV</td>
+                            <td>  </td>
+                        </tr>
+                        {% endif %} 
+
+                        {% if bulletin.serologie.chlamydia is not null %}
+                        <tr>
+                            <td>Chlamydia</td>
+                            <td>  </td>
+                        </tr>
+                        {% endif %} 
+
+                        {% if bulletin.serologie.fr is not null %}
+                        <tr>
+                            <td>FR</td>
+                            <td>  </td>
+                        </tr>
+                        {% endif %}  
+
+                        {% if bulletin.serologie.selles is not null %}
+                        <tr>
+                            <td>SELLES</td>
+                            <td>  </td>
+                        </tr>
+                        {% endif %}  
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
 
