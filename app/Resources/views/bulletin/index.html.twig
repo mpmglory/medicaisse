@@ -1,9 +1,25 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+{% endblock %}
+
+{% block title2 %}
+Gestion des bulletins médicaux
+{% endblock %}
+
+{% block menu %}
+
+	<ul class="nav nav-pills nav-stacked">
+
+        <a href="{{ path('bulletin_new') }}" class="btn btn-info btn-block btn-lg">
+            <span class="glyphicon glyphicon-plus"></span>Créer un bulletin</a><p>  </p>        
+	</ul>
+
+{% endblock %}
+
 {% block body %}
     <h1>Bulletins list</h1>
-
-    <table >
+    <table class="table table-bordered table-hover table-striped">
         <thead>
             <tr>
                 <th>Id</th>

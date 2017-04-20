@@ -49,7 +49,8 @@ class PatientType extends AbstractType
                 'expanded' => false,
                 'multiple' => false,
                 'placeholder' => 'Choisir un groupe',
-            ));
+            ))
+            ->add('submit', SubmitType::class, array('label' => 'Enregistrer'));
     }
     
     /**
