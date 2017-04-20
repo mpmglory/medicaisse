@@ -44,7 +44,7 @@
                 </table>
             </div>
         </div>
-        {% if bulletin.pcvPu is not null %}
+        {% if bulletin.pcvPu.etatCol is not null  %}
         <div class="row">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover table-striped">
@@ -112,90 +112,90 @@
                         {% if bulletin.serologie.vih is not null %}
                         <tr>
                             <td>VIH</td>
-                            <td>  </td>
+                            <td>{{ bulletin.serologie.vih is not null }}  </td>
                         </tr>
                         {% endif %}
 
                         {% if bulletin.serologie.also is not null %}
                         <tr>
                             <td>ALSO</td>
-                            <td>  </td>
+                            <td> {{ bulletin.serologie.also }} </td>
                         </tr>
                         {% endif %}
 
                         {% if bulletin.serologie.crp is not null %}
                         <tr>
                             <td>CRP</td>
-                            <td>  </td>
+                            <td> {{ bulletin.serologie.crp }} </td>
                         </tr>
                         {% endif %} 
 
                         {% if bulletin.serologie.tpha is not null %}
                         <tr>
                             <td>TPHA</td>
-                            <td>  </td>
+                            <td> {{ bulletin.serologie.tpha }} </td>
                         </tr>
                         {% endif %}   
                         {% if bulletin.serologie.vdrl is not null %}
                         <tr>
                             <td>VDRL</td>
-                            <td>  </td>
+                            <td> {{ bulletin.serologie.vdrl }} </td>
                         </tr>
                         {% endif %} 
 
                         {% if bulletin.serologie.agHbs is not null %}
                         <tr>
                             <td>Ag Hbs</td>
-                            <td>  </td>
+                            <td> {{ bulletin.serologie.agHbs }} </td>
                         </tr>
                         {% endif %}  
 
                         {% if bulletin.serologie.toxoIgg is not null %}
                         <tr>
                             <td>TOXO IgG</td>
-                            <td>  </td>
+                            <td> {{ bulletin.serologie.toxoIgg }} </td>
                         </tr>
                         {% endif %} 
 
                         {% if bulletin.serologie.widalTest is not null %}
                         <tr>
                             <td>WIDAL Test</td>
-                            <td>  </td>
+                            <td> {{ bulletin.serologie.widalTest }} </td>
                         </tr>
                         {% endif %}  
 
                         {% if bulletin.serologie.rubeole is not null %}
                         <tr>
                             <td>Rubeole</td>
-                            <td>  </td>
+                            <td> {{ bulletin.serologie.rubeole }} </td>
                         </tr>
                         {% endif %}   
 
                         {% if bulletin.serologie.hcv is not null %}
                         <tr>
                             <td>HCV</td>
-                            <td>  </td>
+                            <td> {{ bulletin.serologie.hcv }} </td>
                         </tr>
                         {% endif %} 
 
                         {% if bulletin.serologie.chlamydia is not null %}
                         <tr>
                             <td>Chlamydia</td>
-                            <td>  </td>
+                            <td> {{ bulletin.serologie.chlamydia }} </td>
                         </tr>
                         {% endif %} 
 
                         {% if bulletin.serologie.fr is not null %}
                         <tr>
                             <td>FR</td>
-                            <td>  </td>
+                            <td> {{ bulletin.serologie.fr }} </td>
                         </tr>
                         {% endif %}  
 
                         {% if bulletin.serologie.selles is not null %}
                         <tr>
                             <td>SELLES</td>
-                            <td>  </td>
+                            <td> {{ bulletin.serologie.selles }} </td>
                         </tr>
                         {% endif %}  
 

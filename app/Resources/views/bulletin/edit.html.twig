@@ -1,21 +1,152 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Bulletin edit</h1>
+{% block title2 %}
+Modifier le bulletin</br>
+{% if bulletin.patient is not null %} Patient : {{ bulletin.patient.name }} {% endif %}
+{% endblock %}
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <ul>
+{% block menu %}
+    <ul class="nav nav-pills nav-stacked">
         <li>
-            <a href="{{ path('bulletin_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
+            <a href="{{ path('bulletin_index') }}" class="btn btn-primary btn-block btn-lg">
+            <span class="glyphicon glyphicon-chevron-left"></span> Retour à l'accueil </a><p>  </p>
         </li>
     </ul>
+{% endblock %}
+
+{% block body %}
+
+<div class="well">
+  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+  {{ form_errors(form) }}
+
+{% if bulletin.patient is null %}
+  <div class="form-group">
+    {{ form_label(form.patient, "Nom du patient:", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.patient) }}
+    <div class="col-sm-10">
+        {{ form_widget(form.patient, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+{% endif %}
+
+  <div class="form-group">
+    {{ form_label(form.pcvPu.etatCol, "PCV ou PU : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.pcvPu.etatCol) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.pcvPu.etatCol, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    {{ form_label(form.serologie.vih, "VIH : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.serologie.vih) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.serologie.vih, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+  <div class="form-group">
+    {{ form_label(form.serologie.also, "ALSO : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.serologie.also) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.serologie.also, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+  <div class="form-group">
+    {{ form_label(form.serologie.crp, "CRP : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.serologie.crp) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.serologie.crp, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+  <div class="form-group">
+    {{ form_label(form.serologie.tpha, "TPHA : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.serologie.tpha) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.serologie.tpha, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+      <div class="form-group">
+    {{ form_label(form.serologie.vdrl, "VDRL : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.serologie.vdrl) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.serologie.vdrl, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+      <div class="form-group">
+    {{ form_label(form.serologie.agHbs, "Ag Hbs : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.serologie.agHbs) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.serologie.agHbs, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+      <div class="form-group">
+    {{ form_label(form.serologie.toxoIgg, "TOXO IgG : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.serologie.toxoIgg) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.serologie.toxoIgg, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+      <div class="form-group">
+    {{ form_label(form.serologie.widalTest, "WIDAL Test : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.serologie.widalTest) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.serologie.widalTest, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+      <div class="form-group">
+    {{ form_label(form.serologie.rubeole, "Rubeole : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.serologie.rubeole) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.serologie.rubeole, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+      <div class="form-group">
+    {{ form_label(form.serologie.hcv, "HCV : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.serologie.hcv) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.serologie.hcv, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+      <div class="form-group">
+    {{ form_label(form.serologie.chlamydia, "Chlamydia : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.serologie.chlamydia) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.serologie.chlamydia, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+      <div class="form-group">
+    {{ form_label(form.serologie.fr, "FR : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.serologie.fr) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.serologie.fr, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+      <div class="form-group">
+    {{ form_label(form.serologie.selles, "SELLES : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.serologie.selles) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.serologie.selles, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+
+  {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary btn-info'}}) }}
+
+  {{ form_end(form) }}
+    
+</div>
+
 {% endblock %}

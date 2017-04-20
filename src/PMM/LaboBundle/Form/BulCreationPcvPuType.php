@@ -19,10 +19,10 @@ class BulCreationPcvPuType extends AbstractType
         $builder
             ->add('etatCol', ChoiceType::class, array(
                 'choices' => array(
-                    'NON' => null,
-                    'OUI' => '1',
+                    'Retirer' => null,
+                    'Ajouter' => '1',
                 ),
-                'expanded' => true,
+                'expanded' => false,
                 'multiple' => false,
                 'label' => 'PCV ou PU',
             ));

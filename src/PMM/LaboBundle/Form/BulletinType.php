@@ -29,7 +29,8 @@ class BulletinType extends AbstractType
                 'expanded' => false,
             ))
             ->add('pcvPu', BulCreationPcvPuType::class)
-            ->add('serologie', BulCreationSerologieType::class);
+            ->add('serologie', BulCreationSerologieType::class)
+            ->add('submit', SubmitType::class, array('label' => 'Enregistrer'));
         
         $builder->addEventListener(
             FormEvents::PRE_SET_DATA,

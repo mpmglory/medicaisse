@@ -19,118 +19,118 @@ class BulCreationSerologieType extends AbstractType
         $builder
             ->add('vih', ChoiceType::class, array(
                 'choices' => array(
-                    'NON' => null,
-                    'OUI' => '1',
+                    'Retirer' => null,
+                    'Ajouter cet examen' => '1',
                 ),
-                'expanded' => true,
+                'expanded' => false,
                 'multiple' => false,
                 'label' => '',
             ))
             ->add('also', ChoiceType::class, array(
                 'choices' => array(
-                    'NON' => null,
-                    'OUI' => '1',
+                    'Retirer' => null,
+                    'Ajouter cet examen' => '1',
                 ),
-                'expanded' => true,
+                'expanded' => false,
                 'multiple' => false,
                 'label' => '',
             ))
             ->add('crp', ChoiceType::class, array(
                 'choices' => array(
-                    'NON' => null,
-                    'OUI' => '1',
+                    'Retirer' => null,
+                    'Ajouter cet examen' => '1',
                 ),
-                'expanded' => true,
+                'expanded' => false,
                 'multiple' => false,
                 'label' => '',
             ))
             ->add('tpha', ChoiceType::class, array(
                 'choices' => array(
-                    'NON' => null,
-                    'OUI' => '1',
+                    'Retirer' => null,
+                    'Ajouter cet examen' => '1',
                 ),
-                'expanded' => true,
+                'expanded' => false,
                 'multiple' => false,
                 'label' => '',
             ))
             ->add('vdrl', ChoiceType::class, array(
                 'choices' => array(
-                    'NON' => null,
-                    'OUI' => '1',
+                    'Retirer' => null,
+                    'Ajouter cet examen' => '1',
                 ),
-                'expanded' => true,
+                'expanded' => false,
                 'multiple' => false,
                 'label' => '',
             ))
             ->add('agHbs', ChoiceType::class, array(
                 'choices' => array(
-                    'NON' => null,
-                    'OUI' => '1',
+                    'Retirer' => null,
+                    'Ajouter cet examen' => '1',
                 ),
-                'expanded' => true,
+                'expanded' => false,
                 'multiple' => false,
                 'label' => '',
             ))
             ->add('toxoIgg', ChoiceType::class, array(
                 'choices' => array(
-                    'NON' => null,
-                    'OUI' => '1',
+                    'Retirer' => null,
+                    'Ajouter cet examen' => '1',
                 ),
-                'expanded' => true,
+                'expanded' => false,
                 'multiple' => false,
                 'label' => '',
             ))
             ->add('widalTest', ChoiceType::class, array(
                 'choices' => array(
-                    'NON' => null,
-                    'OUI' => '1',
+                    'Retirer' => null,
+                    'Ajouter cet examen' => '1',
                 ),
-                'expanded' => true,
+                'expanded' => false,
                 'multiple' => false,
                 'label' => '',
             ))
             ->add('rubeole', ChoiceType::class, array(
                 'choices' => array(
-                    'NON' => null,
-                    'OUI' => '1',
+                    'Retirer' => null,
+                    'Ajouter cet examen' => '1',
                 ),
-                'expanded' => true,
+                'expanded' => false,
                 'multiple' => false,
                 'label' => '',
             ))
             ->add('hcv', ChoiceType::class, array(
                 'choices' => array(
-                    'NON' => null,
-                    'OUI' => '1',
+                    'Retirer' => null,
+                    'Ajouter cet examen' => '1',
                 ),
-                'expanded' => true,
+                'expanded' => false,
                 'multiple' => false,
                 'label' => '',
             ))
             ->add('chlamydia', ChoiceType::class, array(
                 'choices' => array(
-                    'NON' => null,
-                    'OUI' => '1',
+                    'Retirer' => null,
+                    'Ajouter cet examen' => '1',
                 ),
-                'expanded' => true,
+                'expanded' => false,
                 'multiple' => false,
                 'label' => '',
             ))
             ->add('fr', ChoiceType::class, array(
                 'choices' => array(
-                    'NON' => null,
-                    'OUI' => '1',
+                    'Retirer' => null,
+                    'Ajouter cet examen' => '1',
                 ),
-                'expanded' => true,
+                'expanded' => false,
                 'multiple' => false,
                 'label' => '',
             ))
             ->add('selles', ChoiceType::class, array(
                 'choices' => array(
-                    'NON' => null,
-                    'OUI' => '1',
+                    'Retirer' => null,
+                    'Ajouter cet examen' => '1',
                 ),
-                'expanded' => true,
+                'expanded' => false,
                 'multiple' => false,
                 'label' => '',
             ));

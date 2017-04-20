@@ -76,15 +76,16 @@ class BulletinController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($bulletin);
+            $em->flush();
 
-            return $this->redirectToRoute('bulletin_edit', array('id' => $bulletin->getId()));
+            return $this->redirectToRoute('bulletin_show', array('id' => $bulletin->getId()));
         }
 
         return $this->render('bulletin/edit.html.twig', array(
             'bulletin' => $bulletin,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'form' => $editForm->createView(),
         ));
     }
 
@@ -122,17 +123,17 @@ class BulletinController extends Controller
         ;
     }
     
-    public function fillAction(Request $request, $id){
+    public function fillAction(Request $request, Bulletin $bulletin){
         
         $em = $this->getDoctrine()->getManager();
         
-        $bul = $em->getRepository('PMMLaboBundle:Bulletin')->find($id);
+        //$bulletin = $em->getRepository('PMMLaboBundle:Bulletin')->find($id);
         
-        if(null === $bul){
+        /*if(null === $bul){
             throw new NotFoundException("Le bulletin numéro " .$id. " n'existe pas.");
-        }
+        }*/
         
-    	$form = $this->createForm('PMM\LaboBundle\Form\BulFillType', $bul);
+    	$form = $this->createForm('PMM\LaboBundle\Form\BulFillType', $bulletin);
 			
 		if($request->isMethod('POST') && $form->handleRequest($request)->isValid()){
             
@@ -140,11 +141,11 @@ class BulletinController extends Controller
 			$request->getSession()->getFlashBag()
 					->add('notice', 'Remplissage reussi.');
 		
-			return $this->redirectToRoute('bulletin_show', array('id' => $id));
+			return $this->redirectToRoute('bulletin_show', array('id' => $bulletin->getId()));
 		}
         
         return $this->render('bulletin/fill.html.twig', array(
-            'bul' => $bul,
+            'bulletin' => $bulletin,
             'form' => $form->createView(),
         ));
     }

@@ -1,46 +1,167 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Remplissage Bulletin</h1>
+{% block title2 %}
+Remplissage du bulletin</br>
+{% if bulletin.patient is not null %} Patient : {{ bulletin.patient.name }} {% endif %}
+{% endblock %}
 
-<div>
+{% block menu %}
+    <ul class="nav nav-pills nav-stacked">
+        <li>
+            <a href="{{ path('bulletin_index') }}" class="btn btn-primary btn-block btn-lg">
+            <span class="glyphicon glyphicon-chevron-left"></span> Retour à l'accueil </a><p>  </p>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block body %}
+
+<div class="well">
   {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
 
   {{ form_errors(form) }}
 
-  {% if form.date is defined %}
-    {{ form_row(form.date) }}
-  {% endif %}
-
-  {% if form.pcvPu is defined %}
+{% if bulletin.patient is null %}
   <div class="form-group">
-    {{ form_label(form.pcvPu, "PCV ou PU :", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-    {{ form_errors(form.pcvPu) }}
+    {{ form_label(form.patient, "Nom du patient:", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.patient) }}
     <div class="col-sm-10">
-      {{ form_widget(form.pcvPu, {'attr': {'class': 'form-control'}}) }}
+        {{ form_widget(form.patient, {'attr': {'class': 'form-control'}}) }}
     </div>
   </div>
-  {% endif %}
-    
- {% if form.serologie is defined %}
-  <div class="form-group">
-    {{ form_label(form.serologie, "Serologie :", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-    {{ form_errors(form.serologie) }}
+{% endif %}
+
+{% if bulletin.pcvPu.etatCol is not null %}
+  {#<div class="form-group">
+    {{ form_label(form.pcvPu.etatCol, "PCV ou PU : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.pcvPu.etatCol) }}
     <div class="col-sm-10">
-      {{ form_widget(form.serologie, {'attr': {'class': 'form-control'}}) }}
+      {{ form_widget(form.pcvPu.etatCol, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>#}
+    {{ form_row(form.pcvPu) }}
+{% endif %}
+{% if bulletin.serologie.vih is not null %}
+  <div class="form-group">
+    {{ form_label(form.serologie.vih, "VIH : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.serologie.vih) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.serologie.vih, {'attr': {'class': 'form-control'}}) }}
     </div>
   </div>
-  {% endif %}
-
+{% endif %}
+{% if bulletin.serologie.also is not null %}
+  <div class="form-group">
+    {{ form_label(form.serologie.also, "ALSO : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.serologie.also) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.serologie.also, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+{% endif %}
+{% if bulletin.serologie.crp is not null %} 
+  <div class="form-group">
+    {{ form_label(form.serologie.crp, "CRP : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.serologie.crp) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.serologie.crp, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+{% endif %}
+{% if bulletin.serologie.tpha is not null %}  
+  <div class="form-group">
+    {{ form_label(form.serologie.tpha, "TPHA : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.serologie.tpha) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.serologie.tpha, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+{% endif %}
+{% if bulletin.serologie.vdrl is not null %}
+  <div class="form-group">
+    {{ form_label(form.serologie.vdrl, "VDRL : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.serologie.vdrl) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.serologie.vdrl, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+{% endif %}
+{% if bulletin.serologie.agHbs is not null %}
+      <div class="form-group">
+    {{ form_label(form.serologie.agHbs, "Ag Hbs : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.serologie.agHbs) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.serologie.agHbs, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+{% endif %}
+{% if bulletin.serologie.toxoIgg is not null %} 
+    <div class="form-group">
+    {{ form_label(form.serologie.toxoIgg, "TOXO IgG : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.serologie.toxoIgg) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.serologie.toxoIgg, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+{% endif %}
+{% if bulletin.serologie.widalTest is not null %}
+      <div class="form-group">
+    {{ form_label(form.serologie.widalTest, "WIDAL Test : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.serologie.widalTest) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.serologie.widalTest, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+{% endif %}
+{% if bulletin.serologie.rubeole is not null %}
+      <div class="form-group">
+    {{ form_label(form.serologie.rubeole, "Rubeole : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.serologie.rubeole) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.serologie.rubeole, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+{% endif %}
+{% if bulletin.serologie.hcv is not null %} 
+      <div class="form-group">
+    {{ form_label(form.serologie.hcv, "HCV : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.serologie.hcv) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.serologie.hcv, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+{% endif %}
+{% if bulletin.serologie.chlamydia is not null %} 
+      <div class="form-group">
+    {{ form_label(form.serologie.chlamydia, "Chlamydia : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.serologie.chlamydia) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.serologie.chlamydia, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+{% endif %}
+{% if bulletin.serologie.fr is not null %}
+      <div class="form-group">
+    {{ form_label(form.serologie.fr, "FR : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.serologie.fr) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.serologie.fr, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+{% endif %}
+{% if bulletin.serologie.selles is not null %}
+      <div class="form-group">
+    {{ form_label(form.serologie.selles, "SELLES : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.serologie.selles) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.serologie.selles, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+{% endif %}
   {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary btn-info'}}) }}
 
   {{ form_end(form) }}
-</div>
     
+</div>
 
-    <ul>
-        <li>
-            <a href="{{ path('bulletin_index') }}">Back to the list</a>
-        </li>
-    </ul>
 {% endblock %}

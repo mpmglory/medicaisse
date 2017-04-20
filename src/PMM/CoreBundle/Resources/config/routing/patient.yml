@@ -21,4 +21,3 @@ patient_edit:
 patient_delete:
     path:     /{id}/delete
     defaults: { _controller: "PMMCoreBundle:Patient:delete" }
-    methods:  DELETE

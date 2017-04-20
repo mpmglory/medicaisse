@@ -94,14 +94,9 @@ class PatientController extends Controller
      */
     public function deleteAction(Request $request, Patient $patient)
     {
-        $form = $this->createDeleteForm($patient);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($patient);
-            $em->flush();
-        }
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($patient);
+        $em->flush();
 
         return $this->redirectToRoute('patient_index');
     }
