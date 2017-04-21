@@ -1,0 +1,24 @@
+formuleleucocytaire_index:
+    path:     /
+    defaults: { _controller: "PMMLaboBundle:FormuleLeucocytaire:index" }
+    methods:  GET
+
+formuleleucocytaire_show:
+    path:     /{id}/show
+    defaults: { _controller: "PMMLaboBundle:FormuleLeucocytaire:show" }
+    methods:  GET
+
+formuleleucocytaire_new:
+    path:     /new
+    defaults: { _controller: "PMMLaboBundle:FormuleLeucocytaire:new" }
+    methods:  [GET, POST]
+
+formuleleucocytaire_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PMMLaboBundle:FormuleLeucocytaire:edit" }
+    methods:  [GET, POST]
+
+formuleleucocytaire_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PMMLaboBundle:FormuleLeucocytaire:delete" }
+    methods:  DELETE

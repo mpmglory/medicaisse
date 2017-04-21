@@ -25,7 +25,7 @@ Gestion des bulletins médicaux
                 <th>Nom du patient</th>
                 <th>Examen(s) demandé(s)</th>
                 <th>Créé le</th>
-                <th>Montant</th>
+                <th>Montant (FCFA)</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -93,7 +93,7 @@ Gestion des bulletins médicaux
                 </td>
                 
                 <td>{% if bulletin.date %}{{ bulletin.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ bulletin.amount }}</td>
+                <td><h3>{{ bulletin.amount | number_format(0, ',', '.') }} </h3></td>
                 <td>
                     <ul>
                         <li>
@@ -104,6 +104,9 @@ Gestion des bulletins médicaux
                         </li>
                         <li>
                             <a href="{{ path('bulletin_edit', { 'id': bulletin.id }) }}">Modifier</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('bulletin_print', { 'id': bulletin.id }) }}">Imprimer</a>
                         </li>
                     </ul>
                 </td>

@@ -107,6 +107,73 @@ class CalculAmount{
             
             $entity->setPrice($amt); 
         }
+        
+        if($entity instanceof FormuleLeucocytaire){
+            
+            $entityPrice = $em->getRepository('PMMLaboBundle:FormuleLeucocytaire')->find($idPrice);
+            
+            if(null === $entityPrice){ 
+                return;
+            }
+            
+            if(null !== $entity->getNeutrophiles()){
+                
+                $amt = $amt + floatval($entityPrice->getNeutrophiles());
+            }
+            
+            if(null !== $entity->getEosinophiles()){
+                
+                $amt = $amt + floatval($entityPrice->getEosinophiles());
+            }
+            
+            if(null !== $entity->getBasophiles()){
+                
+                $amt = $amt + floatval($entityPrice->getBasophiles());
+            }
+            
+            if(null !== $entity->getLymphocytes()){
+                
+                $amt = $amt + floatval($entityPrice->getLymphocytes());
+            }
+            
+            if(null !== $entity->getMonocytes()){
+                
+                $amt = $amt + floatval($entityPrice->getMonocytes());
+            }
+            
+            if(null !== $entity->getVS1()){
+                
+                $amt = $amt + floatval($entityPrice->getVS1());
+            }
+            
+            if(null !== $entity->getVS2()){
+                
+                $amt = $amt + floatval($entityPrice->getVS2());
+            }
+            
+            if(null !== $entity->getGpeSanguin()){
+                
+                $amt = $amt + floatval($entityPrice->getGpeSanguin());
+            }
+            
+            if(null !== $entity->getGoutteEpaisse()){
+                
+                $amt = $amt + floatval($entityPrice->getGoutteEpaisse());
+            }
+            
+            if(null !== $entity->getTestEmmel()){
+                
+                $amt = $amt + floatval($entityPrice->getTestEmmel());
+            }
+            
+            if(null !== $entity->getRmfSnif()){
+                
+                $amt = $amt + floatval($entityPrice->getRmfSnif());
+            }
+            
+            $entity->setPrice($amt); 
+        }
+        
     }
     
     public function postPersist(LifecycleEventArgs $args){
@@ -121,6 +188,7 @@ class CalculAmount{
             
             $thisPcvPu = $entity->getPcvPu();
             $thisSero = $entity->getSerologie();
+            $thisFormLeu = $entity->getFormuleLeucocytaire();
 
             if(null !== $thisPcvPu){
                 
@@ -132,6 +200,13 @@ class CalculAmount{
             if(null !== $thisSero){
                 
                 $prix = floatval($thisSero->getPrice());
+
+                $amt = $amt + floatval($prix);
+            }
+            
+            if(null !== $thisFormLeu){
+                
+                $prix = floatval($thisFormLeu->getPrice());
 
                 $amt = $amt + floatval($prix);
             }

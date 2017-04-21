@@ -11,8 +11,9 @@
 		
 		{% block stylesheets %}
 			<link rel="stylesheet" href="{{ asset('bundles/pmmcore/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('bundles/pmmcore/font-awesome/css/font-awesome.min.css') }}">
 			<style type="text/css">
-				body { padding-top: 70px; }
+				body { padding-top: 70px; font-family: bookman old style; font-size: medium; }
 			</style>
 		{% endblock %}
         
@@ -32,14 +33,12 @@
 				</ul>
 			</div>
 
-			<div class="well">
-				<h2><center>
-				{% block title2 %}
-					
-				{% endblock %}
-				</center></h2>
-			
-			</div>
+			<div class="row">
+                <div class="col-md-12">
+				<h1 class="page-header"><i class="fa fa-hospital-o fa-2x"></i> District de Manjo / 
+                    <small>{% block title2 %}{% endblock %}</small></h1>
+			     </div>
+            </div>
 			
 			<div class="row">
 				<div id="menu" class="col-md-3">
@@ -60,8 +59,8 @@
 		</div>
 		
 		{% block javascripts %}
-			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-			<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+			<script src="{{ asset('bundles/pmmcore/js/bootstrap.min.js') }}"></script>
+			<script src="{{ asset('bundles/pmmcore/js/jquery.js') }}"></script>
 		{% endblock %}
 	</body>
 </html>

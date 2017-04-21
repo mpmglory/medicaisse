@@ -1,22 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block title2 %}
-Informatiions sur un bulletin d'examen
+Informations sur un bulletin d'examen
 {% endblock %}
 
 {% block menu %}
 
 <ul class="nav nav-pills nav-stacked">
-        <a href="{{ path('bulletin_index') }}" class="btn btn-primary btn-block btn-lg">
+        <a href="{{ path('bulletin_index') }}" class="btn btn-info btn-block btn-lg">
             <span class="glyphicon glyphicon-chevron-left"></span>Retour à l'accueil</a><p>  </p>
         
-        <a href="{{ path('bulletin_edit', {'id': bulletin.id}) }}" class="btn btn-warning btn-block btn-lg">
+        <a href="{{ path('bulletin_edit', {'id': bulletin.id}) }}" class="btn btn-info btn-block btn-lg">
             <span class="glyphicon glyphicon-edit"></span>Modifier</a><p>  </p>
 
         <a href="{{ path('bulletin_fill', {'id': bulletin.id}) }}" class="btn btn-info btn-block btn-lg">
             <span class="glyphicon glyphicon-pencil"></span>Remplir</a><p>  </p>
     
-        <a href="{{ path('bulletin_print', {'id': bulletin.id}) }}" class="btn btn-success btn-block btn-lg">
+        <a href="{{ path('bulletin_print', {'id': bulletin.id}) }}" class="btn btn-info btn-block btn-lg">
             <span class="glyphicon glyphicon-print"></span>Imprimer</a><p>  </p>
 </ul>
 
@@ -90,7 +90,11 @@ Informatiions sur un bulletin d'examen
 
                         {% if bulletin.serologie.selles is not null %}
                             <li>SELLES</li>
-                        {% endif %}  
+                        {% endif %}
+                        
+                        {% if bulletin.formuleLeucocytaire.neutrophiles is not null %}
+                            <li>Formule leucocytaire</li>
+                        {% endif %} 
                     </ol>
                 </td>
             </tr>
@@ -100,25 +104,9 @@ Informatiions sur un bulletin d'examen
             </tr>
             <tr>
                 <th>Montant</th>
-                <td>{{ bulletin.amount }}</td>
+                <td><h3>{{ bulletin.amount | number_format(0, ',', '.') }}</h3></td>
             </tr>
-            <tr>
-                <th>Actions</th>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('bulletin_fill', { 'id': bulletin.id }) }}">Remplir</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('bulletin_show', { 'id': bulletin.id }) }}">Afficher</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('bulletin_edit', { 'id': bulletin.id }) }}">Modifier</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-  
+            
         </tbody>
     </table>
 

@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Formuleleucocytaires list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Neutrophiles</th>
+                <th>Eosinophiles</th>
+                <th>Basophiles</th>
+                <th>Lymphocytes</th>
+                <th>Monocytes</th>
+                <th>Vs1</th>
+                <th>Vs2</th>
+                <th>Gpesanguin</th>
+                <th>Goutteepaisse</th>
+                <th>Testemmel</th>
+                <th>Rmfsnif</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for formuleLeucocytaire in formuleLeucocytaires %}
+            <tr>
+                <td><a href="{{ path('formuleleucocytaire_show', { 'id': formuleLeucocytaire.id }) }}">{{ formuleLeucocytaire.id }}</a></td>
+                <td>{% if formuleLeucocytaire.date %}{{ formuleLeucocytaire.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ formuleLeucocytaire.neutrophiles }}</td>
+                <td>{{ formuleLeucocytaire.eosinophiles }}</td>
+                <td>{{ formuleLeucocytaire.basophiles }}</td>
+                <td>{{ formuleLeucocytaire.lymphocytes }}</td>
+                <td>{{ formuleLeucocytaire.monocytes }}</td>
+                <td>{{ formuleLeucocytaire.vS1 }}</td>
+                <td>{{ formuleLeucocytaire.vS2 }}</td>
+                <td>{{ formuleLeucocytaire.gpeSanguin }}</td>
+                <td>{{ formuleLeucocytaire.goutteEpaisse }}</td>
+                <td>{{ formuleLeucocytaire.testEmmel }}</td>
+                <td>{{ formuleLeucocytaire.rmfSnif }}</td>
+                <td>{{ formuleLeucocytaire.price }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('formuleleucocytaire_show', { 'id': formuleLeucocytaire.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('formuleleucocytaire_edit', { 'id': formuleLeucocytaire.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('formuleleucocytaire_new') }}">Create a new formuleLeucocytaire</a>
+        </li>
+    </ul>
+{% endblock %}

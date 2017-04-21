@@ -74,9 +74,16 @@ class FormuleLeucocytaire
     /**
      * @var string
      *
-     * @ORM\Column(name="v_s", type="text", nullable=true)
+     * @ORM\Column(name="v_s1", type="text", nullable=true)
      */
-    private $vS;
+    private $vS1;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="v_s2", type="text", nullable=true)
+     */
+    private $vS2;
 
     /**
      * @var string
@@ -277,27 +284,51 @@ class FormuleLeucocytaire
     }
 
     /**
-     * Set vS
+     * Set vS1
      *
-     * @param string $vS
+     * @param string $vS1
      *
      * @return FormuleLeucocytaire
      */
-    public function setVS($vS)
+    public function setVS1($vS1)
     {
-        $this->vS = $vS;
+        $this->vS1 = $vS1;
 
         return $this;
     }
 
     /**
-     * Get vS
+     * Get vS1
      *
      * @return string
      */
-    public function getVS()
+    public function getVS1()
     {
-        return $this->vS;
+        return $this->vS1;
+    }
+
+    /**
+     * Set vS2
+     *
+     * @param string $vS2
+     *
+     * @return FormuleLeucocytaire
+     */
+    public function setVS2($vS2)
+    {
+        $this->vS2 = $vS2;
+
+        return $this;
+    }
+
+    /**
+     * Get vS2
+     *
+     * @return string
+     */
+    public function getVS2()
+    {
+        return $this->vS2;
     }
 
     /**

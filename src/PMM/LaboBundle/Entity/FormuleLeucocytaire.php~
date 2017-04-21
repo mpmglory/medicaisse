@@ -3,6 +3,7 @@
 namespace PMM\LaboBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use PMM\LaboBundle\Entity\Bulletin;
 
 /**
  * FormuleLeucocytaire
@@ -14,7 +15,8 @@ class FormuleLeucocytaire
 {
     
     /**
-     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Bulletin", mappedBy="formuleLeucocytaire", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Bulletin", mappedBy="formuleLeucocytaire")
+     * @ORM\JoinColumn(name="bulletin_id", referencedColumnName="id")
      */
     private $bulletin;
     
@@ -72,9 +74,16 @@ class FormuleLeucocytaire
     /**
      * @var string
      *
-     * @ORM\Column(name="v_s", type="text", nullable=true)
+     * @ORM\Column(name="v_s1", type="text", nullable=true)
      */
-    private $vS;
+    private $vS1;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="v_s2", type="text", nullable=true)
+     */
+    private $vS2;
 
     /**
      * @var string

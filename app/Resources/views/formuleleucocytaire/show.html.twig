@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Formuleleucocytaire</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ formuleLeucocytaire.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if formuleLeucocytaire.date %}{{ formuleLeucocytaire.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Neutrophiles</th>
+                <td>{{ formuleLeucocytaire.neutrophiles }}</td>
+            </tr>
+            <tr>
+                <th>Eosinophiles</th>
+                <td>{{ formuleLeucocytaire.eosinophiles }}</td>
+            </tr>
+            <tr>
+                <th>Basophiles</th>
+                <td>{{ formuleLeucocytaire.basophiles }}</td>
+            </tr>
+            <tr>
+                <th>Lymphocytes</th>
+                <td>{{ formuleLeucocytaire.lymphocytes }}</td>
+            </tr>
+            <tr>
+                <th>Monocytes</th>
+                <td>{{ formuleLeucocytaire.monocytes }}</td>
+            </tr>
+            <tr>
+                <th>Vs1</th>
+                <td>{{ formuleLeucocytaire.vS1 }}</td>
+            </tr>
+            <tr>
+                <th>Vs2</th>
+                <td>{{ formuleLeucocytaire.vS2 }}</td>
+            </tr>
+            <tr>
+                <th>Gpesanguin</th>
+                <td>{{ formuleLeucocytaire.gpeSanguin }}</td>
+            </tr>
+            <tr>
+                <th>Goutteepaisse</th>
+                <td>{{ formuleLeucocytaire.goutteEpaisse }}</td>
+            </tr>
+            <tr>
+                <th>Testemmel</th>
+                <td>{{ formuleLeucocytaire.testEmmel }}</td>
+            </tr>
+            <tr>
+                <th>Rmfsnif</th>
+                <td>{{ formuleLeucocytaire.rmfSnif }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ formuleLeucocytaire.price }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('formuleleucocytaire_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('formuleleucocytaire_edit', { 'id': formuleLeucocytaire.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -9,3 +9,7 @@ pmm_labo_pcvpu:
 pmm_labo_bulletin:
     resource: "@PMMLaboBundle/Resources/config/routing/bulletin.yml"
     prefix:   /bulletin
+    
+pmm_labo_formuleleucocytaire:
+    resource: "@PMMLaboBundle/Resources/config/routing/formuleleucocytaire.yml"
+    prefix:   /formuleleucocytaire
