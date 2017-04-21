@@ -38,7 +38,7 @@ Informatiions sur un bulletin d'examen
                 <th>Examen(s) demandé(s)</th>
                 <td>
                     <ol>
-                        {% if bulletin.pcvPu is not null and bulletin.pcvPu.etatCol != 0 %}
+                        {% if bulletin.pcvPu.etatCol is not null %}
                             <li>PCV ou PU</li>
                         {% endif %}
                         {% if bulletin.serologie.vih is not null %}

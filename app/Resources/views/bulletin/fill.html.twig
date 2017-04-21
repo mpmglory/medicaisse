@@ -32,15 +32,210 @@ Remplissage du bulletin</br>
 {% endif %}
 
 {% if bulletin.pcvPu.etatCol is not null %}
-  {#<div class="form-group">
-    {{ form_label(form.pcvPu.etatCol, "PCV ou PU : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+<h3 class="well"><center>PCV ou PU</center></h3>
+
+<ol>
+
+<div class="form-group">
+    <li><h4>Etats de col</h4></li>
+    {{ form_label(form.pcvPu.etatCol, " ", {'label_attr': {'class': 'col-sm-0 control-label'}}) }}
     {{ form_errors(form.pcvPu.etatCol) }}
-    <div class="col-sm-10">
+    <div class="col-sm-12">
       {{ form_widget(form.pcvPu.etatCol, {'attr': {'class': 'form-control'}}) }}
     </div>
-  </div>#}
-    {{ form_row(form.pcvPu) }}
+  </div>
+    
+<li><h4>Leucorrhées</h4></li>
+  <div class="form-group">
+    {{ form_label(form.pcvPu.leucorrhees, " ", {'label_attr': {'class': 'col-sm-0 control-label'}}) }}
+    {{ form_errors(form.pcvPu.leucorrhees) }}
+    <div class="col-sm-12">
+      {{ form_widget(form.pcvPu.leucorrhees, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><h4><u>Etat frais</u></h4></li>
+      <div class="form-group">
+    {{ form_label(form.pcvPu.etatFrais, " ", {'label_attr': {'class': 'col-sm-0 control-label'}}) }}
+    {{ form_errors(form.pcvPu.etatFrais) }}
+    <div class="col-sm-12">
+      {{ form_widget(form.pcvPu.etatFrais, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+<ul>
+    <li><b>Cellules épitheliales:</b></li>
+      <div class="form-group">
+    {{ form_label(form.pcvPu.efCellulesEpitheliales, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.pcvPu.efCellulesEpitheliales) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.pcvPu.efCellulesEpitheliales, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><b>Leucocytes:</b></li>
+      <div class="form-group">
+    {{ form_label(form.pcvPu.efLeucocytes, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.pcvPu.efLeucocytes) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.pcvPu.efLeucocytes, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><b>Germes: mobiles ou immobiles:</b></li>
+      <div class="form-group">
+    {{ form_label(form.pcvPu.efGermes, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.pcvPu.efGermes) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.pcvPu.efGermes, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><b>Eléments Levuriformes:</b></li>
+      <div class="form-group">
+    {{ form_label(form.pcvPu.efElementsLevuriformes, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.pcvPu.efElementsLevuriformes) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.pcvPu.efElementsLevuriformes, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><b>Trichononas vaginalis:</b></li>
+      <div class="form-group">
+    {{ form_label(form.pcvPu.efTrichononasVaginalis, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.pcvPu.efTrichononasVaginalis) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.pcvPu.efTrichononasVaginalis, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><b>Clue cell:</b></li>
+      <div class="form-group">
+    {{ form_label(form.pcvPu.efClueCell, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.pcvPu.efClueCell) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.pcvPu.efClueCell, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+</ul>
+
+
+    <li><h4><u>Etat coloré (gram)</u></h4></li>
+      <div class="form-group">
+    {{ form_label(form.pcvPu.etatColore, " ", {'label_attr': {'class': 'col-sm-0 control-label'}}) }}
+    {{ form_errors(form.pcvPu.etatColore) }}
+    <div class="col-sm-12">
+      {{ form_widget(form.pcvPu.etatColore, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+<ul>
+    <li><b>Cellules épithéliales: altérés * non altérés * +altérés:</b></li>
+      <div class="form-group">
+    {{ form_label(form.pcvPu.ecCellulesEpitheliales, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.pcvPu.ecCellulesEpitheliales) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.pcvPu.ecCellulesEpitheliales, {'attr': {'class': 'col-sm-5 form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><b>Polynucleaires: altérés * non altérés * +altérés:</b></li>
+      <div class="form-group">
+    {{ form_label(form.pcvPu.ecPolynucleaires, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.pcvPu.ecPolynucleaires) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.pcvPu.ecPolynucleaires, {'attr': {'class': 'col-sm-5 form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><b>Bacilles gram négatif:</b></li>
+      <div class="form-group">
+    {{ form_label(form.pcvPu.ecBacillesGramNegatif, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.pcvPu.ecBacillesGramNegatif) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.pcvPu.ecBacillesGramNegatif, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><b>Bacilles gram positif:</b></li>
+      <div class="form-group">
+    {{ form_label(form.pcvPu.ecBacillesGramPositif, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.pcvPu.ecBacillesGramPositif) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.pcvPu.ecBacillesGramPositif, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><b>Cocci gram positif:</b></li>
+      <div class="form-group">
+    {{ form_label(form.pcvPu.ecCocciGramPositif, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.pcvPu.ecCocciGramPositif) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.pcvPu.ecCocciGramPositif, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><b>Cocci gram négatif:</b></li>
+      <div class="form-group">
+    {{ form_label(form.pcvPu.ecCocciGramNegatif, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.pcvPu.ecCocciGramNegatif) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.pcvPu.ecCocciGramNegatif, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><b>Spores mycosiques:</b></li>
+      <div class="form-group">
+    {{ form_label(form.pcvPu.ecSporesMycosiques, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.pcvPu.ecSporesMycosiques) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.pcvPu.ecSporesMycosiques, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><b>Filaments myceliens:</b></li>
+      <div class="form-group">
+    {{ form_label(form.pcvPu.ecFilamentsMyceliens, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.pcvPu.ecFilamentsMyceliens) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.pcvPu.ecFilamentsMyceliens, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><b>Flore doderiein:</b></li>
+      <div class="form-group">
+    {{ form_label(form.pcvPu.ecFloreDoderiein, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.pcvPu.ecFloreDoderiein) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.pcvPu.ecFloreDoderiein, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+</ul>
+    
+    <li><h4><u>KOH</u></h4></li>
+      <div class="form-group">
+    {{ form_label(form.pcvPu.koh, " ", {'label_attr': {'class': 'col-sm-0 control-label'}}) }}
+    {{ form_errors(form.pcvPu.koh) }}
+    <div class="col-sm-12">
+      {{ form_widget(form.pcvPu.koh, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><h4><u>PH</u></h4></li>
+      <div class="form-group">
+    {{ form_label(form.pcvPu.ph, " ", {'label_attr': {'class': 'col-sm-0 control-label'}}) }}
+    {{ form_errors(form.pcvPu.ph) }}
+    <div class="col-sm-12">
+      {{ form_widget(form.pcvPu.ph, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+</ol>
 {% endif %}
+    
+{% if bulletin.serologie.price != 0 %}
+    <h3 class="well"><center>SEROLOGIE</center></h3>
+{% endif %}
+    
 {% if bulletin.serologie.vih is not null %}
   <div class="form-group">
     {{ form_label(form.serologie.vih, "VIH : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
@@ -50,6 +245,7 @@ Remplissage du bulletin</br>
     </div>
   </div>
 {% endif %}
+    
 {% if bulletin.serologie.also is not null %}
   <div class="form-group">
     {{ form_label(form.serologie.also, "ALSO : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
