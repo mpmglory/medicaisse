@@ -5,6 +5,10 @@ namespace PMM\LaboBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 
 class BulFillHematologieType extends AbstractType
 {
@@ -14,11 +18,9 @@ class BulFillHematologieType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date')
-            ->add('globulesBlancs')
-            ->add('globulesRouges')
-            ->add('tauxHemoglobine')
-            ->add('price')
+            ->add('globulesBlancs', TextType::class, array('required' => false))
+            ->add('globulesRouges', TextType::class, array('required' => false))
+            ->add('tauxHemoglobine', TextType::class, array('required' => false))
             ;
     }
     

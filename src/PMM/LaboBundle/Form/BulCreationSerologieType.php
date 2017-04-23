@@ -20,7 +20,7 @@ class BulCreationSerologieType extends AbstractType
             ->add('vih', ChoiceType::class, array(
                 'choices' => array(
                     'Retirer' => null,
-                    'Ajouter cet examen' => ' ',
+                    'Ajouter cet examen' => '1',
                 ),
                 'expanded' => false,
                 'multiple' => false,
@@ -29,7 +29,7 @@ class BulCreationSerologieType extends AbstractType
             ->add('also', ChoiceType::class, array(
                 'choices' => array(
                     'Retirer' => null,
-                    'Ajouter cet examen' => ' ',
+                    'Ajouter cet examen' => '1',
                 ),
                 'expanded' => false,
                 'multiple' => false,
@@ -38,7 +38,7 @@ class BulCreationSerologieType extends AbstractType
             ->add('crp', ChoiceType::class, array(
                 'choices' => array(
                     'Retirer' => null,
-                    'Ajouter cet examen' => ' ',
+                    'Ajouter cet examen' => '1',
                 ),
                 'expanded' => false,
                 'multiple' => false,
@@ -47,7 +47,7 @@ class BulCreationSerologieType extends AbstractType
             ->add('tpha', ChoiceType::class, array(
                 'choices' => array(
                     'Retirer' => null,
-                    'Ajouter cet examen' => ' ',
+                    'Ajouter cet examen' => '1',
                 ),
                 'expanded' => false,
                 'multiple' => false,
@@ -56,7 +56,7 @@ class BulCreationSerologieType extends AbstractType
             ->add('vdrl', ChoiceType::class, array(
                 'choices' => array(
                     'Retirer' => null,
-                    'Ajouter cet examen' => ' ',
+                    'Ajouter cet examen' => '1',
                 ),
                 'expanded' => false,
                 'multiple' => false,
@@ -65,7 +65,7 @@ class BulCreationSerologieType extends AbstractType
             ->add('agHbs', ChoiceType::class, array(
                 'choices' => array(
                     'Retirer' => null,
-                    'Ajouter cet examen' => ' ',
+                    'Ajouter cet examen' => '1',
                 ),
                 'expanded' => false,
                 'multiple' => false,
@@ -74,7 +74,7 @@ class BulCreationSerologieType extends AbstractType
             ->add('toxoIgg', ChoiceType::class, array(
                 'choices' => array(
                     'Retirer' => null,
-                    'Ajouter cet examen' => ' ',
+                    'Ajouter cet examen' => '1',
                 ),
                 'expanded' => false,
                 'multiple' => false,
@@ -83,7 +83,7 @@ class BulCreationSerologieType extends AbstractType
             ->add('widalTest', ChoiceType::class, array(
                 'choices' => array(
                     'Retirer' => null,
-                    'Ajouter cet examen' => ' ',
+                    'Ajouter cet examen' => '1',
                 ),
                 'expanded' => false,
                 'multiple' => false,
@@ -92,7 +92,7 @@ class BulCreationSerologieType extends AbstractType
             ->add('rubeole', ChoiceType::class, array(
                 'choices' => array(
                     'Retirer' => null,
-                    'Ajouter cet examen' => ' ',
+                    'Ajouter cet examen' => '1',
                 ),
                 'expanded' => false,
                 'multiple' => false,
@@ -101,7 +101,7 @@ class BulCreationSerologieType extends AbstractType
             ->add('hcv', ChoiceType::class, array(
                 'choices' => array(
                     'Retirer' => null,
-                    'Ajouter cet examen' => ' ',
+                    'Ajouter cet examen' => '1',
                 ),
                 'expanded' => false,
                 'multiple' => false,
@@ -110,7 +110,7 @@ class BulCreationSerologieType extends AbstractType
             ->add('chlamydia', ChoiceType::class, array(
                 'choices' => array(
                     'Retirer' => null,
-                    'Ajouter cet examen' => ' ',
+                    'Ajouter cet examen' => '1',
                 ),
                 'expanded' => false,
                 'multiple' => false,
@@ -119,7 +119,7 @@ class BulCreationSerologieType extends AbstractType
             ->add('fr', ChoiceType::class, array(
                 'choices' => array(
                     'Retirer' => null,
-                    'Ajouter cet examen' => ' ',
+                    'Ajouter cet examen' => '1',
                 ),
                 'expanded' => false,
                 'multiple' => false,
@@ -128,7 +128,7 @@ class BulCreationSerologieType extends AbstractType
             ->add('selles', ChoiceType::class, array(
                 'choices' => array(
                     'Retirer' => null,
-                    'Ajouter cet examen' => ' ',
+                    'Ajouter cet examen' => '1',
                 ),
                 'expanded' => false,
                 'multiple' => false,

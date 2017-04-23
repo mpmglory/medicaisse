@@ -20,7 +20,7 @@ class BulCreationPcvPuType extends AbstractType
             ->add('etatCol', ChoiceType::class, array(
                 'choices' => array(
                     'Retirer' => null,
-                    'Ajouter cet examen' => ' ',
+                    'Ajouter cet examen' => '1',
                 ),
                 'expanded' => false,
                 'multiple' => false,

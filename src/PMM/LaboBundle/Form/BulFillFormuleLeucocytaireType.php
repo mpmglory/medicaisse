@@ -18,17 +18,17 @@ class BulFillFormuleLeucocytaireType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('neutrophiles', TextType::class)
-            ->add('eosinophiles', TextType::class)
-            ->add('basophiles', TextType::class)
-            ->add('lymphocytes', TextType::class)
-            ->add('monocytes', TextType::class)
-            ->add('vS1', TextType::class)
-            ->add('vS2', TextType::class)
-            ->add('gpeSanguin', TextType::class)
-            ->add('goutteEpaisse', TextType::class)
-            ->add('testEmmel', TextType::class)
-            ->add('rmfSnif', TextType::class)
+            ->add('neutrophiles', TextType::class, array('required' => false))
+            ->add('eosinophiles', TextType::class, array('required' => false))
+            ->add('basophiles', TextType::class, array('required' => false))
+            ->add('lymphocytes', TextType::class, array('required' => false))
+            ->add('monocytes', TextType::class, array('required' => false))
+            ->add('vS1', TextType::class, array('required' => false))
+            ->add('vS2', TextType::class, array('required' => false))
+            ->add('gpeSanguin', TextType::class, array('required' => false))
+            ->add('goutteEpaisse', TextType::class, array('required' => false))
+            ->add('testEmmel', TextType::class, array('required' => false))
+            ->add('rmfSnif', TextType::class, array('required' => false))
             ;
     }
     

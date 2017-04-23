@@ -25,6 +25,7 @@ class BulFillType extends AbstractType
             ->add('pcvPu', BulFillPcvPuType::class)
             ->add('serologie', BulFillSerologieType::class)
             ->add('formuleLeucocytaire', BulFillFormuleLeucocytaireType::class)
+            ->add('hematologie', BulFillHematologieType::class)
             ->add('submit', SubmitType::class, array('label' => 'Enregistrer les résultats'));
         
         $builder->addEventListener(
@@ -39,7 +40,19 @@ class BulFillType extends AbstractType
             
                 if(null === $bul->getPcvPu()->getEtatCol()){
                     $event->getForm()->remove('pcvPu');
-                }            
+                }
+            
+/*                if(null === $bul->getFormuleLeucocytaire()->getNeutrophiles()){
+                    $event->getForm()->remove('formuleLeucocytaire');
+                }
+                
+                if(null === $bul->getHematologie()->getGlobulesBlancs()){
+                    $event->getForm()->remove('hematologie');
+                }
+            
+                if(0 === $bul->getSerologie()->getPrice()){
+                    $event->getForm()->remove('serologie');
+                }*/
             }
         );
     }

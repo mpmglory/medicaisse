@@ -18,19 +18,19 @@ class BulFillSerologieType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('vih', TextType::class)
-            ->add('also', TextType::class)
-            ->add('crp', TextType::class)
-            ->add('tpha', TextType::class)
-            ->add('vdrl', TextType::class)
-            ->add('agHbs', TextType::class)
-            ->add('toxoIgg', TextType::class)
-            ->add('widalTest', TextType::class)
-            ->add('rubeole', TextType::class)
-            ->add('hcv', TextType::class)
-            ->add('chlamydia', TextType::class)
-            ->add('fr', TextType::class)
-            ->add('selles', TextType::class);
+            ->add('vih', TextType::class, array('required' => false))
+            ->add('also', TextType::class, array('required' => false))
+            ->add('crp', TextType::class, array('required' => false))
+            ->add('tpha', TextType::class, array('required' => false))
+            ->add('vdrl', TextType::class, array('required' => false))
+            ->add('agHbs', TextType::class, array('required' => false))
+            ->add('toxoIgg', TextType::class, array('required' => false))
+            ->add('widalTest', TextType::class, array('required' => false))
+            ->add('rubeole', TextType::class, array('required' => false))
+            ->add('hcv', TextType::class, array('required' => false))
+            ->add('chlamydia', TextType::class, array('required' => false))
+            ->add('fr', TextType::class, array('required' => false))
+            ->add('selles', TextType::class, array('required' => false));
         
         $builder->addEventListener(
             FormEvents::PRE_SET_DATA,
