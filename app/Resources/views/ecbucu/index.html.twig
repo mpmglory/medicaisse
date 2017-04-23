@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ecbucus list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Aspect</th>
+                <th>Etatfrais</th>
+                <th>Efcellulesepitheliales</th>
+                <th>Efleucocytes</th>
+                <th>Efgermes</th>
+                <th>Efelementslevuriformes</th>
+                <th>Efparasites</th>
+                <th>Efcristaux</th>
+                <th>Etatcolore</th>
+                <th>Eccellulesepitheliales</th>
+                <th>Ecpolynucleaires</th>
+                <th>Ecbacillesgramnegatif</th>
+                <th>Ecbacillesgrampositif</th>
+                <th>Eccoccigrampositif</th>
+                <th>Eccoccigramnegatif</th>
+                <th>Ecsporesmycosiques</th>
+                <th>Ecfilamentsmyceliens</th>
+                <th>Ecfloredoderiein</th>
+                <th>Eccristaux</th>
+                <th>Ecautres</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ecbuCu in ecbuCus %}
+            <tr>
+                <td><a href="{{ path('ecbucu_show', { 'id': ecbuCu.id }) }}">{{ ecbuCu.id }}</a></td>
+                <td>{% if ecbuCu.date %}{{ ecbuCu.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ ecbuCu.aspect }}</td>
+                <td>{{ ecbuCu.etatFrais }}</td>
+                <td>{{ ecbuCu.efCellulesEpitheliales }}</td>
+                <td>{{ ecbuCu.efLeucocytes }}</td>
+                <td>{{ ecbuCu.efGermes }}</td>
+                <td>{{ ecbuCu.efElementsLevuriformes }}</td>
+                <td>{{ ecbuCu.efParasites }}</td>
+                <td>{{ ecbuCu.efCristaux }}</td>
+                <td>{{ ecbuCu.etatColore }}</td>
+                <td>{{ ecbuCu.ecCellulesEpitheliales }}</td>
+                <td>{{ ecbuCu.ecPolynucleaires }}</td>
+                <td>{{ ecbuCu.ecBacillesGramNegatif }}</td>
+                <td>{{ ecbuCu.ecBacillesGramPositif }}</td>
+                <td>{{ ecbuCu.ecCocciGramPositif }}</td>
+                <td>{{ ecbuCu.ecCocciGramNegatif }}</td>
+                <td>{{ ecbuCu.ecSporesMycosiques }}</td>
+                <td>{{ ecbuCu.ecFilamentsMyceliens }}</td>
+                <td>{{ ecbuCu.ecFloreDoderiein }}</td>
+                <td>{{ ecbuCu.ecCristaux }}</td>
+                <td>{{ ecbuCu.ecAutres }}</td>
+                <td>{{ ecbuCu.price }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('ecbucu_show', { 'id': ecbuCu.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('ecbucu_edit', { 'id': ecbuCu.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('ecbucu_new') }}">Create a new ecbuCu</a>
+        </li>
+    </ul>
+{% endblock %}

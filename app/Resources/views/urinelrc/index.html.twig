@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Urinelrcs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Ph</th>
+                <th>Proteine</th>
+                <th>Glucose</th>
+                <th>Densite</th>
+                <th>Leucocytes</th>
+                <th>Nitrites</th>
+                <th>Acetone</th>
+                <th>Urobilinogene</th>
+                <th>Bilirubine</th>
+                <th>Sang</th>
+                <th>Hb</th>
+                <th>Hcg</th>
+                <th>Selsbilaires</th>
+                <th>Pigbilaires</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for urineLrc in urineLrcs %}
+            <tr>
+                <td><a href="{{ path('urinelrc_show', { 'id': urineLrc.id }) }}">{{ urineLrc.id }}</a></td>
+                <td>{% if urineLrc.date %}{{ urineLrc.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ urineLrc.ph }}</td>
+                <td>{{ urineLrc.proteine }}</td>
+                <td>{{ urineLrc.glucose }}</td>
+                <td>{{ urineLrc.densite }}</td>
+                <td>{{ urineLrc.leucocytes }}</td>
+                <td>{{ urineLrc.nitrites }}</td>
+                <td>{{ urineLrc.acetone }}</td>
+                <td>{{ urineLrc.urobilinogene }}</td>
+                <td>{{ urineLrc.bilirubine }}</td>
+                <td>{{ urineLrc.sang }}</td>
+                <td>{{ urineLrc.hb }}</td>
+                <td>{{ urineLrc.hcg }}</td>
+                <td>{{ urineLrc.selsBilaires }}</td>
+                <td>{{ urineLrc.pigBilaires }}</td>
+                <td>{{ urineLrc.price }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('urinelrc_show', { 'id': urineLrc.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('urinelrc_edit', { 'id': urineLrc.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('urinelrc_new') }}">Create a new urineLrc</a>
+        </li>
+    </ul>
+{% endblock %}

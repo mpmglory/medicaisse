@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Biochimie</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ biochimie.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if biochimie.date %}{{ biochimie.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Uree</th>
+                <td>{{ biochimie.uree }}</td>
+            </tr>
+            <tr>
+                <th>Creatinine</th>
+                <td>{{ biochimie.creatinine }}</td>
+            </tr>
+            <tr>
+                <th>Sgot</th>
+                <td>{{ biochimie.sgot }}</td>
+            </tr>
+            <tr>
+                <th>Sgpt</th>
+                <td>{{ biochimie.sgpt }}</td>
+            </tr>
+            <tr>
+                <th>Sggt</th>
+                <td>{{ biochimie.sggt }}</td>
+            </tr>
+            <tr>
+                <th>Acideurique</th>
+                <td>{{ biochimie.acideUrique }}</td>
+            </tr>
+            <tr>
+                <th>Cholesterol</th>
+                <td>{{ biochimie.cholesterol }}</td>
+            </tr>
+            <tr>
+                <th>Glycemie</th>
+                <td>{{ biochimie.glycemie }}</td>
+            </tr>
+            <tr>
+                <th>Bilirubine</th>
+                <td>{{ biochimie.bilirubine }}</td>
+            </tr>
+            <tr>
+                <th>Magnesemie</th>
+                <td>{{ biochimie.magnesemie }}</td>
+            </tr>
+            <tr>
+                <th>Potassium</th>
+                <td>{{ biochimie.potassium }}</td>
+            </tr>
+            <tr>
+                <th>Triglyceride</th>
+                <td>{{ biochimie.triglyceride }}</td>
+            </tr>
+            <tr>
+                <th>Amylase</th>
+                <td>{{ biochimie.amylase }}</td>
+            </tr>
+            <tr>
+                <th>Pal</th>
+                <td>{{ biochimie.pal }}</td>
+            </tr>
+            <tr>
+                <th>Calcemie</th>
+                <td>{{ biochimie.calcemie }}</td>
+            </tr>
+            <tr>
+                <th>Ck</th>
+                <td>{{ biochimie.ck }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ biochimie.price }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('biochimie_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('biochimie_edit', { 'id': biochimie.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

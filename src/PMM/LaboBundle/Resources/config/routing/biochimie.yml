@@ -1,0 +1,24 @@
+biochimie_index:
+    path:     /
+    defaults: { _controller: "PMMLaboBundle:Biochimie:index" }
+    methods:  GET
+
+biochimie_show:
+    path:     /{id}/show
+    defaults: { _controller: "PMMLaboBundle:Biochimie:show" }
+    methods:  GET
+
+biochimie_new:
+    path:     /new
+    defaults: { _controller: "PMMLaboBundle:Biochimie:new" }
+    methods:  [GET, POST]
+
+biochimie_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PMMLaboBundle:Biochimie:edit" }
+    methods:  [GET, POST]
+
+biochimie_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PMMLaboBundle:Biochimie:delete" }
+    methods:  DELETE

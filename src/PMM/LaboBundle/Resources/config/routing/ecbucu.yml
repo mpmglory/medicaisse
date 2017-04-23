@@ -1,0 +1,24 @@
+ecbucu_index:
+    path:     /
+    defaults: { _controller: "PMMLaboBundle:EcbuCu:index" }
+    methods:  GET
+
+ecbucu_show:
+    path:     /{id}/show
+    defaults: { _controller: "PMMLaboBundle:EcbuCu:show" }
+    methods:  GET
+
+ecbucu_new:
+    path:     /new
+    defaults: { _controller: "PMMLaboBundle:EcbuCu:new" }
+    methods:  [GET, POST]
+
+ecbucu_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PMMLaboBundle:EcbuCu:edit" }
+    methods:  [GET, POST]
+
+ecbucu_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PMMLaboBundle:EcbuCu:delete" }
+    methods:  DELETE

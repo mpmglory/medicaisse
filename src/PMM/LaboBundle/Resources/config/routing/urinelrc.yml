@@ -1,0 +1,24 @@
+urinelrc_index:
+    path:     /
+    defaults: { _controller: "PMMLaboBundle:UrineLrc:index" }
+    methods:  GET
+
+urinelrc_show:
+    path:     /{id}/show
+    defaults: { _controller: "PMMLaboBundle:UrineLrc:show" }
+    methods:  GET
+
+urinelrc_new:
+    path:     /new
+    defaults: { _controller: "PMMLaboBundle:UrineLrc:new" }
+    methods:  [GET, POST]
+
+urinelrc_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PMMLaboBundle:UrineLrc:edit" }
+    methods:  [GET, POST]
+
+urinelrc_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PMMLaboBundle:UrineLrc:delete" }
+    methods:  DELETE

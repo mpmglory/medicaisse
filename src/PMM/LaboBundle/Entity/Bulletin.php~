@@ -13,7 +13,6 @@ use PMM\LaboBundle\Entity\Serologie;
  *
  * @ORM\Table(name="bulletin")
  * @ORM\Entity(repositoryClass="PMM\LaboBundle\Repository\BulletinRepository")
- * @ORM\HasLifecycleCallbacks()
  */
 class Bulletin
 {
@@ -45,6 +44,21 @@ class Bulletin
     private $serologie;
     
     /**
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Biochimie", inversedBy="bulletin", cascade={"persist", "remove"})
+     */
+    private $biochimie;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\UrineLrc", inversedBy="bulletin", cascade={"persist", "remove"})
+     */
+    private $urineLrc;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\EcbuCu", inversedBy="bulletin", cascade={"persist", "remove"})
+     */
+    private $ecbuCu;
+    
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -60,7 +74,7 @@ class Bulletin
      */
     private $date;
     
-        /**
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="updated_at", type="datetime", nullable=true)

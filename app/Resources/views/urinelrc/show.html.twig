@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Urinelrc</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ urineLrc.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if urineLrc.date %}{{ urineLrc.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Ph</th>
+                <td>{{ urineLrc.ph }}</td>
+            </tr>
+            <tr>
+                <th>Proteine</th>
+                <td>{{ urineLrc.proteine }}</td>
+            </tr>
+            <tr>
+                <th>Glucose</th>
+                <td>{{ urineLrc.glucose }}</td>
+            </tr>
+            <tr>
+                <th>Densite</th>
+                <td>{{ urineLrc.densite }}</td>
+            </tr>
+            <tr>
+                <th>Leucocytes</th>
+                <td>{{ urineLrc.leucocytes }}</td>
+            </tr>
+            <tr>
+                <th>Nitrites</th>
+                <td>{{ urineLrc.nitrites }}</td>
+            </tr>
+            <tr>
+                <th>Acetone</th>
+                <td>{{ urineLrc.acetone }}</td>
+            </tr>
+            <tr>
+                <th>Urobilinogene</th>
+                <td>{{ urineLrc.urobilinogene }}</td>
+            </tr>
+            <tr>
+                <th>Bilirubine</th>
+                <td>{{ urineLrc.bilirubine }}</td>
+            </tr>
+            <tr>
+                <th>Sang</th>
+                <td>{{ urineLrc.sang }}</td>
+            </tr>
+            <tr>
+                <th>Hb</th>
+                <td>{{ urineLrc.hb }}</td>
+            </tr>
+            <tr>
+                <th>Hcg</th>
+                <td>{{ urineLrc.hcg }}</td>
+            </tr>
+            <tr>
+                <th>Selsbilaires</th>
+                <td>{{ urineLrc.selsBilaires }}</td>
+            </tr>
+            <tr>
+                <th>Pigbilaires</th>
+                <td>{{ urineLrc.pigBilaires }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ urineLrc.price }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('urinelrc_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('urinelrc_edit', { 'id': urineLrc.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

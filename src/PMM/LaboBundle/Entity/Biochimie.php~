@@ -1,0 +1,161 @@
+<?php
+
+namespace PMM\LaboBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use PMM\LaboBundle\Entity\Bulletin;
+
+/**
+ * Biochimie
+ *
+ * @ORM\Table(name="biochimie")
+ * @ORM\Entity(repositoryClass="PMM\LaboBundle\Repository\BiochimieRepository")
+ */
+class Biochimie
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="uree", type="text", nullable=true)
+     */
+    private $uree;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="creatinine", type="text", nullable=true)
+     */
+    private $creatinine;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sgot", type="text", nullable=true)
+     */
+    private $sgot;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sgpt", type="text", nullable=true)
+     */
+    private $sgpt;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sggt", type="text", nullable=true)
+     */
+    private $sggt;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="acideUrique", type="text", nullable=true)
+     */
+    private $acideUrique;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cholesterol", type="text", nullable=true)
+     */
+    private $cholesterol;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="glycemie", type="text", nullable=true)
+     */
+    private $glycemie;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bilirubine", type="text", nullable=true)
+     */
+    private $bilirubine;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="magnesemie", type="text", nullable=true)
+     */
+    private $magnesemie;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="potassium", type="text", nullable=true)
+     */
+    private $potassium;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="triglyceride", type="text", nullable=true)
+     */
+    private $triglyceride;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="amylase", type="text", nullable=true)
+     */
+    private $amylase;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pal", type="text", nullable=true)
+     */
+    private $pal;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="calcemie", type="text", nullable=true)
+     */
+    private $calcemie;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ck", type="text", nullable=true)
+     */
+    private $ck;
+
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="price", type="float")
+     */
+    private $price;
+    
+    
+    public function __construct(){
+        
+        $this->date = new \Datetime();
+        $this->price = 0;
+    }
+    
+    
+}
+

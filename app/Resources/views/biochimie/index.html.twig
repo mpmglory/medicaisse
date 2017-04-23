@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Biochimies list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Uree</th>
+                <th>Creatinine</th>
+                <th>Sgot</th>
+                <th>Sgpt</th>
+                <th>Sggt</th>
+                <th>Acideurique</th>
+                <th>Cholesterol</th>
+                <th>Glycemie</th>
+                <th>Bilirubine</th>
+                <th>Magnesemie</th>
+                <th>Potassium</th>
+                <th>Triglyceride</th>
+                <th>Amylase</th>
+                <th>Pal</th>
+                <th>Calcemie</th>
+                <th>Ck</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for biochimie in biochimies %}
+            <tr>
+                <td><a href="{{ path('biochimie_show', { 'id': biochimie.id }) }}">{{ biochimie.id }}</a></td>
+                <td>{% if biochimie.date %}{{ biochimie.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ biochimie.uree }}</td>
+                <td>{{ biochimie.creatinine }}</td>
+                <td>{{ biochimie.sgot }}</td>
+                <td>{{ biochimie.sgpt }}</td>
+                <td>{{ biochimie.sggt }}</td>
+                <td>{{ biochimie.acideUrique }}</td>
+                <td>{{ biochimie.cholesterol }}</td>
+                <td>{{ biochimie.glycemie }}</td>
+                <td>{{ biochimie.bilirubine }}</td>
+                <td>{{ biochimie.magnesemie }}</td>
+                <td>{{ biochimie.potassium }}</td>
+                <td>{{ biochimie.triglyceride }}</td>
+                <td>{{ biochimie.amylase }}</td>
+                <td>{{ biochimie.pal }}</td>
+                <td>{{ biochimie.calcemie }}</td>
+                <td>{{ biochimie.ck }}</td>
+                <td>{{ biochimie.price }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('biochimie_show', { 'id': biochimie.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('biochimie_edit', { 'id': biochimie.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('biochimie_new') }}">Create a new biochimie</a>
+        </li>
+    </ul>
+{% endblock %}

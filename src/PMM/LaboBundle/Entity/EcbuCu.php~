@@ -1,0 +1,194 @@
+<?php
+
+namespace PMM\LaboBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use PMM\LaboBundle\Entity\Bulletin;
+
+/**
+ * EcbuCu
+ *
+ * @ORM\Table(name="ecbu_cu")
+ * @ORM\Entity(repositoryClass="PMM\LaboBundle\Repository\EcbuCuRepository")
+ */
+class EcbuCu
+{
+    /**
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Bulletin", mappedBy="ecbuCu")
+     * @ORM\JoinColumn(name="bulletin_id", referencedColumnName="id")
+     */
+    private $bulletin;
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="aspect", type="text", nullable=true)
+     */
+    private $aspect;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="etatFrais", type="text", nullable=true)
+     */
+    private $etatFrais;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ef_cellules_epitheliales", type="text", nullable=true)
+     */
+    private $efCellulesEpitheliales;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ef_leucocytes", type="text", nullable=true)
+     */
+    private $efLeucocytes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ef_germes", type="text", nullable=true)
+     */
+    private $efGermes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ef_elements_levuriformes", type="text", nullable=true)
+     */
+    private $efElementsLevuriformes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ef_parasites", type="text", nullable=true)
+     */
+    private $efParasites;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="efCristaux", type="text", nullable=true)
+     */
+    private $efCristaux;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="etatColore", type="text", nullable=true)
+     */
+    private $etatColore;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="ec_cellules_epitheliales", type="text", nullable=true)
+     */
+    private $ecCellulesEpitheliales;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ec_polynucleaires", type="text", nullable=true)
+     */
+    private $ecPolynucleaires;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ec_bacilles_gram_negatif", type="text", nullable=true)
+     */
+    private $ecBacillesGramNegatif;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ec_bacilles_gram_positif", type="text", nullable=true)
+     */
+    private $ecBacillesGramPositif;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ec_cocci_gram_positif", type="text", nullable=true)
+     */
+    private $ecCocciGramPositif;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ec_cocci_gram_negatif", type="text", nullable=true)
+     */
+    private $ecCocciGramNegatif;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ec_spores_mycosiques", type="text", nullable=true)
+     */
+    private $ecSporesMycosiques;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ec_filaments_myceliens", type="text", nullable=true)
+     */
+    private $ecFilamentsMyceliens;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ec_flore_doderiein", type="text", nullable=true)
+     */
+    private $ecFloreDoderiein;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ecCristaux", type="text", nullable=true)
+     */
+    private $ecCristaux;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ecAutres", type="text", nullable=true)
+     */
+    private $ecAutres;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="price", type="float")
+     */
+    private $price;
+    
+    
+    public function __construct(){
+        
+        $this->date = new \Datetime();
+        $this->price = 0;
+    }
+   
+}
+

@@ -44,6 +44,21 @@ class Bulletin
     private $serologie;
     
     /**
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Biochimie", inversedBy="bulletin", cascade={"persist", "remove"})
+     */
+    private $biochimie;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\UrineLrc", inversedBy="bulletin", cascade={"persist", "remove"})
+     */
+    private $urineLrc;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\EcbuCu", inversedBy="bulletin", cascade={"persist", "remove"})
+     */
+    private $ecbuCu;
+    
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -289,5 +304,83 @@ class Bulletin
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set biochimie
+     *
+     * @param \PMM\LaboBundle\Entity\Biochimie $biochimie
+     *
+     * @return Bulletin
+     */
+    public function setBiochimie(\PMM\LaboBundle\Entity\Biochimie $biochimie = null)
+    {
+        $this->biochimie = $biochimie;
+        
+        $biochimie->setBulletin($this);
+
+        return $this;
+    }
+
+    /**
+     * Get biochimie
+     *
+     * @return \PMM\LaboBundle\Entity\Biochimie
+     */
+    public function getBiochimie()
+    {
+        return $this->biochimie;
+    }
+
+    /**
+     * Set urineLrc
+     *
+     * @param \PMM\LaboBundle\Entity\UrineLrc $urineLrc
+     *
+     * @return Bulletin
+     */
+    public function setUrineLrc(\PMM\LaboBundle\Entity\UrineLrc $urineLrc = null)
+    {
+        $this->urineLrc = $urineLrc;
+        
+        $urineLrc->setBulletin($this);
+
+        return $this;
+    }
+
+    /**
+     * Get urineLrc
+     *
+     * @return \PMM\LaboBundle\Entity\UrineLrc
+     */
+    public function getUrineLrc()
+    {
+        return $this->urineLrc;
+    }
+
+    /**
+     * Set ecbuCu
+     *
+     * @param \PMM\LaboBundle\Entity\EcbuCu $ecbuCu
+     *
+     * @return Bulletin
+     */
+    public function setEcbuCu(\PMM\LaboBundle\Entity\EcbuCu $ecbuCu = null)
+    {
+        $this->ecbuCu = $ecbuCu;
+        
+        $ecbuCu->setBulletin($this);
+
+        return $this;
+    }
+
+    /**
+     * Get ecbuCu
+     *
+     * @return \PMM\LaboBundle\Entity\EcbuCu
+     */
+    public function getEcbuCu()
+    {
+        return $this->ecbuCu;
     }
 }

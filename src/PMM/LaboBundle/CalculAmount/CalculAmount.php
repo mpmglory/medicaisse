@@ -8,6 +8,9 @@ use PMM\LaboBundle\Entity\FormuleLeucocytaire;
 use PMM\LaboBundle\Entity\Hematologie;
 use PMM\LaboBundle\Entity\Serologie;
 use PMM\LaboBundle\Entity\PcvPu;
+use PMM\LaboBundle\Entity\Biochimie;
+use PMM\LaboBundle\Entity\UrineLrc;
+use PMM\LaboBundle\Entity\EcbuCu;
 
 
 class CalculAmount{
@@ -190,6 +193,48 @@ class CalculAmount{
             $entity->setPrice($amt); 
         }
         
+        if($entity instanceof Biochimie){
+            
+            $entityPrice = $em->getRepository('PMMLaboBundle:Biochimie')->find($idPrice);
+            
+            if( (null === $entityPrice) || (null === $entity->getUree()) ||
+               (0 === $entity->getUree()) || (false === $entity->getUree()) ){
+                return;
+            }
+            
+            $amt = floatval($entityPrice->getPrice());
+            
+            $entity->setPrice($amt); 
+        }
+        
+        if($entity instanceof UrineLrc){
+            
+            $entityPrice = $em->getRepository('PMMLaboBundle:UrineLrc')->find($idPrice);
+            
+            if( (null === $entityPrice) || (null === $entity->getPh()) ||
+               (0 === $entity->getPh()) || (false === $entity->getPh()) ){
+                return;
+            }
+            
+            $amt = floatval($entityPrice->getPrice());
+            
+            $entity->setPrice($amt); 
+        }
+        
+        if($entity instanceof EcbuCu){
+            
+            $entityPrice = $em->getRepository('PMMLaboBundle:EcbuCu')->find($idPrice);
+            
+            if( (null === $entityPrice) || (null === $entity->getAspect()) ||
+               (0 === $entity->getAspect()) || (false === $entity->getAspect()) ){
+                return;
+            }
+            
+            $amt = floatval($entityPrice->getPrice());
+            
+            $entity->setPrice($amt); 
+        }
+        
     }
     
     public function postPersist(LifecycleEventArgs $args){
@@ -206,6 +251,9 @@ class CalculAmount{
             $thisSero = $entity->getSerologie();
             $thisFormLeu = $entity->getFormuleLeucocytaire();
             $thisHema = $entity->getHematologie();
+            $thisEcbuCu = $entity->getEcbuCu();
+            $thisBiochimie = $entity->getBiochimie();
+            $thisUrineLrc = $entity->getUrineLrc();
 
             if( (null !== $thisPcvPu) && (null !== $thisPcvPu->getEtatCol()) ){
                 
@@ -231,6 +279,27 @@ class CalculAmount{
             if( (null !== $thisHema) && (null !== $thisHema->getGlobulesBlancs()) ){
                 
                 $prix = floatval($thisHema->getPrice());
+
+                $amt = $amt + floatval($prix);
+            }
+            
+            if( (null !== $thisEcbuCu) && (null !== $thisHema->getAspect()) ){
+                
+                $prix = floatval($thisEcbuCu->getPrice());
+
+                $amt = $amt + floatval($prix);
+            }
+            
+            if( (null !== $thisBiochimie) && (null !== $thisHema->getUree()) ){
+                
+                $prix = floatval($thisBiochimie->getPrice());
+
+                $amt = $amt + floatval($prix);
+            }
+            
+            if( (null !== $thisUrineLrc) && (null !== $thisHema->getPh()) ){
+                
+                $prix = floatval($thisUrineLrc->getPrice());
 
                 $amt = $amt + floatval($prix);
             }

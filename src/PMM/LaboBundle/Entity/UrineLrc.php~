@@ -1,0 +1,151 @@
+<?php
+
+namespace PMM\LaboBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use PMM\LaboBundle\Entity\Bulletin;
+
+/**
+ * UrineLrc
+ *
+ * @ORM\Table(name="urine_lrc")
+ * @ORM\Entity(repositoryClass="PMM\LaboBundle\Repository\UrineLrcRepository")
+ */
+class UrineLrc
+{
+    /**
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Bulletin", mappedBy="urineLrc")
+     * @ORM\JoinColumn(name="bulletin_id", referencedColumnName="id")
+     */
+    private $bulletin;
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ph", type="text", nullable=true)
+     */
+    private $ph;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="proteine", type="text", nullable=true)
+     */
+    private $proteine;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="glucose", type="text", nullable=true)
+     */
+    private $glucose;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="densite", type="text", nullable=true)
+     */
+    private $densite;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="leucocytes", type="text", nullable=true)
+     */
+    private $leucocytes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nitrites", type="text", nullable=true)
+     */
+    private $nitrites;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="acetone", type="text", nullable=true)
+     */
+    private $acetone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="urobilinogene", type="text", nullable=true)
+     */
+    private $urobilinogene;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bilirubine", type="text", nullable=true)
+     */
+    private $bilirubine;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sang", type="text", nullable=true)
+     */
+    private $sang;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="hb", type="text", nullable=true)
+     */
+    private $hb;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="hcg", type="text", nullable=true)
+     */
+    private $hcg;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="selsBilaires", type="text", nullable=true)
+     */
+    private $selsBilaires;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pigBilaires", type="text", nullable=true)
+     */
+    private $pigBilaires;
+
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="price", type="float")
+     */
+    private $price;
+    
+    
+    public function __construct(){
+        
+        $this->date = new \Datetime();
+        $this->price = 0;
+    }
+}
+

@@ -17,3 +17,15 @@ pmm_labo_formuleleucocytaire:
 pmm_labo_hematologie:
     resource: "@PMMLaboBundle/Resources/config/routing/hematologie.yml"
     prefix:   /hematologie
+    
+pmm_labo_biochimie:
+    resource: "@PMMLaboBundle/Resources/config/routing/biochimie.yml"
+    prefix:   /biochimie
+    
+pmm_labo_ecbucu:
+    resource: "@PMMLaboBundle/Resources/config/routing/ecbucu.yml"
+    prefix:   /ecbucu
+    
+pmm_labo_urinelrc:
+    resource: "@PMMLaboBundle/Resources/config/routing/urinelrc.yml"
+    prefix:   /urinelrc
