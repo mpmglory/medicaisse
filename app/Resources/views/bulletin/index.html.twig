@@ -88,7 +88,15 @@ Gestion des bulletins médicaux
 
                         {% if bulletin.serologie.selles is not null %}
                             <li>SELLES</li>
-                        {% endif %}  
+                        {% endif %} 
+                        
+                        {% if bulletin.formuleLeucocytaire is not null and bulletin.formuleLeucocytaire.neutrophiles %}
+                            <li>Formule leucocytaire</li>
+                        {% endif %}
+                        
+                        {% if bulletin.hematologie is not null and bulletin.hematologie.globulesBlancs %}
+                            <li>Hematologie</li>
+                        {% endif %}
                     </ol>
                 </td>
                 

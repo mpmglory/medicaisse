@@ -23,7 +23,7 @@ Nouveau bulletin /
     
     <div class="row">
         <div class="col-xs-1">
-            <i class="fa fa-wheelchair-alt" aria-hidden="true"></i>
+            <i class="fa fa-hospital-o fa-5x" aria-hidden="true"></i>
         </div>
         <div class="col-xs-11 text-center">
             <div class="huge"><h2>{{ bulletin.patient.name | upper }}</h2></div>
@@ -171,19 +171,31 @@ Nouveau bulletin /
 {# DEBUT EXAMENS DE FORMULE LEUCOCYTAIRE #}
 <hr/><h4 class="well"><center>FORMULE LEUCOCYTAIRE</center></h4>
 <div class="form-group">
-    {{ form_label(form.formuleLeucocytaire.neutrophiles, "Formule leucocytaire : ", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_label(form.formuleLeucocytaire.neutrophiles, "Formule leucocytaire : ", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
     {{ form_errors(form.formuleLeucocytaire.neutrophiles) }}
-    <div class="col-sm-10">
+    <div class="col-sm-4">
         {{ form_widget(form.formuleLeucocytaire.neutrophiles, {'attr': {'class': 'form-control'}}) }}
     </div>
 </div>
-
 {# FIN EXAMENS DE FORMULE LEUCOCYTAIRE #}
-
-  {{ form_widget(form.submit, {'attr': {'class': 'btn btn-info btn-block btn-lg'}}) }}
-
-  {{ form_end(form) }}
     
+{# DEBUT EXAMENS HEMATOLOGIE #}
+<hr/><h4 class="well"><center>HEMATOLOGIE</center></h4>
+<div class="form-group">
+    {{ form_label(form.hematologie.globulesBlancs, "Hematologie:", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+    {{ form_errors(form.hematologie.globulesBlancs) }}
+    <div class="col-sm-4">
+        {{ form_widget(form.hematologie.globulesBlancs, {'attr': {'class': 'form-control'}}) }}
+    </div>
 </div>
+{# FIN EXAMENS D'HEMATOLOGIE' #}
+
+<div class="panel-footer">
+    {{ form_widget(form.submit, {'attr': {'class': 'btn btn-info btn-block btn-lg'}}) }}
+</div>
+
+</div>
+
+{{ form_end(form) }}
 
 {% endblock %}

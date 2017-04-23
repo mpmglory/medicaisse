@@ -1,0 +1,24 @@
+hematologie_index:
+    path:     /
+    defaults: { _controller: "PMMLaboBundle:Hematologie:index" }
+    methods:  GET
+
+hematologie_show:
+    path:     /{id}/show
+    defaults: { _controller: "PMMLaboBundle:Hematologie:show" }
+    methods:  GET
+
+hematologie_new:
+    path:     /new
+    defaults: { _controller: "PMMLaboBundle:Hematologie:new" }
+    methods:  [GET, POST]
+
+hematologie_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PMMLaboBundle:Hematologie:edit" }
+    methods:  [GET, POST]
+
+hematologie_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PMMLaboBundle:Hematologie:delete" }
+    methods:  DELETE

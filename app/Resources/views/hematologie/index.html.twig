@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Hematologies list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Globulesblancs</th>
+                <th>Globulesrouges</th>
+                <th>Tauxhemoglobine</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hematologie in hematologies %}
+            <tr>
+                <td><a href="{{ path('hematologie_show', { 'id': hematologie.id }) }}">{{ hematologie.id }}</a></td>
+                <td>{% if hematologie.date %}{{ hematologie.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ hematologie.globulesBlancs }}</td>
+                <td>{{ hematologie.globulesRouges }}</td>
+                <td>{{ hematologie.tauxHemoglobine }}</td>
+                <td>{{ hematologie.price }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('hematologie_show', { 'id': hematologie.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('hematologie_edit', { 'id': hematologie.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('hematologie_new') }}">Create a new hematologie</a>
+        </li>
+    </ul>
+{% endblock %}

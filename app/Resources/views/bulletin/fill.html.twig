@@ -36,8 +36,9 @@ Remplissage du bulletin</br>
 
 <ol>
 
+<li><h4>Etat de col</h4></li>
 <div class="form-group">
-    <li><h4>Etats de col</h4></li>
+    
     {{ form_label(form.pcvPu.etatCol, " ", {'label_attr': {'class': 'col-sm-0 control-label'}}) }}
     {{ form_errors(form.pcvPu.etatCol) }}
     <div class="col-sm-12">
@@ -46,7 +47,7 @@ Remplissage du bulletin</br>
   </div>
     
 <li><h4>Leucorrhées</h4></li>
-  <div class="form-group">
+<div class="form-group">
     {{ form_label(form.pcvPu.leucorrhees, " ", {'label_attr': {'class': 'col-sm-0 control-label'}}) }}
     {{ form_errors(form.pcvPu.leucorrhees) }}
     <div class="col-sm-12">
@@ -54,7 +55,7 @@ Remplissage du bulletin</br>
     </div>
   </div>
     
-    <li><h4><u>Etat frais</u></h4></li>
+<li><h4><u>Etat frais</u></h4></li>
       <div class="form-group">
     {{ form_label(form.pcvPu.etatFrais, " ", {'label_attr': {'class': 'col-sm-0 control-label'}}) }}
     {{ form_errors(form.pcvPu.etatFrais) }}
@@ -120,9 +121,8 @@ Remplissage du bulletin</br>
     
 </ul>
 
-
-    <li><h4><u>Etat coloré (gram)</u></h4></li>
-      <div class="form-group">
+<li><h4><u>Etat coloré (gram)</u></h4></li>
+<div class="form-group">
     {{ form_label(form.pcvPu.etatColore, " ", {'label_attr': {'class': 'col-sm-0 control-label'}}) }}
     {{ form_errors(form.pcvPu.etatColore) }}
     <div class="col-sm-12">
@@ -212,8 +212,8 @@ Remplissage du bulletin</br>
   </div>
 </ul>
     
-    <li><h4><u>KOH</u></h4></li>
-      <div class="form-group">
+<li><h4>KOH</h4></li>
+<div class="form-group">
     {{ form_label(form.pcvPu.koh, " ", {'label_attr': {'class': 'col-sm-0 control-label'}}) }}
     {{ form_errors(form.pcvPu.koh) }}
     <div class="col-sm-12">
@@ -221,8 +221,8 @@ Remplissage du bulletin</br>
     </div>
   </div>
     
-    <li><h4><u>PH</u></h4></li>
-      <div class="form-group">
+<li><h4>PH</h4></li>
+<div class="form-group">
     {{ form_label(form.pcvPu.ph, " ", {'label_attr': {'class': 'col-sm-0 control-label'}}) }}
     {{ form_errors(form.pcvPu.ph) }}
     <div class="col-sm-12">
@@ -232,7 +232,101 @@ Remplissage du bulletin</br>
 </ol>
 {% endif %}
     
-{% if bulletin.serologie.price != 0 %}
+{% if bulletin.formuleLeucocytaire.neutrophiles is not null %}
+    
+<h3 class="well"><center>FORMULE LEUCOCYTAIRE</center></h3>
+<div class="form-group">
+    {{ form_label(form.formuleLeucocytaire.neutrophiles, "Neutrophiles:", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.formuleLeucocytaire.neutrophiles) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.formuleLeucocytaire.neutrophiles, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+   
+<div class="form-group">
+    {{ form_label(form.formuleLeucocytaire.eosinophiles, "Eosinophiles:", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.formuleLeucocytaire.eosinophiles) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.formuleLeucocytaire.eosinophiles, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+    
+<div class="form-group">
+    {{ form_label(form.formuleLeucocytaire.basophiles, "Basophiles:", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.formuleLeucocytaire.basophiles) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.formuleLeucocytaire.basophiles, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+        
+<div class="form-group">
+    {{ form_label(form.formuleLeucocytaire.lymphocytes, "Lymphocytes:", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.formuleLeucocytaire.lymphocytes) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.formuleLeucocytaire.lymphocytes, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+    
+<div class="form-group">
+    {{ form_label(form.formuleLeucocytaire.monocytes, "Monocytes:", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.formuleLeucocytaire.monocytes) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.formuleLeucocytaire.monocytes, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+    
+<div class="form-group">
+    {{ form_label(form.formuleLeucocytaire.vS1, "V.S 1ere heure:", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.formuleLeucocytaire.vS1) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.formuleLeucocytaire.vS1, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+    
+<div class="form-group">
+    {{ form_label(form.formuleLeucocytaire.vS2, "V.S 2e heure:", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.formuleLeucocytaire.vS2) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.formuleLeucocytaire.vS2, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+    
+<div class="form-group">
+    {{ form_label(form.formuleLeucocytaire.gpeSanguin, "Groupe Sanguin:", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.formuleLeucocytaire.gpeSanguin) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.formuleLeucocytaire.gpeSanguin, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+    
+<div class="form-group">
+    {{ form_label(form.formuleLeucocytaire.goutteEpaisse, "Goutte Epaisse:", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.formuleLeucocytaire.goutteEpaisse) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.formuleLeucocytaire.goutteEpaisse, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+    
+<div class="form-group">
+    {{ form_label(form.formuleLeucocytaire.testEmmel, "Test d'Emmel:", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.formuleLeucocytaire.testEmmel) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.formuleLeucocytaire.testEmmel, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+    
+<div class="form-group">
+    {{ form_label(form.formuleLeucocytaire.rmfSnif, "RMF / SNIF: (Etat frais):", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.formuleLeucocytaire.rmfSnif) }}
+    <div class="col-sm-10">
+      {{ form_widget(form.formuleLeucocytaire.rmfSnif, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+    
+    
+{% endif %}
+    
+{% if bulletin.serologie.price is not null %}
     <h3 class="well"><center>SEROLOGIE</center></h3>
 {% endif %}
     
@@ -354,7 +448,7 @@ Remplissage du bulletin</br>
     </div>
   </div>
 {% endif %}
-  {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary btn-info'}}) }}
+  {{ form_widget(form.submit, {'attr': {'class': 'btn btn-block btn-primary btn-success'}}) }}
 
   {{ form_end(form) }}
     

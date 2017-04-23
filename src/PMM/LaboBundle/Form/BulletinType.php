@@ -29,6 +29,7 @@ class BulletinType extends AbstractType
                 'expanded' => false,
             ))
             ->add('pcvPu', BulCreationPcvPuType::class)
+            ->add('hematologie', BulCreationHematologieType::class)
             ->add('serologie', BulCreationSerologieType::class)
             ->add('formuleLeucocytaire', BulCreationFormuleLeucocytaireType::class)
             ->add('submit', SubmitType::class, array('label' => 'Enregistrer'));

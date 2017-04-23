@@ -13,3 +13,7 @@ pmm_labo_bulletin:
 pmm_labo_formuleleucocytaire:
     resource: "@PMMLaboBundle/Resources/config/routing/formuleleucocytaire.yml"
     prefix:   /formuleleucocytaire
+    
+pmm_labo_hematologie:
+    resource: "@PMMLaboBundle/Resources/config/routing/hematologie.yml"
+    prefix:   /hematologie

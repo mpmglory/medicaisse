@@ -24,7 +24,8 @@ class BulFillType extends AbstractType
         $builder
             ->add('pcvPu', BulFillPcvPuType::class)
             ->add('serologie', BulFillSerologieType::class)
-            ->add('submit', SubmitType::class, array('label' => 'Valider'));
+            ->add('formuleLeucocytaire', BulFillFormuleLeucocytaireType::class)
+            ->add('submit', SubmitType::class, array('label' => 'Enregistrer les résultats'));
         
         $builder->addEventListener(
             FormEvents::PRE_SET_DATA,

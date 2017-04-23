@@ -20,7 +20,7 @@ class BulCreationFormuleLeucocytaireType extends AbstractType
             ->add('neutrophiles', ChoiceType::class, array(
                 'choices' => array(
                     'Retirer' => null,
-                    'Ajouter cet examen' => ' ',
+                    'Ajouter cet examen' => '1',
                 ),
                 'expanded' => false,
                 'multiple' => false,

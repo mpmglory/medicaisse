@@ -92,8 +92,12 @@ Informations sur un bulletin d'examen
                             <li>SELLES</li>
                         {% endif %}
                         
-                        {% if bulletin.formuleLeucocytaire.neutrophiles is not null %}
+                        {% if bulletin.formuleLeucocytaire is not null and bulletin.formuleLeucocytaire.neutrophiles %}
                             <li>Formule leucocytaire</li>
+                        {% endif %}
+                        
+                        {% if bulletin.hematologie is not null and bulletin.hematologie.globulesBlancs %}
+                            <li>Hematologie</li>
                         {% endif %} 
                     </ol>
                 </td>

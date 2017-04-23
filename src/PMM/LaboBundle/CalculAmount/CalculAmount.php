@@ -112,11 +112,12 @@ class CalculAmount{
             
             $entityPrice = $em->getRepository('PMMLaboBundle:FormuleLeucocytaire')->find($idPrice);
             
-            if(null === $entityPrice){ 
+            if( (null === $entityPrice) || (null === $entity->getNeutrophiles()) ||
+               (0 === $entity->getNeutrophiles()) || (false === $entity->getNeutrophiles()) ){
                 return;
             }
             
-            if(null !== $entity->getNeutrophiles()){
+            /*if(null !== $entity->getNeutrophiles()){
                 
                 $amt = $amt + floatval($entityPrice->getNeutrophiles());
             }
@@ -169,7 +170,22 @@ class CalculAmount{
             if(null !== $entity->getRmfSnif()){
                 
                 $amt = $amt + floatval($entityPrice->getRmfSnif());
+            }*/
+            $amt = floatval($entityPrice->getPrice());
+            
+            $entity->setPrice($amt); 
+        }
+        
+        if($entity instanceof Hematologie){
+            
+            $entityPrice = $em->getRepository('PMMLaboBundle:Hematologie')->find($idPrice);
+            
+            if( (null === $entityPrice) || (null === $entity->getGlobulesBlancs()) ||
+               (0 === $entity->getGlobulesBlancs()) || (false === $entity->getGlobulesBlancs()) ){
+                return;
             }
+            
+            $amt = floatval($entityPrice->getPrice());
             
             $entity->setPrice($amt); 
         }
@@ -189,8 +205,9 @@ class CalculAmount{
             $thisPcvPu = $entity->getPcvPu();
             $thisSero = $entity->getSerologie();
             $thisFormLeu = $entity->getFormuleLeucocytaire();
+            $thisHema = $entity->getHematologie();
 
-            if(null !== $thisPcvPu){
+            if( (null !== $thisPcvPu) && (null !== $thisPcvPu->getEtatCol()) ){
                 
                 $prix = floatval($thisPcvPu->getPrice());
 
@@ -204,9 +221,16 @@ class CalculAmount{
                 $amt = $amt + floatval($prix);
             }
             
-            if(null !== $thisFormLeu){
+            if( (null !== $thisFormLeu) && (null !== $thisFormLeu->getNeutrophiles()) ){
                 
                 $prix = floatval($thisFormLeu->getPrice());
+
+                $amt = $amt + floatval($prix);
+            }
+            
+            if( (null !== $thisHema) && (null !== $thisHema->getGlobulesBlancs()) ){
+                
+                $prix = floatval($thisHema->getPrice());
 
                 $amt = $amt + floatval($prix);
             }
