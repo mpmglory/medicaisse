@@ -5,15 +5,39 @@ namespace PMM\LaboBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 
-class EcbuCuType extends AbstractType
+class BulFillEcbuCuType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('date')->add('aspect')->add('etatFrais')->add('efCellulesEpitheliales')->add('efLeucocytes')->add('efGermes')->add('efElementsLevuriformes')->add('efParasites')->add('efCristaux')->add('etatColore')->add('ecCellulesEpitheliales')->add('ecPolynucleaires')->add('ecBacillesGramNegatif')->add('ecBacillesGramPositif')->add('ecCocciGramPositif')->add('ecCocciGramNegatif')->add('ecSporesMycosiques')->add('ecFilamentsMyceliens')->add('ecFloreDoderiein')->add('ecCristaux')->add('ecAutres')->add('price');
+        $builder
+            ->add('aspect', TextType::class, array('required' => false))
+            ->add('etatFrais', TextType::class, array('required' => false))
+            ->add('efCellulesEpitheliales', TextType::class, array('required' => false))
+            ->add('efLeucocytes', TextType::class, array('required' => false))
+            ->add('efGermes', TextType::class, array('required' => false))
+            ->add('efElementsLevuriformes', TextType::class, array('required' => false))
+            ->add('efParasites', TextType::class, array('required' => false))
+            ->add('efCristaux', TextType::class, array('required' => false))
+            ->add('etatColore', TextType::class, array('required' => false))
+            ->add('ecCellulesEpitheliales', TextType::class, array('required' => false))
+            ->add('ecPolynucleaires', TextType::class, array('required' => false))
+            ->add('ecBacillesGramNegatif', TextType::class, array('required' => false))
+            ->add('ecBacillesGramPositif', TextType::class, array('required' => false))
+            ->add('ecCocciGramPositif', TextType::class, array('required' => false))
+            ->add('ecCocciGramNegatif', TextType::class, array('required' => false))
+            ->add('ecSporesMycosiques', TextType::class, array('required' => false))
+            ->add('ecFilamentsMyceliens', TextType::class, array('required' => false))
+            ->add('ecCristaux', TextType::class, array('required' => false))
+            ->add('ecAutres', TextType::class, array('required' => false))
+            ;
     }
     
     /**

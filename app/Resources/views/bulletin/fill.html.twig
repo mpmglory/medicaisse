@@ -31,7 +31,8 @@ Remplissage bulletin /
   </div>
 {% endif %}
 
-{% if bulletin.pcvPu.etatCol is not null %}
+{% if bulletin.pcvPu is defined and bulletin.pcvPu.etatCol is not null %}
+<div class="row">
 <h3 class="btn-info"><center>PCV ou PU</center></h3>
 
 <ol>
@@ -230,9 +231,199 @@ Remplissage bulletin /
     </div>
   </div>
 </ol>
+    
+</div>
+{% endif %}
+
+{% if bulletin.ecbuCu is defined and bulletin.ecbuCu.aspect is not null %}
+<div class="row">
+<h3 class="btn-info"><center>{{ bulletin.ecbuCu.aspect|upper }}</center></h3>
+
+<ol>
+
+<li><h4>Aspect</h4></li>
+<div class="form-group">
+    
+    {{ form_label(form.ecbuCu.aspect, " ", {'label_attr': {'class': 'col-sm-0 control-label'}}) }}
+    {{ form_errors(form.ecbuCu.aspect) }}
+    <div class="col-sm-12">
+      {{ form_widget(form.ecbuCu.aspect, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+<li><h4><u>Etat frais</u></h4></li>
+      <div class="form-group">
+    {{ form_label(form.ecbuCu.etatFrais, " ", {'label_attr': {'class': 'col-sm-0 control-label'}}) }}
+    {{ form_errors(form.ecbuCu.etatFrais) }}
+    <div class="col-sm-12">
+      {{ form_widget(form.ecbuCu.etatFrais, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+<ul>
+    <li><b>Cellules épitheliales:</b></li>
+      <div class="form-group">
+    {{ form_label(form.ecbuCu.efCellulesEpitheliales, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.ecbuCu.efCellulesEpitheliales) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.ecbuCu.efCellulesEpitheliales, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><b>Leucocytes:</b></li>
+      <div class="form-group">
+    {{ form_label(form.ecbuCu.efLeucocytes, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.ecbuCu.efLeucocytes) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.ecbuCu.efLeucocytes, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><b>Germes: mobiles ou immobiles:</b></li>
+      <div class="form-group">
+    {{ form_label(form.ecbuCu.efGermes, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.ecbuCu.efGermes) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.ecbuCu.efGermes, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><b>Eléments Levuriformes:</b></li>
+      <div class="form-group">
+    {{ form_label(form.ecbuCu.efElementsLevuriformes, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.ecbuCu.efElementsLevuriformes) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.ecbuCu.efElementsLevuriformes, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><b>Parasites:</b></li>
+      <div class="form-group">
+    {{ form_label(form.ecbuCu.efParasites, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.ecbuCu.efParasites) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.ecbuCu.efParasites, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><b>Cristaux:</b></li>
+      <div class="form-group">
+    {{ form_label(form.ecbuCu.efCristaux, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.ecbuCu.efCristaux) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.ecbuCu.efCristaux, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+</ul>
+
+<li><h4><u>Etat coloré (gram)</u></h4></li>
+<div class="form-group">
+    {{ form_label(form.ecbuCu.etatColore, " ", {'label_attr': {'class': 'col-sm-0 control-label'}}) }}
+    {{ form_errors(form.ecbuCu.etatColore) }}
+    <div class="col-sm-12">
+      {{ form_widget(form.ecbuCu.etatColore, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+<ul>
+    <li><b>Cellules épithéliales: altérés * non altérés * +altérés:</b></li>
+      <div class="form-group">
+    {{ form_label(form.ecbuCu.ecCellulesEpitheliales, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.ecbuCu.ecCellulesEpitheliales) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.ecbuCu.ecCellulesEpitheliales, {'attr': {'class': 'col-sm-5 form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><b>Polynucleaires: altérés * non altérés * +altérés:</b></li>
+      <div class="form-group">
+    {{ form_label(form.ecbuCu.ecPolynucleaires, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.ecbuCu.ecPolynucleaires) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.ecbuCu.ecPolynucleaires, {'attr': {'class': 'col-sm-5 form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><b>Bacilles gram négatif:</b></li>
+      <div class="form-group">
+    {{ form_label(form.ecbuCu.ecBacillesGramNegatif, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.ecbuCu.ecBacillesGramNegatif) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.ecbuCu.ecBacillesGramNegatif, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><b>Bacilles gram positif:</b></li>
+      <div class="form-group">
+    {{ form_label(form.ecbuCu.ecBacillesGramPositif, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.ecbuCu.ecBacillesGramPositif) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.ecbuCu.ecBacillesGramPositif, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><b>Cocci gram positif:</b></li>
+      <div class="form-group">
+    {{ form_label(form.ecbuCu.ecCocciGramPositif, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.ecbuCu.ecCocciGramPositif) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.ecbuCu.ecCocciGramPositif, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><b>Cocci gram négatif:</b></li>
+      <div class="form-group">
+    {{ form_label(form.ecbuCu.ecCocciGramNegatif, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.ecbuCu.ecCocciGramNegatif) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.ecbuCu.ecCocciGramNegatif, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><b>Spores mycosiques:</b></li>
+      <div class="form-group">
+    {{ form_label(form.ecbuCu.ecSporesMycosiques, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.ecbuCu.ecSporesMycosiques) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.ecbuCu.ecSporesMycosiques, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><b>Filaments myceliens:</b></li>
+      <div class="form-group">
+    {{ form_label(form.ecbuCu.ecFilamentsMyceliens, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.ecbuCu.ecFilamentsMyceliens) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.ecbuCu.ecFilamentsMyceliens, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><b>Cristaux:</b></li>
+      <div class="form-group">
+    {{ form_label(form.ecbuCu.ecCristaux, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.ecbuCu.ecCristaux) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.ecbuCu.ecCristaux, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <li><b>Autres:</b></li>
+      <div class="form-group">
+    {{ form_label(form.ecbuCu.ecAutres, " ", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+    {{ form_errors(form.ecbuCu.ecAutres) }}
+    <div class="col-sm-11">
+      {{ form_widget(form.ecbuCu.ecAutres, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+</ul>
+
+</ol>
+    
+</div>
 {% endif %}
     
-{% if bulletin.hematologie.globulesBlancs is not null %}
+{% if bulletin.hematologie is defined and bulletin.hematologie.globulesBlancs is not null %}
+<div class="row">
 <h3 class="btn-info"><center>HEMATOLOGIE</center></h3>
     
 <div class="form-group">
@@ -258,11 +449,11 @@ Remplissage bulletin /
       {{ form_widget(form.hematologie.tauxHemoglobine, {'attr': {'class': 'form-control'}}) }}
     </div>
   </div>
-    
+</div>   
 {% endif %}
     
-{% if bulletin.formuleLeucocytaire.neutrophiles is not null %}
-    
+{% if bulletin.formuleLeucocytaire is defined and bulletin.formuleLeucocytaire.price != 0 %}
+<div class="row">   
 <h3 class="btn-info"><center>FORMULE LEUCOCYTAIRE</center></h3>
 <div class="form-group">
     {{ form_label(form.formuleLeucocytaire.neutrophiles, "Neutrophiles:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
@@ -351,9 +542,12 @@ Remplissage bulletin /
       {{ form_widget(form.formuleLeucocytaire.rmfSnif, {'attr': {'class': 'form-control'}}) }}
     </div>
 </div>
-{% endif %}
     
-{% if bulletin.serologie.price != 0 %}
+</div>
+{% endif %}
+
+{% if bulletin.serologie is defined and bulletin.serologie.price != 0 %}
+<div class="row">
 <h3 class="btn-info"><center>SEROLOGIE</center></h3>
 
 {% if bulletin.serologie.vih is not null %}
@@ -474,14 +668,271 @@ Remplissage bulletin /
     </div>
   </div>
 {% endif %}
+</div>   
+{% endif %}
     
+{% if bulletin.biochimie is defined and bulletin.biochimie.uree is not null %}
+<div class="row">
+<h3 class="btn-info"><center>BIOCHIMIE</center></h3>
+    
+<div class="form-group">
+    {{ form_label(form.biochimie.uree, "UREE:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.biochimie.uree) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.biochimie.uree, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+<div class="form-group">
+    {{ form_label(form.biochimie.creatinine, "Creatinine:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.biochimie.creatinine) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.biochimie.creatinine, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+<div class="form-group">
+    {{ form_label(form.biochimie.sgot, "SGOT:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.biochimie.sgot) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.biochimie.sgot, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+<div class="form-group">
+    {{ form_label(form.biochimie.sgpt, "SGPT:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.biochimie.sgpt) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.biochimie.sgpt, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <div class="form-group">
+    {{ form_label(form.biochimie.sggt, "SGGT:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.biochimie.sggt) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.biochimie.sggt, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <div class="form-group">
+    {{ form_label(form.biochimie.acideUrique, "Acide urique:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.biochimie.acideUrique) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.biochimie.acideUrique, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <div class="form-group">
+    {{ form_label(form.biochimie.cholesterol, "Cholesterol:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.biochimie.cholesterol) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.biochimie.cholesterol, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <div class="form-group">
+    {{ form_label(form.biochimie.glycemie, "Glycémie:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.biochimie.glycemie) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.biochimie.glycemie, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <div class="form-group">
+    {{ form_label(form.biochimie.bilirubine, "Bilirubine:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.biochimie.bilirubine) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.biochimie.bilirubine, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <div class="form-group">
+    {{ form_label(form.biochimie.magnesemie, "Magnesémie:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.biochimie.magnesemie) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.biochimie.magnesemie, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <div class="form-group">
+    {{ form_label(form.biochimie.potassium, "Potassium:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.biochimie.potassium) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.biochimie.potassium, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <div class="form-group">
+    {{ form_label(form.biochimie.triglyceride, "Triglycéride:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.biochimie.triglyceride) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.biochimie.triglyceride, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <div class="form-group">
+    {{ form_label(form.biochimie.amylase, "Amylase:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.biochimie.amylase) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.biochimie.amylase, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <div class="form-group">
+    {{ form_label(form.biochimie.pal, "PAL:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.biochimie.pal) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.biochimie.pal, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <div class="form-group">
+    {{ form_label(form.biochimie.calcemie, "Calcémie:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.biochimie.calcemie) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.biochimie.calcemie, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+    
+    <div class="form-group">
+    {{ form_label(form.biochimie.ck, "CK:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.biochimie.ck) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.biochimie.ck, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+</div>  
+{% endif %}
+
+{% if bulletin.urineLrc is defined and bulletin.urineLrc.ph is not null %}
+<div class="row">
+<h3 class="btn-info"><center>{{ bulletin.urineLrc.ph|upper }}</center></h3>
+    
+<div class="form-group">
+    {{ form_label(form.urineLrc.ph, "P.H:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.urineLrc.ph) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.urineLrc.ph, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+    
+<div class="form-group">
+    {{ form_label(form.urineLrc.proteine, "Protéine:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.urineLrc.proteine) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.urineLrc.proteine, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+    
+<div class="form-group">
+    {{ form_label(form.urineLrc.glucose, "Glucose:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.urineLrc.glucose) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.urineLrc.glucose, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+    
+<div class="form-group">
+    {{ form_label(form.urineLrc.densite, "Densité:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.urineLrc.densite) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.urineLrc.densite, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+    
+<div class="form-group">
+    {{ form_label(form.urineLrc.leucocytes, "Leucocytes:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.urineLrc.leucocytes) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.urineLrc.leucocytes, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+    
+<div class="form-group">
+    {{ form_label(form.urineLrc.nitrites, "Nitrites:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.urineLrc.nitrites) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.urineLrc.nitrites, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+    
+<div class="form-group">
+    {{ form_label(form.urineLrc.acetone, "Acétone:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.urineLrc.acetone) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.urineLrc.acetone, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+    
+<div class="form-group">
+    {{ form_label(form.urineLrc.urobilinogene, "Urobilinogène:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.urineLrc.urobilinogene) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.urineLrc.urobilinogene, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+    
+<div class="form-group">
+    {{ form_label(form.urineLrc.bilirubine, "Bilirubine:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.urineLrc.bilirubine) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.urineLrc.bilirubine, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+    
+<div class="form-group">
+    {{ form_label(form.urineLrc.sang, "Sang:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.urineLrc.sang) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.urineLrc.sang, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+    
+<div class="form-group">
+    {{ form_label(form.urineLrc.hb, "H.B:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.urineLrc.hb) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.urineLrc.hb, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+    
+<div class="form-group">
+    {{ form_label(form.urineLrc.hcg, "H.C.G:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.urineLrc.hcg) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.urineLrc.hcg, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+    
+<div class="form-group">
+    {{ form_label(form.urineLrc.selsBilaires, "Sels Bilaires:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.urineLrc.selsBilaires) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.urineLrc.selsBilaires, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+    
+<div class="form-group">
+    {{ form_label(form.urineLrc.pigBilaires, "Pig Bilaires:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.urineLrc.pigBilaires) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.urineLrc.pigBilaires, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+    
+
+</div>   
 {% endif %}
     
     </hr>
+{% if form.submit is defined %}
   {{ form_widget(form.submit, {'attr': {'class': 'btn btn-block btn-primary btn-success'}}) }}
-
+{% else %} 
+    <h3 class="btn-danger"><center>BULLETIN VIDE</center></h3>
+{% endif %}
   {{ form_end(form) }}
     
-</div>
+
 
 {% endblock %}

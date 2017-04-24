@@ -23,6 +23,9 @@ class BulFillType extends AbstractType
     {
         $builder
             ->add('pcvPu', BulFillPcvPuType::class)
+            ->add('ecbuCu', BulFillEcbuCuType::class)
+            ->add('biochimie', BulFillBiochimieType::class)
+            ->add('urineLrc', BulFillUrineLrcType::class)
             ->add('serologie', BulFillSerologieType::class)
             ->add('formuleLeucocytaire', BulFillFormuleLeucocytaireType::class)
             ->add('hematologie', BulFillHematologieType::class)
@@ -42,7 +45,19 @@ class BulFillType extends AbstractType
                     $event->getForm()->remove('pcvPu');
                 }
             
-/*                if(null === $bul->getFormuleLeucocytaire()->getNeutrophiles()){
+                if(null === $bul->getEcbuCu()->getAspect()){
+                    $event->getForm()->remove('ecbuCu');
+                }
+            
+                if(null === $bul->getBiochimie()->getUree()){
+                    $event->getForm()->remove('biochimie');
+                }
+            
+                if(null === $bul->getUrineLrc()->getPh()){
+                    $event->getForm()->remove('urineLrc');
+                }
+            
+                if(null === $bul->getFormuleLeucocytaire()->getNeutrophiles()){
                     $event->getForm()->remove('formuleLeucocytaire');
                 }
                 
@@ -50,9 +65,21 @@ class BulFillType extends AbstractType
                     $event->getForm()->remove('hematologie');
                 }
             
-                if(0 === $bul->getSerologie()->getPrice()){
+                if(0 == $bul->getSerologie()->getPrice()){
                     $event->getForm()->remove('serologie');
-                }*/
+                }
+            
+                if( (0 == $bul->getSerologie()->getPrice()) && 
+                   (null === $bul->getHematologie()->getGlobulesBlancs()) && 
+                   (null === $bul->getFormuleLeucocytaire()->getNeutrophiles()) &&
+                   (null === $bul->getPcvPu()->getEtatCol()) && 
+                   (null === $bul->getEcbuCu()->getAspect()) &&
+                   (null === $bul->getBiochimie()->getUree()) &&
+                   (null === $bul->getUrineLrc()->getPh()) ){
+                    
+                    $event->getForm()->remove('submit');
+                }    
+            
             }
         );
     }
