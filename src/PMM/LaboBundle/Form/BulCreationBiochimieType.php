@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 
-class BulCreationPcvPuType extends AbstractType
+class BulCreationBiochimieType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -17,16 +17,14 @@ class BulCreationPcvPuType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('etatCol', ChoiceType::class, array(
+            ->add('uree', ChoiceType::class, array(
                 'choices' => array(
                     'Retirer' => null,
-                    'PCV' => 'pcv',
-                    'PU' => 'pu',
-
+                    'Ajouter cet examen' => '1',
                 ),
                 'expanded' => false,
                 'multiple' => false,
-                'label' => 'PCV ou PU',
+                'label' => '',
             ));
     }
     
@@ -36,7 +34,7 @@ class BulCreationPcvPuType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'PMM\LaboBundle\Entity\PcvPu'
+            'data_class' => 'PMM\LaboBundle\Entity\Biochimie'
         ));
     }
 
@@ -45,7 +43,7 @@ class BulCreationPcvPuType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'pmm_labobundle_pcvpu';
+        return 'pmm_labobundle_biochimie';
     }
 
 

@@ -29,6 +29,9 @@ class BulletinType extends AbstractType
                 'expanded' => false,
             ))
             ->add('pcvPu', BulCreationPcvPuType::class)
+            ->add('ecbuCu', BulCreationEcbuCuType::class)
+            ->add('biochimie', BulCreationBiochimieType::class)
+            ->add('urineLrc', BulCreationUrineLrcType::class)
             ->add('hematologie', BulCreationHematologieType::class)
             ->add('serologie', BulCreationSerologieType::class)
             ->add('formuleLeucocytaire', BulCreationFormuleLeucocytaireType::class)

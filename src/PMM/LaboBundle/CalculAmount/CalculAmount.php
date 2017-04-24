@@ -120,41 +120,7 @@ class CalculAmount{
                 return;
             }
             
-            /*if(null !== $entity->getNeutrophiles()){
-                
-                $amt = $amt + floatval($entityPrice->getNeutrophiles());
-            }
-            
-            if(null !== $entity->getEosinophiles()){
-                
-                $amt = $amt + floatval($entityPrice->getEosinophiles());
-            }
-            
-            if(null !== $entity->getBasophiles()){
-                
-                $amt = $amt + floatval($entityPrice->getBasophiles());
-            }
-            
-            if(null !== $entity->getLymphocytes()){
-                
-                $amt = $amt + floatval($entityPrice->getLymphocytes());
-            }
-            
-            if(null !== $entity->getMonocytes()){
-                
-                $amt = $amt + floatval($entityPrice->getMonocytes());
-            }
-            
-            if(null !== $entity->getVS1()){
-                
-                $amt = $amt + floatval($entityPrice->getVS1());
-            }
-            
-            if(null !== $entity->getVS2()){
-                
-                $amt = $amt + floatval($entityPrice->getVS2());
-            }
-            
+            /*
             if(null !== $entity->getGpeSanguin()){
                 
                 $amt = $amt + floatval($entityPrice->getGpeSanguin());
@@ -283,21 +249,21 @@ class CalculAmount{
                 $amt = $amt + floatval($prix);
             }
             
-            if( (null !== $thisEcbuCu) && (null !== $thisHema->getAspect()) ){
+            if( (null !== $thisEcbuCu) && (null !== $thisEcbuCu->getAspect()) ){
                 
                 $prix = floatval($thisEcbuCu->getPrice());
 
                 $amt = $amt + floatval($prix);
             }
             
-            if( (null !== $thisBiochimie) && (null !== $thisHema->getUree()) ){
+            if( (null !== $thisBiochimie) && (null !== $thisBiochimie->getUree()) ){
                 
                 $prix = floatval($thisBiochimie->getPrice());
 
                 $amt = $amt + floatval($prix);
             }
             
-            if( (null !== $thisUrineLrc) && (null !== $thisHema->getPh()) ){
+            if( (null !== $thisUrineLrc) && (null !== $thisUrineLrc->getPh()) ){
                 
                 $prix = floatval($thisUrineLrc->getPrice());
 

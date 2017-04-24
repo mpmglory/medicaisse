@@ -605,4 +605,28 @@ class Biochimie
     {
         return $this->price;
     }
+
+    /**
+     * Set bulletin
+     *
+     * @param \PMM\LaboBundle\Entity\Bulletin $bulletin
+     *
+     * @return Biochimie
+     */
+    public function setBulletin(\PMM\LaboBundle\Entity\Bulletin $bulletin = null)
+    {
+        $this->bulletin = $bulletin;
+
+        return $this;
+    }
+
+    /**
+     * Get bulletin
+     *
+     * @return \PMM\LaboBundle\Entity\Bulletin
+     */
+    public function getBulletin()
+    {
+        return $this->bulletin;
+    }
 }

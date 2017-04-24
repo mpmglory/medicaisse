@@ -51,24 +51,24 @@ Nouveau bulletin /
 {# DEBUT EXAMEN PCV ou PU #}
 <h4 class="well"><center>PCV ou PU</center></h4>
 <div class="form-group">
-    {{ form_label(form.pcvPu.etatCol, "PCV ou PU : ", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+    {{ form_label(form.pcvPu.etatCol, "PCV ou PU:", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
     {{ form_errors(form.pcvPu.etatCol) }}
     <div class="col-sm-4">
       {{ form_widget(form.pcvPu.etatCol, {'attr': {'class': 'form-control'}}) }}
     </div>
   </div>
 {# FIN EXAMEN PCV ou PU #}
-
-{# DEBUT EXAMENS DE FORMULE LEUCOCYTAIRE #}
-<hr/><h4 class="well"><center>FORMULE LEUCOCYTAIRE</center></h4>
+    
+{# DEBUT EXAMEN ECBU ou CU #}
+<h4 class="well"><center>ECB ou CU</center></h4>
 <div class="form-group">
-    {{ form_label(form.formuleLeucocytaire.neutrophiles, "Formule leucocytaire : ", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
-    {{ form_errors(form.formuleLeucocytaire.neutrophiles) }}
+    {{ form_label(form.ecbuCu.aspect, "ECBU ou CU:", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+    {{ form_errors(form.ecbuCu.aspect) }}
     <div class="col-sm-4">
-        {{ form_widget(form.formuleLeucocytaire.neutrophiles, {'attr': {'class': 'form-control'}}) }}
+      {{ form_widget(form.ecbuCu.aspect, {'attr': {'class': 'form-control'}}) }}
     </div>
-</div>
-{# FIN EXAMENS DE FORMULE LEUCOCYTAIRE #}
+  </div>
+{# FIN EXAMEN ECBU ou CU #}
     
 {# DEBUT EXAMENS HEMATOLOGIE #}
 <hr/><h4 class="well"><center>HEMATOLOGIE</center></h4>
@@ -80,6 +80,17 @@ Nouveau bulletin /
     </div>
 </div>
 {# FIN EXAMENS D'HEMATOLOGIE' #}
+
+{# DEBUT EXAMENS DE FORMULE LEUCOCYTAIRE #}
+<hr/><h4 class="well"><center>FORMULE LEUCOCYTAIRE</center></h4>
+<div class="form-group">
+    {{ form_label(form.formuleLeucocytaire.neutrophiles, "Formule leucocytaire : ", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+    {{ form_errors(form.formuleLeucocytaire.neutrophiles) }}
+    <div class="col-sm-4">
+        {{ form_widget(form.formuleLeucocytaire.neutrophiles, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+{# FIN EXAMENS DE FORMULE LEUCOCYTAIRE #}
 
 {# DEBUT EXAMENS DE SEROLOGIE #}
 <hr/><h4 class="well"><center>SEROLOGIE</center></h4>
@@ -188,6 +199,27 @@ Nouveau bulletin /
   </div>
 {# FIN EXAMENS DE SEROLOGIE #}
 
+{# DEBUT EXAMEN BIOCHIMIE #}
+<h4 class="well"><center>BIOCHIMIE</center></h4>
+<div class="form-group">
+    {{ form_label(form.biochimie.uree, "BIOCHIMIE:", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+    {{ form_errors(form.biochimie.uree) }}
+    <div class="col-sm-4">
+      {{ form_widget(form.biochimie.uree, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+{# FIN EXAMEN BIOCHIMIE #}
+ 
+{# DEBUT EXAMEN URINE OU LRC #}
+<h4 class="well"><center>URINE OU LRC</center></h4>
+<div class="form-group">
+    {{ form_label(form.urineLrc.ph, "URINE OU LRC:", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+    {{ form_errors(form.urineLrc.ph) }}
+    <div class="col-sm-4">
+      {{ form_widget(form.urineLrc.ph, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+{# FIN EXAMEN EURINE OU LRC #}
 
 <hr/>
 <div class="panel-footer">

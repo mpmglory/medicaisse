@@ -41,6 +41,27 @@ Informations sur un bulletin d'examen
                         {% if bulletin.pcvPu.etatCol is not null %}
                             <li>PCV ou PU</li>
                         {% endif %}
+                        
+                        {% if bulletin.ecbuCu.aspect is not null %}
+                            <li>{{ bulletin.ecbuCu.aspect|upper }}</li>
+                        {% endif %}
+                        
+                        {% if bulletin.hematologie is not null and bulletin.hematologie.globulesBlancs %}
+                            <li>Hematologie</li>
+                        {% endif %} 
+                        
+                        {% if bulletin.formuleLeucocytaire is not null and bulletin.formuleLeucocytaire.neutrophiles %}
+                            <li>Formule leucocytaire</li>
+                        {% endif %}
+                        
+                        {% if bulletin.biochimie is not null and bulletin.biochimie.uree %}
+                            <li>Biochimie</li>
+                        {% endif %}
+                        
+                        {% if bulletin.urineLrc is not null and bulletin.urineLrc.ph %}
+                            <li>{{ bulletin.urineLrc.ph|upper }}</li>
+                        {% endif %}
+                        
                         {% if bulletin.serologie.vih is not null %}
                             <li>VIH</li>                 
                         {% endif %}
@@ -92,13 +113,6 @@ Informations sur un bulletin d'examen
                             <li>SELLES</li>
                         {% endif %}
                         
-                        {% if bulletin.formuleLeucocytaire is not null and bulletin.formuleLeucocytaire.neutrophiles %}
-                            <li>Formule leucocytaire</li>
-                        {% endif %}
-                        
-                        {% if bulletin.hematologie is not null and bulletin.hematologie.globulesBlancs %}
-                            <li>Hematologie</li>
-                        {% endif %} 
                     </ol>
                 </td>
             </tr>

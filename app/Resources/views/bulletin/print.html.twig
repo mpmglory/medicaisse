@@ -44,7 +44,7 @@
                 </table>
             </div>
         </div>
-        {% if bulletin.pcvPu.etatCol is not null or bulletin.pcvPu.price is not null %}
+        {% if bulletin.pcvPu.etatCol is not null and bulletin.pcvPu.price is not null %}
         <div class="row">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover table-striped">
@@ -96,7 +96,7 @@
             </div>
         </div>
         {% endif %}
-        {% if bulletin.serologie is not null %}
+        {% if bulletin.serologie is not null and bulletin.serologie.price != 0 %}
         <div class="row">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover table-striped">
