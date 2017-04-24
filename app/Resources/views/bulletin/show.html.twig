@@ -7,16 +7,16 @@ Informations sur un bulletin d'examen
 {% block menu %}
 
 <ul class="nav nav-pills nav-stacked">
-        <a href="{{ path('bulletin_index') }}" class="btn btn-info btn-block btn-lg">
+        <a href="{{ path('bulletin_index') }}" class="btn btn-primary btn-block btn-lg">
             <span class="glyphicon glyphicon-chevron-left"></span>Retour à l'accueil</a><p>  </p>
         
-        <a href="{{ path('bulletin_edit', {'id': bulletin.id}) }}" class="btn btn-info btn-block btn-lg">
+        <a href="{{ path('bulletin_edit', {'id': bulletin.id}) }}" class="btn btn-primary btn-block btn-lg">
             <span class="glyphicon glyphicon-edit"></span>Modifier</a><p>  </p>
 
-        <a href="{{ path('bulletin_fill', {'id': bulletin.id}) }}" class="btn btn-info btn-block btn-lg">
+        <a href="{{ path('bulletin_fill', {'id': bulletin.id}) }}" class="btn btn-primary btn-block btn-lg">
             <span class="glyphicon glyphicon-pencil"></span>Remplir</a><p>  </p>
     
-        <a href="{{ path('bulletin_print', {'id': bulletin.id}) }}" class="btn btn-info btn-block btn-lg">
+        <a href="{{ path('bulletin_print', {'id': bulletin.id}) }}" class="btn btn-primary btn-block btn-lg">
             <span class="glyphicon glyphicon-print"></span>Imprimer</a><p>  </p>
 </ul>
 
