@@ -18,7 +18,16 @@ Gestion des bulletins médicaux
 {% endblock %}
 
 {% block body %}
-    <table class="table table-bordered table-hover table-striped">
+    
+    <div class="row">
+        <div class="form-group pull-right">
+            <input type="text" class="search form-control" placeholder="Que recherchez-vous?">
+        </div>
+        <span class="counter pull-right"></span>
+    </div>
+    
+    <div class="row">
+    <table class="table table-bordered table-hover table-striped results">
         <thead>
             <tr>
                 <th>Bulletin n°</th>
@@ -27,6 +36,9 @@ Gestion des bulletins médicaux
                 <th>Créé le</th>
                 <th>Montant (FCFA)</th>
                 <th>Actions</th>
+            </tr>
+            <tr class="warning no-result">
+                <td colspan="4"><i class="fa fa-warning"></i> Aucun resultat trouvé</td>
             </tr>
         </thead>
         <tbody>
@@ -114,8 +126,8 @@ Gestion des bulletins médicaux
                     </ol>
                 </td>
                 
-                <td>{% if bulletin.date %}{{ bulletin.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td><h3>{{ bulletin.amount | number_format(0, ',', '.') }} </h3></td>
+                <td>{% if bulletin.date %}{{ bulletin.date|date('d-m-Y') }}{% endif %}</td>
+                <td><h3>{{ bulletin.amount | number_format(0, ',', '.') }}</h3></td>
                 <td>
                     <ul>
                         <li>
@@ -136,5 +148,6 @@ Gestion des bulletins médicaux
         {% endfor %}
         </tbody>
     </table>
+    </div>
 
 {% endblock %}

@@ -22,7 +22,8 @@ class PatientType extends AbstractType
             ->add('name', TextType::class)
             ->add('bornDate', DateType::class, array(
                 'widget' => 'choice',
-                'format' => 'dd-MM-yyyy'
+                'format' => 'dd-MM-yyyy',
+                'years' => range(date('Y')-80, date('Y'))
                 )
             )
             ->add('sex', ChoiceType::class, array(
@@ -48,7 +49,7 @@ class PatientType extends AbstractType
                 'required' => false,
                 'expanded' => false,
                 'multiple' => false,
-                'placeholder' => 'Choisir un groupe',
+                'placeholder' => 'Choisir le groupe sanguin du patient',
             ))
             ->add('submit', SubmitType::class, array('label' => 'Enregistrer'));
     }
