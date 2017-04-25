@@ -146,8 +146,14 @@ class ResultatBiochimie
      * @ORM\Column(name="ck", type="text", nullable=true)
      */
     private $ck;
-
-
+    
+    
+    public function __construct(){
+        
+        $this->date = new \Datetime();
+    }
+    
+    
 
     /**
      * Get id

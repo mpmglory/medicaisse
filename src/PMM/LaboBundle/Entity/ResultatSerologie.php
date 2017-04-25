@@ -120,6 +120,13 @@ class ResultatSerologie
      */
     private $fr;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="selles", type="text", nullable=true)
+     */
+    private $selles;
+    
     
     public function __construct(){
         
@@ -473,6 +480,8 @@ class ResultatSerologie
     {
         return $this->selles;
     }
+
+
 
     /**
      * Set bulletin
