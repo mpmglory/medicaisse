@@ -6,16 +6,16 @@ use Doctrine\ORM\Mapping as ORM;
 use PMM\LaboBundle\Entity\Bulletin;
 
 /**
- * FormuleLeucocytaire
+ * ResultatFormuleLeucocytaire
  *
- * @ORM\Table(name="formule_leucocytaire")
- * @ORM\Entity(repositoryClass="PMM\LaboBundle\Repository\FormuleLeucocytaireRepository")
+ * @ORM\Table(name="resultat_formule_leucocytaire")
+ * @ORM\Entity(repositoryClass="PMM\LaboBundle\Repository\ResultatFormuleLeucocytaireRepository")
  */
-class FormuleLeucocytaire
+class ResultatFormuleLeucocytaire
 {
     
     /**
-     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Bulletin", mappedBy="formuleLeucocytaire")
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Bulletin", mappedBy="rFormuleLeucocytaire")
      * @ORM\JoinColumn(name="bulletin_id", referencedColumnName="id")
      */
     private $bulletin;
@@ -112,19 +112,11 @@ class FormuleLeucocytaire
      * @ORM\Column(name="rmf_snif", type="text", nullable=true)
      */
     private $rmfSnif;
-    
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="price", type="float")
-     */
-    private $price;
-    
+        
     
     public function __construct(){
         
         $this->date = new \Datetime();
-        $this->price = 0;
     }
 
 
@@ -427,29 +419,7 @@ class FormuleLeucocytaire
         return $this->rmfSnif;
     }
 
-    /**
-     * Set price
-     *
-     * @param float $price
-     *
-     * @return FormuleLeucocytaire
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
 
-        return $this;
-    }
-
-    /**
-     * Get price
-     *
-     * @return float
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
 
     /**
      * Set bulletin

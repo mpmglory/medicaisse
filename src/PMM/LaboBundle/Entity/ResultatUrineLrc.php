@@ -6,15 +6,15 @@ use Doctrine\ORM\Mapping as ORM;
 use PMM\LaboBundle\Entity\Bulletin;
 
 /**
- * UrineLrc
+ * ResultatUrineLrc
  *
- * @ORM\Table(name="urine_lrc")
- * @ORM\Entity(repositoryClass="PMM\LaboBundle\Repository\UrineLrcRepository")
+ * @ORM\Table(name="resultat_urine_lrc")
+ * @ORM\Entity(repositoryClass="PMM\LaboBundle\Repository\ResultatUrineLrcRepository")
  */
-class UrineLrc
+class ResultatUrineLrc
 {
     /**
-     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Bulletin", mappedBy="urineLrc")
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Bulletin", mappedBy="rUrineLrc")
      * @ORM\JoinColumn(name="bulletin_id", referencedColumnName="id")
      */
     private $bulletin;
@@ -132,20 +132,11 @@ class UrineLrc
      * @ORM\Column(name="pigBilaires", type="text", nullable=true)
      */
     private $pigBilaires;
-
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="price", type="float")
-     */
-    private $price;
     
     
     public function __construct(){
         
         $this->date = new \Datetime();
-        $this->price = 0;
     }
 
     /**
@@ -516,30 +507,6 @@ class UrineLrc
     public function getPigBilaires()
     {
         return $this->pigBilaires;
-    }
-
-    /**
-     * Set price
-     *
-     * @param float $price
-     *
-     * @return UrineLrc
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * Get price
-     *
-     * @return float
-     */
-    public function getPrice()
-    {
-        return $this->price;
     }
 
     /**

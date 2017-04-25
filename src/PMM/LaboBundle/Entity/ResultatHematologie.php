@@ -6,16 +6,16 @@ use Doctrine\ORM\Mapping as ORM;
 use PMM\LaboBundle\Entity\Bulletin;
 
 /**
- * Hematologie
+ * ResultatHematologie
  *
- * @ORM\Table(name="hematologie")
- * @ORM\Entity(repositoryClass="PMM\LaboBundle\Repository\HematologieRepository")
+ * @ORM\Table(name="resultat_hematologie")
+ * @ORM\Entity(repositoryClass="PMM\LaboBundle\Repository\ResultatHematologieRepository")
  */
-class Hematologie
+class ResultatHematologie
 {
     
     /**
-     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Bulletin", mappedBy="hematologie")
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Bulletin", mappedBy="rHematologie")
      * @ORM\JoinColumn(name="bulletin_id", referencedColumnName="id")
      */
     private $bulletin;
@@ -57,18 +57,11 @@ class Hematologie
      */
     private $tauxHemoglobine;
     
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="price", type="float")
-     */
-    private $price;
-    
+
     
     public function __construct(){
         
         $this->date = new \Datetime();
-        $this->price = 0;
     }
 
 
@@ -179,29 +172,6 @@ class Hematologie
         return $this->tauxHemoglobine;
     }
 
-    /**
-     * Set price
-     *
-     * @param float $price
-     *
-     * @return Hematologie
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * Get price
-     *
-     * @return float
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
 
     /**
      * Set bulletin

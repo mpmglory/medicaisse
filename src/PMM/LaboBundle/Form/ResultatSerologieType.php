@@ -10,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 
-class BulFillSerologieType extends AbstractType
+class ResultatSerologieType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -93,7 +93,7 @@ class BulFillSerologieType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'PMM\LaboBundle\Entity\Serologie'
+            'data_class' => 'PMM\LaboBundle\Entity\ResultatSerologie'
         ));
     }
 
@@ -102,7 +102,7 @@ class BulFillSerologieType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'pmm_labobundle_serologie';
+        return 'pmm_labobundle_resultatserologie';
     }
 
 

@@ -6,16 +6,16 @@ use Doctrine\ORM\Mapping as ORM;
 use PMM\LaboBundle\Entity\Bulletin;
 
 /**
- * PcvPu
+ * ResultatPcvPu
  *
- * @ORM\Table(name="pcv_pu")
- * @ORM\Entity(repositoryClass="PMM\LaboBundle\Repository\PcvPuRepository")
+ * @ORM\Table(name="resultat_pcv_pu")
+ * @ORM\Entity(repositoryClass="PMM\LaboBundle\Repository\ResultatPcvPuRepository")
  */
-class PcvPu
+class ResultatPcvPu
 {
     
     /**
-     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Bulletin", mappedBy="pcvPu")
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Bulletin", mappedBy="rPcvPu")
      * @ORM\JoinColumn(name="bulletin_id", referencedColumnName="id")
      */
     private $bulletin;
@@ -182,19 +182,11 @@ class PcvPu
      * @ORM\Column(name="ph", type="text", nullable=true)
      */
     private $ph;
-    
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="price", type="float")
-     */
-    private $price;
-    
+        
     
     public function __construct(){
         
         $this->date = new \Datetime();
-        $this->price = 0;
     }
 
 
@@ -738,29 +730,6 @@ class PcvPu
         return $this->ph;
     }
 
-    /**
-     * Set price
-     *
-     * @param float $price
-     *
-     * @return PcvPu
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * Get price
-     *
-     * @return float
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
 
     /**
      * Set bulletin

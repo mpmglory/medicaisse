@@ -22,13 +22,13 @@ class BulFillType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('pcvPu', BulFillPcvPuType::class)
-            ->add('ecbuCu', BulFillEcbuCuType::class)
-            ->add('biochimie', BulFillBiochimieType::class)
-            ->add('urineLrc', BulFillUrineLrcType::class)
-            ->add('serologie', BulFillSerologieType::class)
-            ->add('formuleLeucocytaire', BulFillFormuleLeucocytaireType::class)
-            ->add('hematologie', BulFillHematologieType::class)
+            ->add('rPcvPu', ResultatPcvPuType::class)
+            ->add('rEcbuCu', ResultatEcbuCuType::class)
+            ->add('rBiochimie', ResultatBiochimieType::class)
+            ->add('rUrineLrc', ResultatUrineLrcType::class)
+            ->add('rSerologie', ResultatSerologieType::class)
+            ->add('rFormuleLeucocytaire', ResultatFormuleLeucocytaireType::class)
+            ->add('rHematologie', ResultatHematologieType::class)
             ->add('submit', SubmitType::class, array('label' => 'Enregistrer les résultats'));
         
         $builder->addEventListener(
@@ -42,31 +42,31 @@ class BulFillType extends AbstractType
                 }
             
                 if(null === $bul->getPcvPu()->getEtatCol()){
-                    $event->getForm()->remove('pcvPu');
+                    $event->getForm()->remove('rPcvPu');
                 }
             
                 if(null === $bul->getEcbuCu()->getAspect()){
-                    $event->getForm()->remove('ecbuCu');
+                    $event->getForm()->remove('rEcbuCu');
                 }
             
                 if(null === $bul->getBiochimie()->getUree()){
-                    $event->getForm()->remove('biochimie');
+                    $event->getForm()->remove('rBiochimie');
                 }
             
                 if(null === $bul->getUrineLrc()->getPh()){
-                    $event->getForm()->remove('urineLrc');
+                    $event->getForm()->remove('rUrineLrc');
                 }
             
                 if(null === $bul->getFormuleLeucocytaire()->getNeutrophiles()){
-                    $event->getForm()->remove('formuleLeucocytaire');
+                    $event->getForm()->remove('rFormuleLeucocytaire');
                 }
                 
                 if(null === $bul->getHematologie()->getGlobulesBlancs()){
-                    $event->getForm()->remove('hematologie');
+                    $event->getForm()->remove('rHematologie');
                 }
             
                 if(0 == $bul->getSerologie()->getPrice()){
-                    $event->getForm()->remove('serologie');
+                    $event->getForm()->remove('rSerologie');
                 }
             
                 if( (0 == $bul->getSerologie()->getPrice()) && 

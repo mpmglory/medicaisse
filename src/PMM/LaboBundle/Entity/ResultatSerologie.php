@@ -6,16 +6,16 @@ use Doctrine\ORM\Mapping as ORM;
 use PMM\LaboBundle\Entity\Bulletin;
 
 /**
- * Serologie
+ * ResultatSerologie
  *
- * @ORM\Table(name="serologie")
- * @ORM\Entity(repositoryClass="PMM\LaboBundle\Repository\SerologieRepository")
+ * @ORM\Table(name="resultat_serologie")
+ * @ORM\Entity(repositoryClass="PMM\LaboBundle\Repository\ResultatSerologieRepository")
  */
-class Serologie
+class ResultatSerologie
 {
     
     /**
-     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Bulletin", mappedBy="serologie")
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Bulletin", mappedBy="rSerologie")
      * @ORM\JoinColumn(name="bulletin_id", referencedColumnName="id")
      */
     private $bulletin;
@@ -120,25 +120,10 @@ class Serologie
      */
     private $fr;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="selles", type="text", nullable=true)
-     */
-    private $selles;
-    
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="price", type="float")
-     */
-    private $price;
-    
     
     public function __construct(){
         
         $this->date = new \Datetime();
-        $this->price = 0;
     }
 
 
@@ -487,30 +472,6 @@ class Serologie
     public function getSelles()
     {
         return $this->selles;
-    }
-
-    /**
-     * Set price
-     *
-     * @param float $price
-     *
-     * @return Serologie
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * Get price
-     *
-     * @return float
-     */
-    public function getPrice()
-    {
-        return $this->price;
     }
 
     /**

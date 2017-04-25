@@ -6,15 +6,15 @@ use Doctrine\ORM\Mapping as ORM;
 use PMM\LaboBundle\Entity\Bulletin;
 
 /**
- * EcbuCu
+ * ResultatEcbuCu
  *
- * @ORM\Table(name="ecbu_cu")
- * @ORM\Entity(repositoryClass="PMM\LaboBundle\Repository\EcbuCuRepository")
+ * @ORM\Table(name="resultat_ecbu_cu")
+ * @ORM\Entity(repositoryClass="PMM\LaboBundle\Repository\ResultatEcbuCuRepository")
  */
-class EcbuCu
+class ResultatEcbuCu
 {
     /**
-     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Bulletin", mappedBy="ecbuCu")
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Bulletin", mappedBy="rEcbuCu")
      * @ORM\JoinColumn(name="bulletin_id", referencedColumnName="id")
      */
     private $bulletin;
@@ -175,19 +175,11 @@ class EcbuCu
      * @ORM\Column(name="ecAutres", type="text", nullable=true)
      */
     private $ecAutres;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="price", type="float")
-     */
-    private $price;
     
     
     public function __construct(){
         
         $this->date = new \Datetime();
-        $this->price = 0;
     }
    
 
@@ -705,29 +697,6 @@ class EcbuCu
         return $this->ecAutres;
     }
 
-    /**
-     * Set price
-     *
-     * @param float $price
-     *
-     * @return EcbuCu
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * Get price
-     *
-     * @return float
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
 
     /**
      * Set bulletin

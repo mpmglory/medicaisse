@@ -7,6 +7,9 @@ use PMM\LaboBundle\Entity\FormuleLeucocytaire;
 use PMM\LaboBundle\Entity\Hematologie;
 use PMM\LaboBundle\Entity\PcvPu;
 use PMM\LaboBundle\Entity\Serologie;
+use PMM\LaboBundle\Entity\EcbuCu;
+use PMM\LaboBundle\Entity\UrineLrc;
+use PMM\LaboBundle\Entity\Biochimie;
 
 /**
  * Bulletin
@@ -29,9 +32,19 @@ class Bulletin
     private $formuleLeucocytaire;
     
     /**
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\ResultatFormuleLeucocytaire", inversedBy="bulletin", cascade={"persist", "remove"})
+     */
+    private $rFormuleLeucocytaire;
+    
+    /**
      * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Hematologie", inversedBy="bulletin", cascade={"persist", "remove"})
      */
     private $hematologie;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\ResultatHematologie", inversedBy="bulletin", cascade={"persist", "remove"})
+     */
+    private $rHematologie;
     
     /**
      * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\PcvPu", inversedBy="bulletin", cascade={"persist", "remove"})
@@ -39,9 +52,19 @@ class Bulletin
     private $pcvPu;
     
     /**
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\ResultatPcvPu", inversedBy="bulletin", cascade={"persist", "remove"})
+     */
+    private $rPcvPu;
+    
+    /**
      * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Serologie", inversedBy="bulletin", cascade={"persist", "remove"})
      */
     private $serologie;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\ResultatSerologie", inversedBy="bulletin", cascade={"persist", "remove"})
+     */
+    private $rSerologie;
     
     /**
      * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Biochimie", inversedBy="bulletin", cascade={"persist", "remove"})
@@ -49,14 +72,29 @@ class Bulletin
     private $biochimie;
     
     /**
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\ResultatBiochimie", inversedBy="bulletin", cascade={"persist", "remove"})
+     */
+    private $rBiochimie;
+    
+    /**
      * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\UrineLrc", inversedBy="bulletin", cascade={"persist", "remove"})
      */
     private $urineLrc;
     
     /**
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\ResultatUrineLrc", inversedBy="bulletin", cascade={"persist", "remove"})
+     */
+    private $rUrineLrc;
+    
+    /**
      * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\EcbuCu", inversedBy="bulletin", cascade={"persist", "remove"})
      */
     private $ecbuCu;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\ResultatEcbuCu", inversedBy="bulletin", cascade={"persist", "remove"})
+     */
+    private $rEcbuCu;
     
     /**
      * @var int
@@ -382,5 +420,187 @@ class Bulletin
     public function getEcbuCu()
     {
         return $this->ecbuCu;
+    }
+
+    /**
+     * Set rFormuleLeucocytaire
+     *
+     * @param \PMM\LaboBundle\Entity\ResultatFormuleLeucocytaire $rFormuleLeucocytaire
+     *
+     * @return Bulletin
+     */
+    public function setRFormuleLeucocytaire(\PMM\LaboBundle\Entity\ResultatFormuleLeucocytaire $rFormuleLeucocytaire = null)
+    {
+        $this->rFormuleLeucocytaire = $rFormuleLeucocytaire;
+        
+        $rFormuleLeucocytaire->setBulletin($this);
+
+        return $this;
+    }
+
+    /**
+     * Get rFormuleLeucocytaire
+     *
+     * @return \PMM\LaboBundle\Entity\ResultatFormuleLeucocytaire
+     */
+    public function getRFormuleLeucocytaire()
+    {
+        return $this->rFormuleLeucocytaire;
+    }
+
+    /**
+     * Set rHematologie
+     *
+     * @param \PMM\LaboBundle\Entity\ResultatHematologie $rHematologie
+     *
+     * @return Bulletin
+     */
+    public function setRHematologie(\PMM\LaboBundle\Entity\ResultatHematologie $rHematologie = null)
+    {
+        $this->rHematologie = $rHematologie;
+        
+        $rHematologie->setBulletin($this);
+
+        return $this;
+    }
+
+    /**
+     * Get rHematologie
+     *
+     * @return \PMM\LaboBundle\Entity\ResultatHematologie
+     */
+    public function getRHematologie()
+    {
+        return $this->rHematologie;
+    }
+
+    /**
+     * Set rPcvPu
+     *
+     * @param \PMM\LaboBundle\Entity\ResultatPcvPu $rPcvPu
+     *
+     * @return Bulletin
+     */
+    public function setRPcvPu(\PMM\LaboBundle\Entity\ResultatPcvPu $rPcvPu = null)
+    {
+        $this->rPcvPu = $rPcvPu;
+        
+        $rPcvPu->setBulletin($this);
+
+        return $this;
+    }
+
+    /**
+     * Get rPcvPu
+     *
+     * @return \PMM\LaboBundle\Entity\ResultatPcvPu
+     */
+    public function getRPcvPu()
+    {
+        return $this->rPcvPu;
+    }
+
+    /**
+     * Set rSerologie
+     *
+     * @param \PMM\LaboBundle\Entity\ResultatSerologie $rSerologie
+     *
+     * @return Bulletin
+     */
+    public function setRSerologie(\PMM\LaboBundle\Entity\ResultatSerologie $rSerologie = null)
+    {
+        $this->rSerologie = $rSerologie;
+            
+        $rSerologie->setBulletin($this);
+
+        return $this;
+    }
+
+    /**
+     * Get rSerologie
+     *
+     * @return \PMM\LaboBundle\Entity\ResultatSerologie
+     */
+    public function getRSerologie()
+    {
+        return $this->rSerologie;
+    }
+
+    /**
+     * Set rBiochimie
+     *
+     * @param \PMM\LaboBundle\Entity\ResultatBiochimie $rBiochimie
+     *
+     * @return Bulletin
+     */
+    public function setRBiochimie(\PMM\LaboBundle\Entity\ResultatBiochimie $rBiochimie = null)
+    {
+        $this->rBiochimie = $rBiochimie;
+            
+        $rBiochimie->setBulletin($this);
+
+        return $this;
+    }
+
+    /**
+     * Get rBiochimie
+     *
+     * @return \PMM\LaboBundle\Entity\ResultatBiochimie
+     */
+    public function getRBiochimie()
+    {
+        return $this->rBiochimie;
+    }
+
+    /**
+     * Set rUrineLrc
+     *
+     * @param \PMM\LaboBundle\Entity\ResultatUrineLrc $rUrineLrc
+     *
+     * @return Bulletin
+     */
+    public function setRUrineLrc(\PMM\LaboBundle\Entity\ResultatUrineLrc $rUrineLrc = null)
+    {
+        $this->rUrineLrc = $rUrineLrc;
+            
+        $rUrineLrc->setBulletin($this);
+
+        return $this;
+    }
+
+    /**
+     * Get rUrineLrc
+     *
+     * @return \PMM\LaboBundle\Entity\ResultatUrineLrc
+     */
+    public function getRUrineLrc()
+    {
+        return $this->rUrineLrc;
+    }
+
+    /**
+     * Set rEcbuCu
+     *
+     * @param \PMM\LaboBundle\Entity\ResultatEcbuCu $rEcbuCu
+     *
+     * @return Bulletin
+     */
+    public function setREcbuCu(\PMM\LaboBundle\Entity\ResultatEcbuCu $rEcbuCu = null)
+    {
+        $this->rEcbuCu = $rEcbuCu;
+            
+        $rEcbuCu->setBulletin($this);
+
+        return $this;
+    }
+
+    /**
+     * Get rEcbuCu
+     *
+     * @return \PMM\LaboBundle\Entity\ResultatEcbuCu
+     */
+    public function getREcbuCu()
+    {
+        return $this->rEcbuCu;
     }
 }

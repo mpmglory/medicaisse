@@ -10,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 
-class BulFillBiochimieType extends AbstractType
+class ResultatBiochimieType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -43,7 +43,7 @@ class BulFillBiochimieType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'PMM\LaboBundle\Entity\Biochimie'
+            'data_class' => 'PMM\LaboBundle\Entity\ResultatBiochimie'
         ));
     }
 
@@ -52,7 +52,7 @@ class BulFillBiochimieType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'pmm_labobundle_biochimie';
+        return 'pmm_labobundle_resultatbiochimie';
     }
 
 
