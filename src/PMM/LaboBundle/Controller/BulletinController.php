@@ -5,6 +5,7 @@ namespace PMM\LaboBundle\Controller;
 use PMM\LaboBundle\Entity\Bulletin;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use PMM\LaboBundle\Entity\ResultatSerologie;
 
 /**
  * Bulletin controller.
@@ -39,6 +40,7 @@ class BulletinController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+                            
             $em->persist($bulletin);
             $em->flush();
 
@@ -126,12 +128,6 @@ class BulletinController extends Controller
     public function fillAction(Request $request, Bulletin $bulletin){
         
         $em = $this->getDoctrine()->getManager();
-        
-        //$bulletin = $em->getRepository('PMMLaboBundle:Bulletin')->find($id);
-        
-        /*if(null === $bul){
-            throw new NotFoundException("Le bulletin numéro " .$id. " n'existe pas.");
-        }*/
         
     	$form = $this->createForm('PMM\LaboBundle\Form\BulFillType', $bulletin);
 			

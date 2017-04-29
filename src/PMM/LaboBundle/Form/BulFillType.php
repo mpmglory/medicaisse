@@ -67,6 +67,49 @@ class BulFillType extends AbstractType
             
                 if(0 == $bul->getSerologie()->getPrice()){
                     $event->getForm()->remove('rSerologie');
+                }else{
+                    
+                    $serol = $bul->getSerologie();
+                    
+                    /*if(null === $serol->getVih()){
+                        $event->getForm()->getrSerologie()->remove('vih');
+                    }*/
+                    /*if(null === $serol->getAlso()){
+                        $event->getForm()->getrSerologie()->remove('also');
+                    }*/
+                    /*if(null === $serol->getCrp()){
+                            $event->getForm()->remove('crp');
+                        }
+                    if(null === $serol->getTpha()){
+                            $event->getForm()->remove('tpha');
+                        }
+                    if(null === $serol->getVdrl()){
+                            $event->getForm()->remove('vdrl');
+                        }
+                    if(null === $serol->getAgHbs()){
+                            $event->getForm()->remove('agHbs');
+                        }
+                    if(null === $serol->getToxoIgg()){
+                            $event->getForm()->remove('toxoIgg');
+                        }
+                    if(null === $serol->getWidalTest()){
+                            $event->getForm()->remove('widalTest');
+                        }
+                    if(null === $serol->getRubeole()){
+                            $event->getForm()->remove('rubeole');
+                        }
+                    if(null === $serol->getHcv()){
+                            $event->getForm()->remove('hcv');
+                        }
+                    if(null === $serol->getChlamydia()){
+                            $event->getForm()->remove('chlamydia');
+                        }
+                    if(null === $serol->getFr()){
+                            $event->getForm()->remove('fr');
+                        }
+                    if(null === $serol->getSelles()){
+                            $event->getForm()->remove('selles');
+                        }*/
                 }
             
                 if( (0 == $bul->getSerologie()->getPrice()) && 

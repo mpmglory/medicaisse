@@ -4,3 +4,8 @@ services:
         tags:
             - { name: doctrine.event_listener, event: prePersist}
             - { name: doctrine.event_listener, event: postPersist}
+            
+    pmm_labo.creation_resultat_vide:
+        class: PMM\LaboBundle\CreationResultatVide\CreationResultatVide
+        tags:
+            - { name: doctrine.event_listener, event: postPersist}

@@ -27,6 +27,18 @@ class Bulletin
     private $patient;
     
     /**
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Caisse1", inversedBy="bulletin")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $caisse1;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\Caisse2", inversedBy="bulletin")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $caisse2;
+    
+    /**
      * @ORM\OneToOne(targetEntity="PMM\LaboBundle\Entity\FormuleLeucocytaire", inversedBy="bulletin", cascade={"persist", "remove"})
      */
     private $formuleLeucocytaire;
@@ -602,5 +614,55 @@ class Bulletin
     public function getREcbuCu()
     {
         return $this->rEcbuCu;
+    }
+
+
+
+    /**
+     * Set caisse1
+     *
+     * @param \PMM\LaboBundle\Entity\Caisse1 $caisse1
+     *
+     * @return Bulletin
+     */
+    public function setCaisse1(\PMM\LaboBundle\Entity\Caisse1 $caisse1 = null)
+    {
+        $this->caisse1 = $caisse1;
+
+        return $this;
+    }
+
+    /**
+     * Get caisse1
+     *
+     * @return \PMM\LaboBundle\Entity\Caisse1
+     */
+    public function getCaisse1()
+    {
+        return $this->caisse1;
+    }
+
+    /**
+     * Set caisse2
+     *
+     * @param \PMM\LaboBundle\Entity\Caisse2 $caisse2
+     *
+     * @return Bulletin
+     */
+    public function setCaisse2(\PMM\LaboBundle\Entity\Caisse2 $caisse2 = null)
+    {
+        $this->caisse2 = $caisse2;
+
+        return $this;
+    }
+
+    /**
+     * Get caisse2
+     *
+     * @return \PMM\LaboBundle\Entity\Caisse2
+     */
+    public function getCaisse2()
+    {
+        return $this->caisse2;
     }
 }

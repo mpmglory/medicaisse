@@ -11,6 +11,8 @@ use PMM\LaboBundle\Entity\PcvPu;
 use PMM\LaboBundle\Entity\Biochimie;
 use PMM\LaboBundle\Entity\UrineLrc;
 use PMM\LaboBundle\Entity\EcbuCu;
+use PMM\LaboBundle\Entity\Caisse1;
+use PMM\LaboBundle\Entity\Caisse2;
 
 
 class CalculAmount{
@@ -271,8 +273,21 @@ class CalculAmount{
             }
 
             $entity->setAmount($amt);
-            
             $em->persist($entity);
+                        
+            $caisse1 = new Caisse1();
+            $caisse1->setBulletin($entity);
+            $caisse1->setValue( ($amt)*0.75 );
+            $em->persist($caisse1);
+                    
+            $caisse2 = new Caisse2();
+            $caisse2->setBulletin($entity);
+            $caisse2->setValue( ($amt)*0.25 );
+            $em->persist($caisse2);
+            
+            $entity->setCaisse1($caisse1);
+            $entity->setCaisse2($caisse2);
+            
             $em->flush();
             
         }

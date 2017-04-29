@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Resultatserologies list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Vih</th>
+                <th>Also</th>
+                <th>Crp</th>
+                <th>Tpha</th>
+                <th>Vdrl</th>
+                <th>Aghbs</th>
+                <th>Toxoigg</th>
+                <th>Widaltest</th>
+                <th>Rubeole</th>
+                <th>Hcv</th>
+                <th>Chlamydia</th>
+                <th>Fr</th>
+                <th>Selles</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for resultatSerologie in resultatSerologies %}
+            <tr>
+                <td><a href="{{ path('resultatserologie_show', { 'id': resultatSerologie.id }) }}">{{ resultatSerologie.id }}</a></td>
+                <td>{% if resultatSerologie.date %}{{ resultatSerologie.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ resultatSerologie.vih }}</td>
+                <td>{{ resultatSerologie.also }}</td>
+                <td>{{ resultatSerologie.crp }}</td>
+                <td>{{ resultatSerologie.tpha }}</td>
+                <td>{{ resultatSerologie.vdrl }}</td>
+                <td>{{ resultatSerologie.agHbs }}</td>
+                <td>{{ resultatSerologie.toxoIgg }}</td>
+                <td>{{ resultatSerologie.widalTest }}</td>
+                <td>{{ resultatSerologie.rubeole }}</td>
+                <td>{{ resultatSerologie.hcv }}</td>
+                <td>{{ resultatSerologie.chlamydia }}</td>
+                <td>{{ resultatSerologie.fr }}</td>
+                <td>{{ resultatSerologie.selles }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('resultatserologie_show', { 'id': resultatSerologie.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('resultatserologie_edit', { 'id': resultatSerologie.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('resultatserologie_new') }}">Create a new resultatSerologie</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -29,3 +29,7 @@ pmm_labo_ecbucu:
 pmm_labo_urinelrc:
     resource: "@PMMLaboBundle/Resources/config/routing/urinelrc.yml"
     prefix:   /urinelrc
+    
+pmm_labo_resultatserologie:
+    resource: "@PMMLaboBundle/Resources/config/routing/resultatserologie.yml"
+    prefix:   /resultatserologie

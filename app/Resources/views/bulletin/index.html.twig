@@ -126,7 +126,7 @@ Gestion des bulletins médicaux
                     </ol>
                 </td>
                 
-                <td>{% if bulletin.date %}{{ bulletin.date|date('d-m-Y') }}{% endif %}</td>
+                <td>{% if bulletin.date %}{{ bulletin.date|date('d-m-Y H:i:s') }}{% endif %}</td>
                 <td><h3>{{ bulletin.amount | number_format(0, ',', '.') }}</h3></td>
                 <td>
                     <ul>
