@@ -10,9 +10,10 @@ Gestion des bulletins médicaux
 {% block menu %}
 
 	<ul class="nav nav-pills nav-stacked">
-
+        {% if is_granted("ROLE_CAISSE") %}
         <a href="{{ path('bulletin_new') }}" class="btn btn-primary btn-block btn-lg">
-            <span class="glyphicon glyphicon-plus"></span>Créer un bulletin</a><p>  </p>        
+            <span class="glyphicon glyphicon-plus"></span>Créer un bulletin</a><p>  </p>
+        {% endif %}
 	</ul>
 
 {% endblock %}
@@ -130,18 +131,24 @@ Gestion des bulletins médicaux
                 <td><h3>{{ bulletin.amount | number_format(0, ',', '.') }}</h3></td>
                 <td>
                     <ul>
+                        {% if is_granted("ROLE_LABO") %}
                         <li>
                             <a href="{{ path('bulletin_fill', { 'id': bulletin.id }) }}">Remplir</a>
                         </li>
+                        {% endif %}
                         <li>
                             <a href="{{ path('bulletin_show', { 'id': bulletin.id }) }}">Afficher</a>
                         </li>
-                        <li>
+                        {% if is_granted("ROLE_CAISSE") %}
+                        <li>  
                             <a href="{{ path('bulletin_edit', { 'id': bulletin.id }) }}">Modifier</a>
                         </li>
+                        {% endif %}
+                        {% if is_granted("ROLE_LABO") %}
                         <li>
                             <a href="{{ path('bulletin_print', { 'id': bulletin.id }) }}">Imprimer</a>
                         </li>
+                        {% endif %}
                     </ul>
                 </td>
             </tr>

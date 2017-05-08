@@ -1,0 +1,4 @@
+pmm_user_user:
+    resource: "@PMMUserBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+

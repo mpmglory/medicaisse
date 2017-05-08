@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title2 %}
+Gestion des patients
+{% endblock %}
+
+{% block menu %}
+
+	<ul class="nav nav-pills nav-stacked">
+
+        <a href="{{ path('patient_new') }}" class="btn btn-primary btn-block btn-lg">
+            <span class="glyphicon glyphicon-plus"></span>Nouveau patient</a><p>  </p>        
+	</ul>
+
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="form-group pull-right">
+            <input type="text" class="search form-control" placeholder="Que recherchez-vous?">
+        </div>
+        <span class="counter pull-right"></span>
+    </div>
+
+    <div class="row">
+    <table class="table table-bordered table-hover table-striped results">
+        <thead>
+            <tr>
+                <th>Noms et prénoms</th>
+                <th>Téléphone</th>
+                <th>Sexe</th>
+                <th>Né (e) le</th>
+                <th>Date d'enregistrement</th>
+                <th>Groupe sanguin</th>
+                <th>Actions</th>
+            </tr>
+            <tr class="warning no-result">
+                <td colspan="4"><i class="fa fa-warning"></i> Aucun resultat trouvé</td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for patient in patients %}
+            <tr>
+                <td><a href="{{ path('patient_show', { 'id': patient.id }) }}">{{ patient.name }}</a></td>
+                <td>{{ patient.telephone }}</td>
+                <td>{{ patient.sex }}</td>
+                <td>{% if patient.bornDate %}{{ patient.bornDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ patient.bloodGroup }}</td>
+                <td>{% if patient.date %}{{ patient.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('bulletin_custum-new', { 'id': patient.id }) }} ">Créer bulletin</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('patient_show', { 'id': patient.id }) }}">Afficher infos</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('patient_edit', { 'id': patient.id }) }}">Modifier</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endblock %}

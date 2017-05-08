@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        div { padding-top: 10px;}
+    </style>
+    
+    <link rel="stylesheet" href="{{ asset('bundles/pmmcore/css/bootstrap.min.css') }}">
+    <title>Bulletin de {{ bulletin.patient.name }}</title>
+</head>
+<body>
+    <div class="container">
+        <div id ="en-tete" class="row">
+            <div class="col-xs-5">
+                <center><p>MINISTERE DE LA SANTE PUBLIQUE</p></center>
+                <center><p>DELEGATION REGIONALE DU LITTORAL</p></center>
+                <center><p>DISTRICT DE SANTE DE MANJO</p></center>
+                <center><p><b>HOPITAL DE DISTRICT DE MANJO</b></p></center>
+                <center><p>B.P: 05  Téphone: 243 25 98 00</p></center>
+                <center><p>e-mail: hdmanjo@gmail.com</p></center>
+            </div>
+            <div class="col-xs-2">
+                </center>LOGO HD MANJO</center>
+            </div>
+            <div class="col-xs-5">
+                <center>
+                <p>REPUBLIQUE DU CAMEROUN</p>
+                <p><i>PAIX - TRAVAIL - PATRIE</i></p>
+                </center>
+            </div>
+        </div>
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped">
+                    <tr>
+                        <td><h3>NOMS: {{ bulletin.patient.name }}</h3></td>
+                        <td><h3>SEXE: {{ bulletin.patient.sex }}</h3></td>
+                    </tr>
+                    <tr>
+                        <td><h3>Né (e) le: {{ bulletin.patient.bornDate|date('d-m-Y') }}</h3></td> 
+                        <td><h3>Fait le: {{ bulletin.date|date('d-m-Y') }}</h3></td>
+                    </tr> 
+                </table>
+            </div>
+        </div>
+        {% if bulletin.pcvPu.etatCol is not null and bulletin.pcvPu.price is not null %}
+        <div class="row">
+            <h3><b>PCV ou PU</b></h3>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>EXAMENS</th>
+                            <th>RESULTATS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        
+                        <tr>
+                            <td>PCV</br> ou</br> PU</td>
+                            <td>
+                                <ol>
+                                    <li>Etat de col : {{ bulletin.rPcvPu.etatCol }}</li>
+                                    <li>Leucorrhées : {{ bulletin.rPcvPu.leucorrhees }}</li>
+                                    <li>Etat frais : {{ bulletin.rPcvPu.etatFrais }}</li>
+                                        <ul>
+                                            <li>Cellules épithéliales : {{ bulletin.rPcvPu.efCellulesEpitheliales }}</li>
+                                            <li>Leucocytes : {{ bulletin.rPcvPu.efLeucocytes}}</li>
+                                            <li>Germes: mobiles ou immobiles : {{ bulletin.rPcvPu.efGermes }}</li>
+                                            <li>Eléments levuriformes : {{ bulletin.rPcvPu.efElementsLevuriformes }}</li>
+                                            <li>Trichononas vaginalis : {{ bulletin.rPcvPu.efTrichononasVaginalis }}</li>
+                                            <li>Clue cell : {{ bulletin.rPcvPu.efClueCell }}</li>
+                                        </ul>
+                                    <li>Etat coloré : (gram) {{ bulletin.rPcvPu.etatColore }}</li>
+                                        <ul>
+                                            <li>Cellules épithéliales : altérés - altérés - +altérés : {{ bulletin.rPcvPu.ecCellulesEpitheliales }}</li>
+                                            <li>Polynucléaires : altérés - altérés - +altérés : {{ bulletin.rPcvPu.ecPolynucleaires}}</li>
+                                            <li>Bacilles gram négatif : {{ bulletin.rPcvPu.ecBacillesGramNegatif }}</li>
+                                            <li>Bacilles gram positif : {{ bulletin.rPcvPu.ecBacillesGramPositif }}</li>
+                                            <li>Cocci gram positif : {{ bulletin.rPcvPu.ecCocciGramPositif }}</li>
+                                            <li>Cocci gram négatif : {{ bulletin.rPcvPu.ecCocciGramNegatif }}</li>
+                                            <li>Spores mycosiques : {{ bulletin.rPcvPu.ecSporesMycosiques }}</li>
+                                            <li>Filaments myceliens : {{ bulletin.rPcvPu.ecFilamentsMyceliens }}</li>
+                                            <li>Flore de doderien : {{ bulletin.rPcvPu.ecFloreDoderiein }}</li>
+                                        </ul>
+                                    <li>KOH : {{ bulletin.rPcvPu.koh }}</li>
+                                    <li>PH : {{ bulletin.rPcvPu.ph }}</li>
+                                </ol>
+                            </td>
+                        </tr>
+                        
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+        {% if bulletin.pcvPu.etatCol is not null and bulletin.pcvPu.price is not null %}
+        <div class="row">
+            <h3><b>ECBU ou CULOT URINAIRE</b></h3>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>EXAMENS</th>
+                            <th>RESULTATS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+  
+                        <tr>
+                            <td>ECBU</br> ou</br> CULOT URINAIRE</td>
+                            <td>
+                                <ol>
+                                    <li>Aspect : {{ bulletin.rEcbuCu.aspect }}</li>
+                                    <li>Etat frais : {{ bulletin.rEcbuCu.etatFrais }}</li>
+                                        <ul>
+                                            <li>Cellules épithéliales : {{ bulletin.rEcbuCu.efCellulesEpitheliales }}</li>
+                                            <li>Leucocytes : {{ bulletin.rEcbuCu.efLeucocytes}}</li>
+                                            <li>Germes: mobiles ou immobiles : {{ bulletin.rEcbuCu.efGermes }}</li>
+                                            <li>Eléments levuriformes : {{ bulletin.rEcbuCu.efElementsLevuriformes }}</li>
+                                            <li>Parasites : {{ bulletin.rEcbuCu.efParasites }}</li>
+                                            <li>Cristaux : {{ bulletin.rEcbuCu.efCristaux }}</li>
+                                        </ul>
+                                    <li>Etat coloré : (gram) {{ bulletin.rEcbuCu.etatColore }}</li>
+                                        <ul>
+                                            <li>Cellules épithéliales : altérés - altérés - +altérés : {{ bulletin.rEcbuCu.ecCellulesEpitheliales }}</li>
+                                            <li>Polynucléaires : altérés - altérés - +altérés : {{ bulletin.rEcbuCu.ecPolynucleaires}}</li>
+                                            <li>Bacilles gram négatif : {{ bulletin.rEcbuCu.ecBacillesGramNegatif }}</li>
+                                            <li>Bacilles gram positif : {{ bulletin.rEcbuCu.ecBacillesGramPositif }}</li>
+                                            <li>Cocci gram positif : {{ bulletin.rEcbuCu.ecCocciGramPositif }}</li>
+                                            <li>Cocci gram négatif : {{ bulletin.rEcbuCu.ecCocciGramNegatif }}</li>
+                                            <li>Spores mycosiques : {{ bulletin.rEcbuCu.ecSporesMycosiques }}</li>
+                                            <li>Filaments myceliens : {{ bulletin.rEcbuCu.ecFilamentsMyceliens }}</li>
+                                        </ul>
+                                </ol>
+                            </td>
+                        </tr>
+                        
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+        
+        <div class="row">
+            <div class="col-sm-6">
+                {% if bulletin.hematologie is not null and bulletin.hematologie.price != 0 %}
+                <div class="table-responsive"> 
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <h3><b>HEMATOLOGIE</b></h3>
+                        <tr>
+                            <th>Numération</th>
+                            <th>Résultats</th>
+                            <th>Valeurs usuelles</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Globules blancs</td>
+                            <td>{{ bulletin.rHematologie.globulesBlancs }}  </td>
+                            <td>4 à 10 000 / mm cube</td>
+                        </tr>
+
+                        <tr>
+                            <td>Globules rouges</td>
+                            <td> {{ bulletin.rHematologie.globulesRouges }} </td>
+                            <td>4 à 5 500 000 / mm cube</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Taux d'hémoglobine</td>
+                            <td>{{ bulletin.rHematologie.tauxHemoglobine }}  </td>
+                            <td>H: 14-18 g / dl</br>F: 12-16 g / dl</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+                {% endif %}
+                
+                {% if bulletin.formuleLeucocytaire is not null and bulletin.formuleLeucocytaire.price != 0 %}
+                <div class="table-responsive"> 
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <h3><b>FORMULE LEUCOCYTAIRE</b></h3>
+                        <tr>
+                            <th>Numération</th>
+                            <th>Résultats</th>
+                            <th>Valeurs usuelles</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Neutrophiles</td>
+                            <td>{{ bulletin.rFormuleLEucocytaire.neutrophiles }}  </td>
+                            <td>40 - 75 %</td>
+                        </tr>
+                        <tr>
+                            <td>Eosinophiles</td>
+                            <td>{{ bulletin.rFormuleLEucocytaire.eosinophiles }}  </td>
+                            <td>0 - 5 %</td>
+                        </tr>
+                        <tr>
+                            <td>Basophiles</td>
+                            <td>{{ bulletin.rFormuleLEucocytaire.basophiles }}  </td>
+                            <td>0 - 1 %</td>
+                        </tr>
+                        <tr>
+                            <td>Lymphocytes</td>
+                            <td>{{ bulletin.rFormuleLEucocytaire.lymphocytes }}  </td>
+                            <td>20 - 45 %</td>
+                        </tr>
+                        <tr>
+                            <td>Monocytes</td>
+                            <td>{{ bulletin.rFormuleLEucocytaire.monocytes }}  </td>
+                            <td>0 - 10 %</td>
+                        </tr>
+                        <tr>
+                            <td>V.S 1ere H</td>
+                            <td>{{ bulletin.rFormuleLEucocytaire.vS1 }}  </td>
+                            <td>H - 3 mm / F - 6 mm</td>
+                        </tr>
+                        <tr>
+                            <td>V.S 2e H</td>
+                            <td>{{ bulletin.rFormuleLEucocytaire.vS2 }}  </td>
+                            <td>H 8 mm / F - 16 mm</td>
+                        </tr>
+                        <tr>
+                            <td>Groupe sanguin</td>
+                            <td>{{ bulletin.rFormuleLEucocytaire.gpeSanguin }}  </td>
+                            
+                        </tr>
+                        <tr>
+                            <td>Goutte Epaisse</td>
+                            <td>{{ bulletin.rFormuleLEucocytaire.goutteEpaisse }}  </td>
+                            
+                        </tr>
+                        <tr>
+                            <td>Test d'Emmel</td>
+                            <td>{{ bulletin.rFormuleLEucocytaire.testEmmel }}  </td>
+                            
+                        </tr>
+                        <tr>
+                            <td>RMF / SNIF (Etats frais)</td>
+                            <td>{{ bulletin.rFormuleLEucocytaire.rmfSnif }}  </td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+                {% endif %}
+                
+                {% if bulletin.serologie is not null and bulletin.serologie.price != 0 %}
+                <div class="table-responsive"> 
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <h3>  </h3>
+                        <h3><b>SEROLOGIE</b></h3>
+                        <tr>
+                            <th>EXAMENS</th>
+                            <th>RESULTATS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% if bulletin.rSerologie.vih is not null %}
+                        <tr>
+                            <td>VIH</td>
+                            <td>{{ bulletin.rSerologie.vih }}  </td>
+                        </tr>
+                        {% endif %}
+
+                        {% if bulletin.rSerologie.also is not null %}
+                        <tr>
+                            <td>ALSO</td>
+                            <td> {{ bulletin.rSerologie.also }} </td>
+                        </tr>
+                        {% endif %}
+
+                        {% if bulletin.rSerologie.crp is not null %}
+                        <tr>
+                            <td>CRP</td>
+                            <td> {{ bulletin.rSerologie.crp }} </td>
+                        </tr>
+                        {% endif %} 
+
+                        {% if bulletin.rSerologie.tpha is not null %}
+                        <tr>
+                            <td>TPHA</td>
+                            <td> {{ bulletin.rSerologie.tpha }} </td>
+                        </tr>
+                        {% endif %}   
+                        {% if bulletin.rSerologie.vdrl is not null %}
+                        <tr>
+                            <td>VDRL</td>
+                            <td> {{ bulletin.rSerologie.vdrl }} </td>
+                        </tr>
+                        {% endif %} 
+
+                        {% if bulletin.rSerologie.agHbs is not null %}
+                        <tr>
+                            <td>Ag Hbs</td>
+                            <td> {{ bulletin.rSerologie.agHbs }} </td>
+                        </tr>
+                        {% endif %}  
+
+                        {% if bulletin.rSerologie.toxoIgg is not null %}
+                        <tr>
+                            <td>TOXO IgG</td>
+                            <td> {{ bulletin.rSerologie.toxoIgg }} </td>
+                        </tr>
+                        {% endif %} 
+
+                        {% if bulletin.serologie.widalTest is not null %}
+                        <tr>
+                            <td>WIDAL Test</td>
+                            <td> {{ bulletin.rSerologie.widalTest }} </td>
+                        </tr>
+                        {% endif %}  
+
+                        {% if bulletin.rSerologie.rubeole is not null %}
+                        <tr>
+                            <td>Rubeole</td>
+                            <td> {{ bulletin.rSerologie.rubeole }} </td>
+                        </tr>
+                        {% endif %}   
+
+                        {% if bulletin.rSerologie.hcv is not null %}
+                        <tr>
+                            <td>HCV</td>
+                            <td> {{ bulletin.rSerologie.hcv }} </td>
+                        </tr>
+                        {% endif %} 
+
+                        {% if bulletin.rSerologie.chlamydia is not null %}
+                        <tr>
+                            <td>Chlamydia</td>
+                            <td> {{ bulletin.rSerologie.chlamydia }} </td>
+                        </tr>
+                        {% endif %} 
+
+                        {% if bulletin.rSerologie.fr is not null %}
+                        <tr>
+                            <td>FR</td>
+                            <td> {{ bulletin.rSerologie.fr }} </td>
+                        </tr>
+                        {% endif %}  
+
+                        {% if bulletin.rSerologie.selles is not null %}
+                        <tr>
+                            <td>SELLES</td>
+                            <td> {{ bulletin.rSerologie.selles }} </td>
+                        </tr>
+                        {% endif %}  
+
+                    </tbody>
+                </table>
+            </div>
+                {% endif %}
+            </div>
+            
+            <div class="col-sm-6">
+                {% if bulletin.biochimie is not null and bulletin.biochimie.price != 0 %}
+                <div class="table-responsive"> 
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <h3><b>BIOCHIMIE</b></h3>
+                        <tr>
+                            <th>Numération</th>
+                            <th>Résultats</th>
+                            <th>Valeurs usuelles</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>UREE</td>
+                            <td>{{ bulletin.rBiochimie.uree }}  </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Créatinine</td>
+                            <td>{{ bulletin.rBiochimie.creatinine }}  </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>S.G.O.T</td>
+                            <td>{{ bulletin.rBiochimie.sgot }}  </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>S.G.P.T</td>
+                            <td>{{ bulletin.rBiochimie.sgpt }}  </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>S.G.G.T</td>
+                            <td>{{ bulletin.rBiochimie.sggt }}  </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Acide Urique</td>
+                            <td>{{ bulletin.rBiochimie.acideUrique }}  </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Cholestérol</td>
+                            <td>{{ bulletin.rBiochimie.cholesterol }}  </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Glycémie</td>
+                            <td>{{ bulletin.rBiochimie.glycemie }}  </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Bilirubine</td>
+                            <td>{{ bulletin.rBiochimie.bilirubine }}  </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Magnesémie</td>
+                            <td>{{ bulletin.rBiochimie.magnesemie }}  </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Potassium</td>
+                            <td>{{ bulletin.rBiochimie.potassium }}  </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Triglycéride</td>
+                            <td>{{ bulletin.rBiochimie.triglyceride }}  </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Amylase</td>
+                            <td>{{ bulletin.rBiochimie.amylase }}  </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>PAL</td>
+                            <td>{{ bulletin.rBiochimie.pal }}  </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Calcémie</td>
+                            <td>{{ bulletin.rBiochimie.calcemie }}  </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>C.K</td>
+                            <td>{{ bulletin.rBiochimie.ck }}  </td>
+                            <td></td>
+                        </tr>
+                            
+                    </tbody>
+                </table>
+                </div>
+                {% endif %}
+
+                {% if bulletin.urineLrc is not null and bulletin.urineLrc.price != 0 %}
+                <div class="table-responsive"> 
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <h3><b>URINE ou LRC</b></h3>
+                        <tr>
+                            <th>Numération</th>
+                            <th>Résultats</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>P.H.</td>
+                            <td>{{ bulletin.rUrineLrc.ph }}  </td>
+                        </tr>
+                        <tr>
+                            <td>Protéine</td>
+                            <td>{{ bulletin.rUrineLrc.proteine }}  </td>
+                        </tr>
+                        <tr>
+                            <td>Glucose</td>
+                            <td>{{ bulletin.rUrineLrc.glucose }}  </td>
+                        </tr>
+                        <tr>
+                            <td>Densité</td>
+                            <td>{{ bulletin.rUrineLrc.densite }}  </td>
+                        </tr>
+                        <tr>
+                            <td>Leucocytes</td>
+                            <td>{{ bulletin.rUrineLrc.leucocytes }}  </td>
+                        </tr>
+                        <tr>
+                            <td>Nitrites</td>
+                            <td>{{ bulletin.rUrineLrc.nitrites }}  </td>
+                        </tr>
+                        <tr>
+                            <td>Acétone</td>
+                            <td>{{ bulletin.rUrineLrc.acetone }}  </td>
+                        </tr>
+                        <tr>
+                            <td>Urobilinogène</td>
+                            <td>{{ bulletin.rUrineLrc.urobilinogene }}  </td>
+                        </tr>
+                        <tr>
+                            <td>Biliruine</td>
+                            <td>{{ bulletin.rUrineLrc.bilirubine }}  </td>
+                        </tr>
+                        <tr>
+                            <td>Sang</td>
+                            <td>{{ bulletin.rUrineLrc.sang }}  </td>
+                        </tr>
+                        <tr>
+                            <td>H.B</td>
+                            <td>{{ bulletin.rUrineLrc.hb }}  </td>
+                        </tr>
+                        <tr>
+                            <td>HCG</td>
+                            <td>{{ bulletin.rUrineLrc.hcg }}  </td>
+                        </tr>
+                        <tr>
+                            <td>Sels bilaires</td>
+                            <td>{{ bulletin.rUrineLrc.selsBilaires }}  </td>
+                        </tr>
+                        <tr>
+                            <td>Pig bilaires</td>
+                            <td>{{ bulletin.rUrineLrc.pigBilaires }}  </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                </div>
+                {% endif %}
+            </div>
+            
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4"><p>Le prescripteur</p></div>
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4"><p>Manjo le</p></br><p>Le Major du Laboratoire</p></div>
+        </div>
+        
+    </div>
+</body>
+</html>
+

@@ -28,21 +28,46 @@
 	
 	<body>
 		<div class="container">
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 			<div id="header" class="navbar navbar-inverse navbar-fixed-top">
 				<div class="navbar-header">
 					<a class="navbar-brand" href="{{ path('patient_index') }}">Medibix</a>
 				</div>
 				<ul class="nav navbar-nav">
-					<li><a href="{{ path('patient_new') }}">Enregistrer un patient</a></li>
-                    <li><a href="{{ path('bulletin_new') }}">Créer un bulletin médical</a></li>
-                    <li><a href="{{ path('patient_index') }}">Liste des patients</a></li>
-					<li><a href="{{ path('bulletin_index') }}">Liste des bulletin médicaux</a></li>
+                    {% if is_granted("ROLE_CAISSE") %}
+					<li><a href="{{ path('patient_new') }}">Nouveau patient</a></li>
+                    {% endif %}
+                    {% if is_granted("ROLE_CAISSE") %}
+                    <li><a href="{{ path('bulletin_new') }}">Nouveau bulletin médical</a></li>
+                    {% endif %}
+                    <li><a href="{{ path('patient_index') }}">Tous les patients</a></li>
+					<li><a href="{{ path('bulletin_index') }}">Tous les bulletins médicaux</a></li>
+                    <li><a href="#"> </a></li>
+                    <li><a href="#"> </a></li>
 				</ul>
 			</div>
-
+            
+            <div class="row" >
+                
+                <div class="alert alert-info col-md-4">
+                    Connecté en tant que <b>{{ app.user.username }}</b>
+                                                       
+                </div>
+                <div class="alert alert-info col-md-4">
+                           -                      
+                </div>
+                <div class="alert alert-info col-md-4">
+                   <a href="{{ path('logout') }}" class=""> 
+                       <span class="glyphicon glyphicon-log-out"></span>
+                       Déconnexion</a>                                    
+                </div>
+                
+            </div>
+            {% endif %}
+            
 			<div class="row">
                 <div class="col-md-12">
-				<h1 class="page-header"><i class="fa fa-hospital-o fa-2x"></i> District de Manjo / 
+				<h1 class="page-header"><i class="fa fa-hospital-o fa-2x"></i> Hôpital de District de Manjo / 
                     <small>{% block title2 %}{% endblock %}</small></h1>
 			     </div>
             </div>

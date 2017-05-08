@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<title>Connetion to Medibix</title>
+		
+			<link rel="stylesheet" href="{{ asset('bundles/pmmcore/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('bundles/pmmcore/font-awesome/css/font-awesome.min.css') }}">
+			<style type="text/css">
+				body { padding-top: 70px; font-family: bookman old style; font-size: medium; }
+            </style>
+        
+	</head>
+	
+	<body>
+		<div class="container">
+        <div class="panel panel-heading">
+            
+        <div class="row">
+                <div class="col-md-12">
+				<center><h1 class="page-header">
+                    <i class="fa fa-hospital-o fa-2x"></i> Hôpital de District de Manjo
+                    <small>/ Page de d'authentification</small></h1>
+                    </center>
+			     </div>
+            </div>
+
+        <div class="row">
+            <div class="col-sm-offset-4 col-sm-4 alert alert-info">
+            <form action="{{ path('login_check') }}" method="post">
+                <label for="username">Login :</label><input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" />
+
+                <label for="password">Mot de passe :</label><input class="form-control" type="password" id="password" name="_password" />
+                    <br />
+                <input class="btn btn-primary" type="submit" value="Connexion" />
+            </form>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+	</body>
+</html>
