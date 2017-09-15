@@ -1,0 +1,24 @@
+commandemedicament_index:
+    path:     /
+    defaults: { _controller: "PMMCoreBundle:CommandeMedicament:index" }
+    methods:  GET
+
+commandemedicament_show:
+    path:     /{id}/show
+    defaults: { _controller: "PMMCoreBundle:CommandeMedicament:show" }
+    methods:  GET
+
+commandemedicament_new:
+    path:     /new
+    defaults: { _controller: "PMMCoreBundle:CommandeMedicament:new" }
+    methods:  [GET, POST]
+
+commandemedicament_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PMMCoreBundle:CommandeMedicament:edit" }
+    methods:  [GET, POST]
+
+commandemedicament_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PMMCoreBundle:CommandeMedicament:delete" }
+    methods:  DELETE

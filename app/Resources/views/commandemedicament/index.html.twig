@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Commandemedicaments list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Quantite</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commandeMedicament in commandeMedicaments %}
+            <tr>
+                <td><a href="{{ path('commandemedicament_show', { 'id': commandeMedicament.id }) }}">{{ commandeMedicament.id }}</a></td>
+                <td>{{ commandeMedicament.quantite }}</td>
+                <td>{% if commandeMedicament.date %}{{ commandeMedicament.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('commandemedicament_show', { 'id': commandeMedicament.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('commandemedicament_edit', { 'id': commandeMedicament.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('commandemedicament_new') }}">Create a new commandeMedicament</a>
+        </li>
+    </ul>
+{% endblock %}

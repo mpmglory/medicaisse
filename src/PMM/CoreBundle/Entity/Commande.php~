@@ -1,0 +1,52 @@
+<?php
+
+namespace PMM\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Commande
+ *
+ * @ORM\Table(name="commande")
+ * @ORM\Entity(repositoryClass="PMM\CoreBundle\Repository\CommandeRepository")
+ */
+class Commande
+{
+    /**
+     * @ORM\ManyToOne(targetEntity="PMM\CoreBundle\Entity\Patient")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $patient;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="PMM\CoreBundle\Entity\CommandeMedicament", mappedBy="commande")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $commande_medicaments;
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="amount", type="integer")
+     */
+    private $amount;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+    
+    
+
+}
