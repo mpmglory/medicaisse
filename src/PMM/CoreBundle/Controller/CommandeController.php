@@ -135,4 +135,26 @@ class CommandeController extends Controller
             ->getForm()
         ;
     }
+    
+    public function fillAction(Request $request, Commande $commande){
+        
+        $em = $this->getDoctrine()->getManager();
+        
+    	$form = $this->createForm('PMM\CoreBundle\Form\CommandeFillType', $commande);
+			
+		if($request->isMethod('POST') && $form->handleRequest($request)->isValid()){
+            
+			$em->flush();
+			$request->getSession()->getFlashBag()
+					->add('notice', 'Remplissage reussi.');
+		
+			return $this->redirectToRoute('commande_show', array('id' => $commande->getId()));
+		}
+        
+        return $this->render('commande/fill.html.twig', array(
+            'commande' => $commande,
+            'form' => $form->createView(),
+        ));
+    }
+    
 }

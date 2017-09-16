@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title2 %}
+Remplissage commande /
+{% if commande.patient is not null %} {{ commande.patient.name }} {% endif %}
+{% endblock %}
+
+{% block menu %}
+    <ul class="nav nav-pills nav-stacked">
+        <li>
+            <a href="{{ path('commande_index') }}" class="btn btn-primary btn-block btn-lg">
+            <span class="glyphicon glyphicon-chevron-left"></span> Retour à l'accueil </a><p>  </p>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block body %}
+
+<div class="well">
+  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+  {{ form_errors(form) }}
+
+{% if commande.patient is null %}
+  <div class="form-group">
+    {{ form_label(form.patient, "Nom du patient:", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.patient) }}
+    <div class="col-sm-10">
+        {{ form_widget(form.patient, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+{% endif %}
+
+  
+
+<div class="row">
+<h3 class="btn-info"><center>LISTE DES MEDICAMENTS</center></h3>
+    
+{% for medoc in 0..87 %}
+    
+    <div class="form-group">
+    <div class="col-sm-6">
+        {{ form_label(form.commande_medicaments, "Médicament:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    </div>
+    {{ form_errors(form.commande_medicaments) }}
+    <div class="col-sm-6">
+      {{ form_widget(form.commande_medicaments, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    </div>
+    
+{% endfor %}
+</div>
+
+    </hr>
+{% if form.submit is defined %}
+  {{ form_widget(form.submit, {'attr': {'class': 'btn btn-block btn-primary'}}) }}
+{% else %} 
+    <h3 class="btn-danger"><center>COMMANDE VIDE</center></h3>
+{% endif %}
+  {{ form_end(form) }}
+    
+
+
+{% endblock %}

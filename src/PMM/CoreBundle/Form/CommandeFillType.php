@@ -10,11 +10,12 @@ use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 
-class CommandeMedicamentType extends AbstractType
+class CommandeFillType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -22,13 +23,34 @@ class CommandeMedicamentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('medicament', EntityType::class, array(
-                'class' => 'PMMCoreBundle:Medicament',
+            ->add('patient', EntityType::class, array(
+                'class' => 'PMMCoreBundle:Patient',
                 'choice_label' => 'name',
                 'multiple' => false,
                 'expanded' => false,
             ))
-            ->add('quantite');
+            ->add('commande_medicaments', CollectionType::class, array(
+                'entry_type' => CommandeMedicamentType::class,
+                'allow_add' => true,
+                'allow_delete' => true
+            ))
+            ->add('submit', SubmitType::class, array('label' => 'Enregistrer'));
+            
+        $builder->addEventListener(
+            FormEvents::PRE_SET_DATA,
+            function(FormEvent $event){
+                
+                $commande = $event->getData();
+            
+                if(null === $commande){
+                    return;
+                }
+            
+                if(null !== $commande->getPatient()){
+                    $event->getForm()->remove('patient');
+                }            
+            }
+        );
     }
     
     /**
@@ -37,7 +59,7 @@ class CommandeMedicamentType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'PMM\CoreBundle\Entity\CommandeMedicament'
+            'data_class' => 'PMM\CoreBundle\Entity\Commande'
         ));
     }
 
@@ -46,7 +68,7 @@ class CommandeMedicamentType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'pmm_corebundle_commandemedicament';
+        return 'pmm_corebundle_commande';
     }
 
 
