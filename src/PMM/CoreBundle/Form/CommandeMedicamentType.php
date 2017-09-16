@@ -23,13 +23,13 @@ class CommandeMedicamentType extends AbstractType
     {
         $builder
             ->add('quantite')
-            ->add('date')
-            ->add('commande', EntityType::class, array(
+            //->add('date')
+            /*->add('commande', EntityType::class, array(
                 'class' => 'PMMCoreBundle:Commande',
                 'choice_label' => 'id',
                 'multiple' => false,
                 'expanded' => false,
-            ))
+            ))*/
             ->add('medicament', EntityType::class, array(
                 'class' => 'PMMCoreBundle:Medicament',
                 'choice_label' => 'name',

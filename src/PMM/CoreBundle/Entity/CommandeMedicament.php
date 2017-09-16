@@ -20,7 +20,6 @@ class CommandeMedicament
     
     /**
      * @ORM\ManyToOne(targetEntity="PMM\CoreBundle\Entity\Medicament", inversedBy="commande_medicaments")
-     * @ORM\JoinColumn(nullable=true)
      */
     private $medicament;
     
@@ -47,10 +46,6 @@ class CommandeMedicament
      */
     private $date;
 
-
-    /**
-     * Constructor
-     */
     public function __construct()
     {
         $this->date = new \Datetime();
@@ -145,7 +140,7 @@ class CommandeMedicament
      *
      * @return CommandeMedicament
      */
-    public function setMedicament(\PMM\CoreBundle\Entity\Medicament $medicament = null)
+    public function setMedicament(\PMM\CoreBundle\Entity\Medicament $medicament)
     {
         $this->medicament = $medicament;
 

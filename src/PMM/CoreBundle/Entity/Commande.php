@@ -19,8 +19,7 @@ class Commande
     private $patient;
     
     /**
-     * @ORM\OneToMany(targetEntity="PMM\CoreBundle\Entity\CommandeMedicament", mappedBy="commande")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\OneToMany(targetEntity="PMM\CoreBundle\Entity\CommandeMedicament", mappedBy="commande", cascade={"persist"})
      */
     private $commande_medicaments;
     
@@ -47,7 +46,6 @@ class Commande
      */
     private $date;
     
-    
 
     /**
      * Constructor
@@ -56,7 +54,6 @@ class Commande
     {
         $this->commande_medicaments = new \Doctrine\Common\Collections\ArrayCollection();
         $this->date = new \Datetime();
-        $this->amount = 0;
     }
 
     /**
@@ -151,6 +148,8 @@ class Commande
     public function addCommandeMedicament(\PMM\CoreBundle\Entity\CommandeMedicament $commandeMedicament)
     {
         $this->commande_medicaments[] = $commandeMedicament;
+        
+        $commandeMedicament->setCommande($this);
 
         return $this;
     }

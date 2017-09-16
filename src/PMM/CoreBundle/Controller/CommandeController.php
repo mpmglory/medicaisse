@@ -3,6 +3,8 @@
 namespace PMM\CoreBundle\Controller;
 
 use PMM\CoreBundle\Entity\Commande;
+use PMM\CoreBundle\Entity\Medicament;
+use PMM\CoreBundle\Entity\CommandeMedicament;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -36,11 +38,23 @@ class CommandeController extends Controller
         $commande = new Commande();
         $form = $this->createForm('PMM\CoreBundle\Form\CommandeType', $commande);
         $form->handleRequest($request);
+        
+        //$medoc = new Medicament(); 
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($commande);
             $em->flush();
+            
+            for($i = 0; $i<20; $i++){
+            
+                $com_med = new CommandeMedicament();
+                $com_med->setCommande($commande);
+                $com_med->setQuantite(0);
+
+                $em->persist($com_med);
+                $em->flush();
+            }
 
             return $this->redirectToRoute('commande_show', array('id' => $commande->getId()));
         }

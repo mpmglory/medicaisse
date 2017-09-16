@@ -1,4 +1,5 @@
 services:
-#    pmm_core.example:
-#        class: PMM\CoreBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    #pmm_core.save_com_medoc:
+        #class: PMM\CoreBundle\SaveComMedoc\SaveComMedoc
+        #tags:
+            #- { name: doctrine.event_listener, event: postPersist}
