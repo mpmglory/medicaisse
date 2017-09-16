@@ -67,16 +67,13 @@ Nouvelle Facture /
       {{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
     </div>
 </div>
-    
-<div class="form-group">
-    {{ form_label(form.commande_medicaments, "commande_medicaments:", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
-    {{ form_errors(form.commande_medicaments) }}
-    <div class="col-sm-4">
-      {{ form_widget(form.commande_medicaments, {'attr': {'class': 'form-control'}}) }}
-    </div>
-    <a href="#" id="add_medicament" class="btn btn-default">Ajouter un médicament</a>
-</div> 
 
+<div class="form-group">
+    <div class="col-sm-4">{{ form_row(form.commande_medicaments) }}</div>
+</div>
+    
+<a href="#" id="add_medicament" class="btn btn-info">Ajouter un médicament</a>
+    
 <hr/>
 <div class="panel-footer">
     {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary btn-block btn-lg'}}) }}

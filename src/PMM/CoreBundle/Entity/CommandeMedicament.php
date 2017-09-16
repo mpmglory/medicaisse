@@ -48,7 +48,13 @@ class CommandeMedicament
     private $date;
 
 
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->date = new \Datetime();
+    }
 
     /**
      * Get id
