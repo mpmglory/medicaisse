@@ -51,7 +51,7 @@ class AmountCommande{
         
         if($entity instanceof Commande){
             
-            $listeMedocs = $entity->getCommandeMedicaments();
+            /*$listeMedocs = $entity->getCommandeMedicaments();
 
             foreach( $listeMedocs as $lstm ){
                 
@@ -63,7 +63,14 @@ class AmountCommande{
 
                     $amt = $amt + floatval($pt);
                 }
-            }
+            }*/
+            
+            $p1 = floatval( $entity->getMedoc1()->getPrice() );
+            $p2 = floatval( $entity->getMedoc2()->getPrice() );
+            $p3 = floatval( $entity->getMedoc3()->getPrice() );
+            
+            $amt = $p1+$p2+$p3;
+            $amt = floatval( $amt );
 
             $entity->setAmount($amt);
             $em->persist($entity);

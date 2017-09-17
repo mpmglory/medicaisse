@@ -56,7 +56,6 @@ class Medoc1
     }
 
 
-
     /**
      * Get id
      *

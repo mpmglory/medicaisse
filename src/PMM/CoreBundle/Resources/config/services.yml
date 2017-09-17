@@ -4,7 +4,8 @@ services:
         tags:
             - { name: doctrine.event_listener, event: postPersist}
             - { name: doctrine.event_listener, event: postUpdate}
-    #pmm_core.save_com_medoc:
-        #class: PMM\CoreBundle\SaveComMedoc\SaveComMedoc
-        #tags:
-            #- { name: doctrine.event_listener, event: postPersist}
+    pmm_core.amount_medoc123:
+        class: PMM\CoreBundle\AmountMedoc123\AmountMedoc123
+        tags:
+            - { name: doctrine.event_listener, event: prePersist}
+            #- { name: doctrine.event_listener, event: postUpdate}
