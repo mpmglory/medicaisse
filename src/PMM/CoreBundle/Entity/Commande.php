@@ -19,9 +19,25 @@ class Commande
     private $patient;
     
     /**
+     * @ORM\OneToOne(targetEntity="PMM\CoreBundle\Entity\Medoc1", cascade={"persist"})
+     */
+    private $medoc1;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="PMM\CoreBundle\Entity\Medoc2", cascade={"persist"})
+     */
+    private $medoc2;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="PMM\CoreBundle\Entity\Medoc3", cascade={"persist"})
+     */
+    private $medoc3;
+    
+    /**
      * @ORM\OneToMany(targetEntity="PMM\CoreBundle\Entity\CommandeMedicament", mappedBy="commande", cascade={"persist"})
      */
     private $commande_medicaments;
+    
     
     /**
      * @var int
@@ -178,5 +194,77 @@ class Commande
     public function getCommandeMedicaments()
     {
         return $this->commande_medicaments;
+    }
+
+    /**
+     * Set medoc1
+     *
+     * @param \PMM\CoreBundle\Entity\Medoc1 $medoc1
+     *
+     * @return Commande
+     */
+    public function setMedoc1(\PMM\CoreBundle\Entity\Medoc1 $medoc1 = null)
+    {
+        $this->medoc1 = $medoc1;
+
+        return $this;
+    }
+
+    /**
+     * Get medoc1
+     *
+     * @return \PMM\CoreBundle\Entity\Medoc1
+     */
+    public function getMedoc1()
+    {
+        return $this->medoc1;
+    }
+
+    /**
+     * Set medoc2
+     *
+     * @param \PMM\CoreBundle\Entity\Medoc1 $medoc2
+     *
+     * @return Commande
+     */
+    public function setMedoc2(\PMM\CoreBundle\Entity\Medoc2 $medoc2 = null)
+    {
+        $this->medoc2 = $medoc2;
+
+        return $this;
+    }
+
+    /**
+     * Get medoc2
+     *
+     * @return \PMM\CoreBundle\Entity\Medoc1
+     */
+    public function getMedoc2()
+    {
+        return $this->medoc2;
+    }
+
+    /**
+     * Set medoc3
+     *
+     * @param \PMM\CoreBundle\Entity\Medoc1 $medoc3
+     *
+     * @return Commande
+     */
+    public function setMedoc3(\PMM\CoreBundle\Entity\Medoc3 $medoc3 = null)
+    {
+        $this->medoc3 = $medoc3;
+
+        return $this;
+    }
+
+    /**
+     * Get medoc3
+     *
+     * @return \PMM\CoreBundle\Entity\Medoc1
+     */
+    public function getMedoc3()
+    {
+        return $this->medoc3;
     }
 }

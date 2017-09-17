@@ -19,9 +19,25 @@ class Commande
     private $patient;
     
     /**
+     * @ORM\OneToOne(targetEntity="PMM\CoreBundle\Entity\Medoc1")
+     */
+    private $medoc1;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="PMM\CoreBundle\Entity\Medoc2")
+     */
+    private $medoc2;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="PMM\CoreBundle\Entity\Medoc3")
+     */
+    private $medoc3;
+    
+    /**
      * @ORM\OneToMany(targetEntity="PMM\CoreBundle\Entity\CommandeMedicament", mappedBy="commande", cascade={"persist"})
      */
     private $commande_medicaments;
+    
     
     /**
      * @var int
@@ -50,4 +66,208 @@ class Commande
     //$this->setAmount(0);
 
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->commande_medicaments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->date = new \Datetime();
+        $this->setAmount(0);
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set amount
+     *
+     * @param integer $amount
+     *
+     * @return Commande
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Get amount
+     *
+     * @return integer
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Commande
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set patient
+     *
+     * @param \PMM\CoreBundle\Entity\Patient $patient
+     *
+     * @return Commande
+     */
+    public function setPatient(\PMM\CoreBundle\Entity\Patient $patient)
+    {
+        $this->patient = $patient;
+
+        return $this;
+    }
+
+    /**
+     * Get patient
+     *
+     * @return \PMM\CoreBundle\Entity\Patient
+     */
+    public function getPatient()
+    {
+        return $this->patient;
+    }
+
+    /**
+     * Add commandeMedicament
+     *
+     * @param \PMM\CoreBundle\Entity\CommandeMedicament $commandeMedicament
+     *
+     * @return Commande
+     */
+    public function addCommandeMedicament(\PMM\CoreBundle\Entity\CommandeMedicament $commandeMedicament)
+    {
+        $this->commande_medicaments[] = $commandeMedicament;
+        $commandeMedicament->setCommande($this);
+        /*$em = $this->getDoctrine()->getManager();
+        $em->persist($commandeMedicament);
+        $em->flush();*/
+
+        return $this;
+    }
+
+    /**
+     * Remove commandeMedicament
+     *
+     * @param \PMM\CoreBundle\Entity\CommandeMedicament $commandeMedicament
+     */
+    public function removeCommandeMedicament(\PMM\CoreBundle\Entity\CommandeMedicament $commandeMedicament)
+    {
+        $this->commande_medicaments->removeElement($commandeMedicament);
+    }
+
+    /**
+     * Get commandeMedicaments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCommandeMedicaments()
+    {
+        return $this->commande_medicaments;
+    }
+
+    /**
+     * Set medoc1
+     *
+     * @param \PMM\CoreBundle\Entity\Medoc1 $medoc1
+     *
+     * @return Commande
+     */
+    public function setMedoc1(\PMM\CoreBundle\Entity\Medoc1 $medoc1 = null)
+    {
+        $this->medoc1 = $medoc1;
+        $medoc1->setCom($this);
+
+        return $this;
+    }
+
+    /**
+     * Get medoc1
+     *
+     * @return \PMM\CoreBundle\Entity\Medoc1
+     */
+    public function getMedoc1()
+    {
+        return $this->medoc1;
+    }
+
+    /**
+     * Set medoc2
+     *
+     * @param \PMM\CoreBundle\Entity\Medoc1 $medoc2
+     *
+     * @return Commande
+     */
+    public function setMedoc2(\PMM\CoreBundle\Entity\Medoc2 $medoc2 = null)
+    {
+        $this->medoc2 = $medoc2;
+        $medoc2->setCom($this);
+
+        return $this;
+    }
+
+    /**
+     * Get medoc2
+     *
+     * @return \PMM\CoreBundle\Entity\Medoc1
+     */
+    public function getMedoc2()
+    {
+        return $this->medoc2;
+    }
+
+    /**
+     * Set medoc3
+     *
+     * @param \PMM\CoreBundle\Entity\Medoc1 $medoc3
+     *
+     * @return Commande
+     */
+    public function setMedoc3(\PMM\CoreBundle\Entity\Medoc3 $medoc3 = null)
+    {
+        $this->medoc3 = $medoc3;
+        $medoc3->setCom($this);
+
+        return $this;
+    }
+
+    /**
+     * Get medoc3
+     *
+     * @return \PMM\CoreBundle\Entity\Medoc1
+     */
+    public function getMedoc3()
+    {
+        return $this->medoc3;
+    }
 }

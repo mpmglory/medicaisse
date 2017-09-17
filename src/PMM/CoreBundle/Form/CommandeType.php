@@ -34,6 +34,9 @@ class CommandeType extends AbstractType
                 'allow_add' => true,
                 'allow_delete' => true
             ))
+            ->add('medoc1', Medoc1Type::class)
+            ->add('medoc2', Medoc2Type::class)
+            ->add('medoc3', Medoc3Type::class)
             ->add('submit', SubmitType::class, array('label' => 'Enregistrer'));
             
         $builder->addEventListener(

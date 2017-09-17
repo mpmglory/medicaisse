@@ -1,0 +1,24 @@
+medoc1_index:
+    path:     /
+    defaults: { _controller: "PMMCoreBundle:Medoc1:index" }
+    methods:  GET
+
+medoc1_show:
+    path:     /{id}/show
+    defaults: { _controller: "PMMCoreBundle:Medoc1:show" }
+    methods:  GET
+
+medoc1_new:
+    path:     /new
+    defaults: { _controller: "PMMCoreBundle:Medoc1:new" }
+    methods:  [GET, POST]
+
+medoc1_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PMMCoreBundle:Medoc1:edit" }
+    methods:  [GET, POST]
+
+medoc1_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PMMCoreBundle:Medoc1:delete" }
+    methods:  DELETE

@@ -13,3 +13,15 @@ pmm_core_commande:
 pmm_core_commandemedicament:
     resource: "@PMMCoreBundle/Resources/config/routing/commandemedicament.yml"
     prefix:   /commandemedicament
+
+pmm_core_medoc1:
+    resource: "@PMMCoreBundle/Resources/config/routing/medoc1.yml"
+    prefix:   /medoc1
+
+pmm_core_medoc2:
+    resource: "@PMMCoreBundle/Resources/config/routing/medoc2.yml"
+    prefix:   /medoc2
+    
+pmm_core_medoc3:
+    resource: "@PMMCoreBundle/Resources/config/routing/medoc3.yml"
+    prefix:   /medoc3

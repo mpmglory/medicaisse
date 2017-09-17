@@ -44,23 +44,10 @@ class CommandeController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($commande);
             
-        
-            /*$line1 = new CommandeMedicament();
-            $line1->setCommande($commande);
-            $em->persist($line1);
-            
-            $line = new CommandeMedicament();
-            $line->setCommande($commande);
-            $em->persist($line);
-            
-            $line2 = new CommandeMedicament();
-            $line2->setCommande($commande);
-            $em->persist($line2);*/
-            
             $em->flush();
 
 
-            return $this->redirectToRoute('commande_edit', array('id' => $commande->getId()));
+            return $this->redirectToRoute('commande_show', array('id' => $commande->getId()));
         }
 
         return $this->render('commande/new.html.twig', array(

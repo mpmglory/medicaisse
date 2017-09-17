@@ -20,6 +20,25 @@ class Medicament
     private $commande_medicaments;
     
     /**
+     * @ORM\OneToMany(targetEntity="PMM\CoreBundle\Entity\Medoc1", mappedBy="medicament")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $medoc1;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="PMM\CoreBundle\Entity\Medoc2", mappedBy="medicament")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $medoc2;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="PMM\CoreBundle\Entity\Medoc3", mappedBy="medicament")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $medoc3;
+    
+    
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")

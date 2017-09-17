@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Medoc3s list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for medoc3 in medoc3s %}
+            <tr>
+                <td><a href="{{ path('medoc3_show', { 'id': medoc3.id }) }}">{{ medoc3.id }}</a></td>
+                <td>{{ medoc3.quantity }}</td>
+                <td>{{ medoc3.price }}</td>
+                <td>{% if medoc3.date %}{{ medoc3.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('medoc3_show', { 'id': medoc3.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('medoc3_edit', { 'id': medoc3.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('medoc3_new') }}">Create a new medoc3</a>
+        </li>
+    </ul>
+{% endblock %}
