@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        div { padding-top: 10px;}
+    </style>
+    
+    <link rel="stylesheet" href="{{ asset('bundles/pmmcore/css/bootstrap.min.css') }}">
+    <title>commande de {{ commande.patient.name }}</title>
+</head>
+<body>
+    <div class="container">
+        <div id ="en-tete" class="row">
+            <div class="col-xs-5">
+                <center><p>MINISTERE DE LA SANTE PUBLIQUE</p></center>
+                <center><p>DELEGATION REGIONALE DU LITTORAL</p></center>
+                <center><p>DISTRICT DE SANTE DE MANJO</p></center>
+                <center><p><b>HOPITAL DE DISTRICT DE MANJO</b></p></center>
+                <center><p>B.P: 05  Téphone: 243 25 98 00</p></center>
+                <center><p>e-mail: hdmanjo@gmail.com</p></center>
+            </div>
+            <div class="col-xs-2">
+                </center>LOGO HD MANJO</center>
+            </div>
+            <div class="col-xs-5">
+                <center>
+                <p>REPUBLIQUE DU CAMEROUN</p>
+                <p><i>PAIX - TRAVAIL - PATRIE</i></p>
+                </center>
+            </div>
+        </div>
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped">
+                    <tr>
+                        <td><h3>NOMS: {{ commande.patient.name }}</h3></td>
+                        <td><h3>SEXE: {{ commande.patient.sex }}</h3></td>
+                    </tr>
+                    <tr>
+                        <td><h3>Né (e) le: {{ commande.patient.bornDate|date('d-m-Y') }}</h3></td> 
+                        <td><h3>Fait le: {{ commande.date|date('d-m-Y') }}</h3></td>
+                    </tr> 
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Référence du médicament</th>
+                            <th>Qté</th>
+                            <th>Prix unitaire</th>
+                            <th>Montant</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+  
+                        {% for i in 1..3 %}
+                        
+                            {% set var = 'medoc' ~ i %}
+                        
+                            <tr>
+                                <td> {{ i }} </td>
+                                <td> {{ commande.medoc1.medicament.name }} </td>
+                                <td> {{ commande.medoc1.quantity }} </td>
+                                <td> {{ commande.medoc1.medicament.price }} </td>
+                                <td> {{ commande.medoc1.price }} </td>
+                            </tr>
+                        
+                        {% endfor %}
+                        
+                    </tbody>
+                </table>
+                <h3> Total à payer : {{ commande.amount | number_format(0, ',', '.') }} FCFA </h3> 
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-4"><p></p></div>
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4"><p>Manjo le</p></br><p>Le Caissier</p></div>
+        </div>
+        
+    </div>
+</body>
+</html>
+

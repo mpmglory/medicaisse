@@ -23,9 +23,9 @@ commande_delete:
     defaults: { _controller: "PMMCoreBundle:Commande:delete" }
     methods:  DELETE
     
-commande_fill:
-    path:     /{id}/fill
-    defaults: { _controller: "PMMCoreBundle:Commande:fill" }
+commande_print:
+    path:     /{id}/print
+    defaults: { _controller: "PMMCoreBundle:Commande:print" }
     methods:  [GET, POST]
     
 commande_custum-new:

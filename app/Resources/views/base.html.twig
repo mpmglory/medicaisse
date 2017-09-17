@@ -36,14 +36,14 @@
 				<ul class="nav navbar-nav">
                     {% if is_granted("ROLE_CAISSE") %}
 					
-                    <li>_____________________________
-                        <a href="{{ path('patient_new') }}">Facture nouveau patient</a>
+                    <li>
+                        <a href="{{ path('patient_new') }}"> Facture nouveau patient</a>
                     </li>
                     {% endif %}
                     {% if is_granted("ROLE_CAISSE") %}
 
-                    <li>_____________________________
-                        <a href="{{ path('commande_new') }}">Facture patient enregistré</a>
+                    <li>
+                        <a href="{{ path('commande_new') }}"> Facture patient enregistré</a>
                     </li>
                     {% endif %}
                     

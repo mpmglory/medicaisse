@@ -189,4 +189,11 @@ class CommandeController extends Controller
         ));
     }
     
+    public function printAction(Commande $commande){
+        
+        return $this->render('commande/print.html.twig', array(
+            'commande' => $commande,
+        ));
+    }
+    
 }

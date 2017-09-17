@@ -1,5 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block menu %}
+
+<ul class="nav nav-pills nav-stacked">
+
+        <a href="{{ path('commande_print', {'id': commande.id}) }}" class="btn btn-primary btn-block btn-lg">
+            <span class="glyphicon glyphicon-print"></span> Imprimer</a><p>  </p>
+</ul>
+
+{% endblock %}
+
 {% block body %}
     <h3>Facture numéro {{ commande.id }} de {{ commande.patient.name }}</h3>
 
@@ -13,6 +23,32 @@
                 <th>Date</th>
                 <td>{% if commande.date %}{{ commande.date|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
+            <tr>
+                <th>Liste des médicaments</th>
+                <td>
+                    <ul>
+                        <li>
+                            {% if commande.medoc1 %} 
+                            {{ commande.medoc1.medicament.name}} - 
+                            {{ commande.medoc1.quantity}} * {{ commande.medoc1.medicament.price}} = {{ commande.medoc1.price}}
+                            {% endif %}
+                        </li>
+                        <li>
+                            {% if commande.medoc2 %} 
+                            {{ commande.medoc2.medicament.name}} - 
+                            {{ commande.medoc2.quantity}} * {{ commande.medoc2.medicament.price}} = {{ commande.medoc2.price}}
+                            {% endif %}
+                        </li>
+                        <li>
+                            {% if commande.medoc3 %} 
+                            {{ commande.medoc3.medicament.name}} - 
+                            {{ commande.medoc3.quantity}} * {{ commande.medoc3.medicament.price}} = {{ commande.medoc3.price}}
+                            {% endif %}
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            
         </tbody>
     </table>
 
