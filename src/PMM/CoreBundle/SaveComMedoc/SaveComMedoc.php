@@ -15,20 +15,23 @@ class SaveComMedoc{
             
         $entity = $args->getObject();
         $em = $args->getObjectManager();
-        
+
         if($entity instanceof Commande){
             
-            $com_medocs = $em->getRepository('PMMCoreBundle:Commande')->find($entity->getId());
-            
-            foreach($com_medocs as $lignecom){
-                
-                $lignecom->setCommande($entity);
-                $em->persist($lignecom);
-                $em->flush();
-            }
-            
-            
+            $listeMedocs = $entity->getCommandeMedicaments();
 
+            foreach( $listeMedocs as $lstm ){
+                
+                if( null !== $lstm ){
+                
+                    $lstm->setCommande($entity);
+                }
+            }
+
+            $em->persist($lstm);
+
+            $em->flush();
+            
         }
     }*/
     

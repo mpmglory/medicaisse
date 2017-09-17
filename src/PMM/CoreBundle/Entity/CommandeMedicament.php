@@ -51,6 +51,7 @@ class CommandeMedicament
         $this->date = new \Datetime();
     }
 
+
     /**
      * Get id
      *
@@ -119,6 +120,7 @@ class CommandeMedicament
     public function setCommande(\PMM\CoreBundle\Entity\Commande $commande = null)
     {
         $this->commande = $commande;
+        $commande->addCommandeMedicament($this);
 
         return $this;
     }
@@ -140,7 +142,7 @@ class CommandeMedicament
      *
      * @return CommandeMedicament
      */
-    public function setMedicament(\PMM\CoreBundle\Entity\Medicament $medicament)
+    public function setMedicament(\PMM\CoreBundle\Entity\Medicament $medicament = null)
     {
         $this->medicament = $medicament;
 

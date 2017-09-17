@@ -31,24 +31,12 @@ Remplissage commande /
   </div>
 {% endif %}
 
-  
-
+    
 <div class="row">
 <h3 class="btn-info"><center>LISTE DES MEDICAMENTS</center></h3>
     
-{% for medoc in 0..87 %}
+      {{ form_row(form.commande_medicaments) }} 
     
-    <div class="form-group">
-    <div class="col-sm-6">
-        {{ form_label(form.commande_medicaments, "Médicament:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-    </div>
-    {{ form_errors(form.commande_medicaments) }}
-    <div class="col-sm-6">
-      {{ form_widget(form.commande_medicaments, {'attr': {'class': 'form-control'}}) }}
-    </div>
-    </div>
-    
-{% endfor %}
 </div>
 
     </hr>

@@ -38,25 +38,29 @@ class CommandeController extends Controller
         $commande = new Commande();
         $form = $this->createForm('PMM\CoreBundle\Form\CommandeType', $commande);
         $form->handleRequest($request);
-        
-        //$medoc = new Medicament(); 
 
+        
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($commande);
+            
+        
+            /*$line1 = new CommandeMedicament();
+            $line1->setCommande($commande);
+            $em->persist($line1);
+            
+            $line = new CommandeMedicament();
+            $line->setCommande($commande);
+            $em->persist($line);
+            
+            $line2 = new CommandeMedicament();
+            $line2->setCommande($commande);
+            $em->persist($line2);*/
+            
             $em->flush();
-            
-            for($i = 0; $i<20; $i++){
-            
-                $com_med = new CommandeMedicament();
-                $com_med->setCommande($commande);
-                $com_med->setQuantite(0);
 
-                $em->persist($com_med);
-                $em->flush();
-            }
 
-            return $this->redirectToRoute('commande_show', array('id' => $commande->getId()));
+            return $this->redirectToRoute('commande_edit', array('id' => $commande->getId()));
         }
 
         return $this->render('commande/new.html.twig', array(

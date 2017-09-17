@@ -1,6 +1,6 @@
 <?php
 
-namespace PMM\LaboBundle\SaveComMedoc;
+namespace PMM\CoreBundle\AmountCommande;
 
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 use PMM\CoreBundle\Entity\Commande;
@@ -8,30 +8,69 @@ use PMM\CoreBundle\Entity\Medicament;
 use PMM\CoreBundle\Entity\CommandeMedicament;
 
 
-class SaveComMedoc{
+class AmountCommande{
     
   
-    /*public function prePersist(LifecycleEventArgs $args){
+    public function postPersist(LifecycleEventArgs $args){
             
         $entity = $args->getObject();
         $em = $args->getObjectManager();
+        $amt = 0;
+        $prix = 0;
         
         if($entity instanceof Commande){
             
-            $rSero = new ResultatSerologie();
-            
-            $rSero->setBulletin($entity);
-            if(null !== $entity){
-                $entity
+            $listeMedocs = $entity->getCommandeMedicaments();
+
+            foreach( $listeMedocs as $lstm ){
+                
+                if( null !== $lstm ){
+                
+                    $pu = floatval( $lstm->getMedicament()->getPrice() );
+                    $qte = floatval( $lstm->getQuantite() );
+                    $pt = floatval( $pu * $qte );
+
+                    $amt = $amt + floatval($pt);
+                }
             }
-            
-            $entity->setRSerologie($rSero);
-            
+
+            $entity->setAmount($amt);
             $em->persist($entity);
-            $em->persist($rSero);
+
             $em->flush();
+            
         }
-    }*/
+    }
     
+    public function postUpdate(LifecycleEventArgs $args){
+            
+        $entity = $args->getObject();
+        $em = $args->getObjectManager();
+        $amt = 0;
+        $prix = 0;
+        
+        if($entity instanceof Commande){
+            
+            $listeMedocs = $entity->getCommandeMedicaments();
+
+            foreach( $listeMedocs as $lstm ){
+                
+                if( null !== $lstm ){
+                
+                    $pu = floatval( $lstm->getMedicament()->getPrice() );
+                    $qte = floatval( $lstm->getQuantite() );
+                    $pt = floatval( $pu * $qte );
+
+                    $amt = $amt + floatval($pt);
+                }
+            }
+
+            $entity->setAmount($amt);
+            $em->persist($entity);
+
+            $em->flush();
+            
+        }
+    }
     
 }

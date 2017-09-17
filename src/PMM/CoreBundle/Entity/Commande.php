@@ -46,6 +46,9 @@ class Commande
      */
     private $date;
     
+    //$this->date = new \Datetime();
+    //$this->setAmount(0);
+
 
     /**
      * Constructor
@@ -54,6 +57,7 @@ class Commande
     {
         $this->commande_medicaments = new \Doctrine\Common\Collections\ArrayCollection();
         $this->date = new \Datetime();
+        $this->setAmount(0);
     }
 
     /**
@@ -148,8 +152,10 @@ class Commande
     public function addCommandeMedicament(\PMM\CoreBundle\Entity\CommandeMedicament $commandeMedicament)
     {
         $this->commande_medicaments[] = $commandeMedicament;
-        
         $commandeMedicament->setCommande($this);
+        /*$em = $this->getDoctrine()->getManager();
+        $em->persist($commandeMedicament);
+        $em->flush();*/
 
         return $this;
     }

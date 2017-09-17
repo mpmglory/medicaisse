@@ -23,8 +23,6 @@ class CommandeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('amount')
-            ->add('date')
             ->add('patient', EntityType::class, array(
                 'class' => 'PMMCoreBundle:Patient',
                 'choice_label' => 'name',
