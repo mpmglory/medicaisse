@@ -77,6 +77,8 @@ class Medoc1Controller extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            
+            
 
             return $this->redirectToRoute('medoc1_edit', array('id' => $medoc1->getId()));
         }

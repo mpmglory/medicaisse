@@ -3,9 +3,10 @@ services:
         class: PMM\CoreBundle\AmountCommande\AmountCommande
         tags:
             - { name: doctrine.event_listener, event: postPersist}
-            - { name: doctrine.event_listener, event: postUpdate}
+            #- { name: doctrine.event_listener, event: postUpdate}
+            
     pmm_core.amount_medoc123:
         class: PMM\CoreBundle\AmountMedoc123\AmountMedoc123
         tags:
             - { name: doctrine.event_listener, event: prePersist}
-            #- { name: doctrine.event_listener, event: postUpdate}
+            - { name: doctrine.event_listener, event: postUpdate}

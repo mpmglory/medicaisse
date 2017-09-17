@@ -55,6 +55,43 @@ class CommandeController extends Controller
             'form' => $form->createView(),
         ));
     }
+    
+    /**
+     * Creates a new customized commande entity.
+     *
+     */
+    public function custumNewAction($id, Request $request){
+        
+        $commande = new Commande();
+        
+        $em = $this->getDoctrine()->getManager();
+        
+        $patient = $em
+    				->getRepository('PMMCoreBundle:Patient')
+    				->find($id);
+        
+        $commande->setPatient($patient);
+        
+        
+        $form = $this->createForm('PMM\CoreBundle\Form\CommandeType', $commande);
+        $form->handleRequest($request);
+
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($commande);
+            
+            $em->flush();
+
+
+            return $this->redirectToRoute('commande_show', array('id' => $commande->getId()));
+        }
+
+        return $this->render('commande/new.html.twig', array(
+            'commande' => $commande,
+            'form' => $form->createView(),
+        ));
+    }
 
     /**
      * Finds and displays a commande entity.
@@ -82,6 +119,10 @@ class CommandeController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            
+            //$repo = $this->getDoctrine()->getManager()->getRepository('PMMCoreBundle:Comande');
+            
+            //$this->container->get('pmm_core.amount_commande')->myUpdatePrice( $commande );
 
             return $this->redirectToRoute('commande_edit', array('id' => $commande->getId()));
         }

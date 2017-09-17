@@ -1,17 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Commande</h1>
+    <h3>Facture numéro {{ commande.id }} de {{ commande.patient.name }}</h3>
 
-    <table>
+    <table class="table table-bordered table-hover table-striped results">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ commande.id }}</td>
-            </tr>
-            <tr>
-                <th>Amount</th>
-                <td>{{ commande.amount }}</td>
+                <th>Montant total</th>
+                <td><h3>{{ commande.amount | number_format(0, ',', '.') }} FCFA</h3></td>
             </tr>
             <tr>
                 <th>Date</th>
@@ -20,17 +16,4 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('commande_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('commande_edit', { 'id': commande.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
 {% endblock %}

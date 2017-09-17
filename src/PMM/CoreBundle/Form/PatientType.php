@@ -31,7 +31,7 @@ class PatientType extends AbstractType
                     'Masculin' => 'Masculin',
                     'Féminin' => 'Féminin',
                 ),
-                'expanded' => true,
+                'expanded' => false,
                 'multiple' => false,
             ))
             ->add('telephone', TextType::class, array('required' => false))

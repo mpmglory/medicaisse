@@ -29,11 +29,6 @@ class CommandeType extends AbstractType
                 'multiple' => false,
                 'expanded' => false,
             ))
-            ->add('commande_medicaments', CollectionType::class, array(
-                'entry_type' => CommandeMedicamentType::class,
-                'allow_add' => true,
-                'allow_delete' => true
-            ))
             ->add('medoc1', Medoc1Type::class)
             ->add('medoc2', Medoc2Type::class)
             ->add('medoc3', Medoc3Type::class)

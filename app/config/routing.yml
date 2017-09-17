@@ -23,5 +23,5 @@ logout:
     
 home:
     path:     /
-    defaults: { _controller: "PMMLaboBundle:Bulletin:index" }
+    defaults: { _controller: "PMMCoreBundle:Commande:index" }
     methods:  GET

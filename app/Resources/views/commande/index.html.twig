@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Commandes list</h1>
+    <h1>Liste de toute les factures</h1>
 
     <table class="table table-bordered table-hover table-striped results">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>#</th>
                 <th>Patient</th>
-                <th>Amount</th>
+                <th>Montant</th>
                 <th>Date</th>
                 <th>Actions</th>
             </tr>
@@ -23,11 +23,13 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('commande_show', { 'id': commande.id }) }}">show</a>
+                            <a href="{{ path('commande_show', { 'id': commande.id }) }}">Afficher</a>
                         </li>
+                        {% if is_granted("ROLE_ADMIN") %}
                         <li>
                             <a href="{{ path('commande_edit', { 'id': commande.id }) }}">edit</a>
                         </li>
+                        {% endif %}
                     </ul>
                 </td>
             </tr>
@@ -37,7 +39,8 @@
 
     <ul>
         <li>
-            <a href="{{ path('commande_new') }}">Create a new commande</a>
+            <a href="{{ path('commande_new') }}" class="btn btn-primary btn-block btn-lg">
+            <span class="glyphicon glyphicon-plus"></span> Vendre des médicaments</a><p>  </p>
         </li>
     </ul>
 {% endblock %}

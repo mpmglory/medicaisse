@@ -8,7 +8,7 @@ Nouvelle Facture /
 {% block menu %}
     <ul class="nav nav-pills nav-stacked">
         <li>
-            <a href="{{ path('bulletin_index') }}" class="btn btn-primary btn-block btn-lg">
+            <a href="{{ path('commande_index') }}" class="btn btn-primary btn-block btn-lg">
             <span class="glyphicon glyphicon-chevron-left"></span>Retour à l'accueil </a><p>  </p>
         </li>
     </ul>
@@ -17,7 +17,7 @@ Nouvelle Facture /
 {% block body %}
 
 <div class="panel panel-primary">
-    
+     
 {% if commande.patient is not null %} 
 <div class="panel panel-heading">
     
@@ -49,18 +49,58 @@ Nouvelle Facture /
 {% endif %}
 
   
-<h4 class="well"><center>Liste des médicaments</center></h4>
+<h3 class="well"><center>Liste des médicaments</center></h3>
+    
+    <div class="row">
+        <h4 class="info"><center>Médicament 1</center></h4>
 
-    {{ form_row(form.commande_medicaments) }}
+        <div class="4">{{ form_label(form.medoc1.medicament, "Référence:", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}</div>
+        {{ form_errors(form.medoc1.medicament) }}
+        <div class="col-sm-6">
+            {{ form_widget(form.medoc1.medicament, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        {{ form_errors(form.medoc1.quantity) }}
+        <div class="col-sm-2">
+            {{ form_widget(form.medoc1.quantity, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+    </div>
+
+    <div class="row">
+        <h4 class="info"><center>Médicament 2</center></h4>
+
+        <div class="4">{{ form_label(form.medoc2.medicament, "Référence:", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}</div>
+        {{ form_errors(form.medoc2.medicament) }}
+        <div class="col-sm-6">
+            {{ form_widget(form.medoc2.medicament, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        {{ form_errors(form.medoc2.quantity) }}
+        <div class="col-sm-2">
+            {{ form_widget(form.medoc2.quantity, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+    </div>
     
-    {{ form_row(form.medoc1) }}
-    
-    {{ form_row(form.medoc2) }}
-    
-    {{ form_row(form.medoc3) }}
+    <div class="row">
+        <h4 class="info"><center>Médicament 3</center></h4>
+
+        <div class="4">{{ form_label(form.medoc3.medicament, "Référence:", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}</div>
+        {{ form_errors(form.medoc3.medicament) }}
+        <div class="col-sm-6">
+            {{ form_widget(form.medoc3.medicament, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        {{ form_errors(form.medoc3.quantity) }}
+        <div class="col-sm-2">
+            {{ form_widget(form.medoc3.quantity, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+    </div>
 
     
-<a href="#" id="add_medicament" class="btn btn-info">Ajouter un médicament</a>
+{# <a href="#" id="add_medicament" class="btn btn-info">Ajouter un médicament</a> #}
     
 <hr/>
 <div class="panel-footer">

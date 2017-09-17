@@ -33,11 +33,6 @@ class Commande
      */
     private $medoc3;
     
-    /**
-     * @ORM\OneToMany(targetEntity="PMM\CoreBundle\Entity\CommandeMedicament", mappedBy="commande", cascade={"persist"})
-     */
-    private $commande_medicaments;
-    
     
     /**
      * @var int
@@ -158,43 +153,6 @@ class Commande
         return $this->patient;
     }
 
-    /**
-     * Add commandeMedicament
-     *
-     * @param \PMM\CoreBundle\Entity\CommandeMedicament $commandeMedicament
-     *
-     * @return Commande
-     */
-    public function addCommandeMedicament(\PMM\CoreBundle\Entity\CommandeMedicament $commandeMedicament)
-    {
-        $this->commande_medicaments[] = $commandeMedicament;
-        $commandeMedicament->setCommande($this);
-        /*$em = $this->getDoctrine()->getManager();
-        $em->persist($commandeMedicament);
-        $em->flush();*/
-
-        return $this;
-    }
-
-    /**
-     * Remove commandeMedicament
-     *
-     * @param \PMM\CoreBundle\Entity\CommandeMedicament $commandeMedicament
-     */
-    public function removeCommandeMedicament(\PMM\CoreBundle\Entity\CommandeMedicament $commandeMedicament)
-    {
-        $this->commande_medicaments->removeElement($commandeMedicament);
-    }
-
-    /**
-     * Get commandeMedicaments
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCommandeMedicaments()
-    {
-        return $this->commande_medicaments;
-    }
 
     /**
      * Set medoc1

@@ -12,13 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Medicament
 {
-    
-    /**
-     * @ORM\OneToMany(targetEntity="PMM\CoreBundle\Entity\CommandeMedicament", mappedBy="medicament")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $commande_medicaments;
-    
     /**
      * @ORM\OneToMany(targetEntity="PMM\CoreBundle\Entity\Medoc1", mappedBy="medicament")
      * @ORM\JoinColumn(nullable=true)
@@ -74,6 +67,15 @@ class Medicament
      * @ORM\Column(name="price", type="integer")
      */
     private $price;
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->date = new \Datetime();
+        $this->setPrice(0);
+    }
 
 
     /**
@@ -205,45 +207,6 @@ class Medicament
     {
         return $this->commande;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->commande_medicaments = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+    
 
-    /**
-     * Add commandeMedicament
-     *
-     * @param \PMM\CoreBundle\Entity\Commande_Medicament $commandeMedicament
-     *
-     * @return Medicament
-     */
-    public function addCommandeMedicament(\PMM\CoreBundle\Entity\CommandeMedicament $commandeMedicament)
-    {
-        $this->commande_medicaments[] = $commandeMedicament;
-
-        return $this;
-    }
-
-    /**
-     * Remove commandeMedicament
-     *
-     * @param \PMM\CoreBundle\Entity\Commande_Medicament $commandeMedicament
-     */
-    public function removeCommandeMedicament(\PMM\CoreBundle\Entity\CommandeMedicament $commandeMedicament)
-    {
-        $this->commande_medicaments->removeElement($commandeMedicament);
-    }
-
-    /**
-     * Get commandeMedicaments
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCommandeMedicaments()
-    {
-        return $this->commande_medicaments;
-    }
 }

@@ -6,15 +6,12 @@ Informations sur un petient
 
 {% block menu %}
 
-<ul class="nav nav-pills nav-stacked">
-        <a href="{{ path('bulletin_custum-new', {'id': patient.id}) }}" class="btn btn-primary btn-block btn-lg">
-            <span class="glyphicon glyphicon-plus"></span> Créer bulletin d'examen</a><p>  </p>
+ <ul class="nav nav-pills nav-stacked">
+        <a href="{{ path('commande_custum-new', {'id': patient.id}) }}" class="btn btn-primary btn-block btn-lg">
+            <span class="glyphicon glyphicon-plus"></span> Vendre des médicaments</a><p>  </p>
         
         <a href="{{ path('patient_edit', {'id': patient.id}) }}" class="btn btn-primary btn-block btn-lg">
             <span class="glyphicon glyphicon-edit"></span> Modifier</a><p>  </p>
-
-        {#<a href="{{ path('patient_delete', {'id': patient.id}) }}" class="btn btn-primary btn-block btn-lg">
-            <span class="glyphicon glyphicon-trash"></span> Supprimer</a><p>  </p>#}
 </ul>
 
 {% endblock %}

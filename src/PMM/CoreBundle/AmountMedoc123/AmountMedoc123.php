@@ -8,6 +8,7 @@ use PMM\CoreBundle\Entity\Medicament;
 use PMM\CoreBundle\Entity\Medoc1;
 use PMM\CoreBundle\Entity\Medoc2;
 use PMM\CoreBundle\Entity\Medoc3;
+use PMM\CoreBundle\Repository\CommandeRepository;
 
 
 class AmountMedoc123{
@@ -47,6 +48,40 @@ class AmountMedoc123{
 
             $em->flush();
             
+        }
+    }
+    
+    public function postUpdate(LifecycleEventArgs $args){
+            
+        $entity = $args->getObject();
+        $em = $args->getObjectManager();
+        
+        if($entity instanceof Medoc1){
+            
+            $pu1 = floatval( $entity->getMedicament()->getPrice() );
+            $qte1 = floatval( $entity->getQuantity() );
+            $pt1 = floatval( $pu1 * $qte1 );
+            
+            $entity->setPrice($pt1);
+            $em->persist($entity);
+            
+            /*$com = $em->getRepository('PMMCoreBundle:Commande')->findByMedoc1( $entity );
+            
+            if( null !== $com){
+                
+                $p1 = floatval( $com->getMedoc1()->getPrice() );
+                $p2 = floatval( $com->getMedoc2()->getPrice() );
+                $p3 = floatval( $com->getMedoc3()->getPrice() );
+
+                $amt = $p1+$p2+$p3;
+                $amt = floatval( $amt );
+
+                $com->setAmount($amt);
+                $em->persist($com);
+            }*/
+
+            $em->flush();
+             
         }
     }
  
