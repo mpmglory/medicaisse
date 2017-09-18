@@ -4,8 +4,8 @@
 
 <ul class="nav nav-pills nav-stacked">
 
-        <a href="{{ path('commande_print', {'id': commande.id}) }}" class="btn btn-primary btn-block btn-lg">
-            <span class="glyphicon glyphicon-print"></span> Imprimer</a><p>  </p>
+        <a href="{{ path('commande_pdf', {'id': commande.id}) }}" class="btn btn-primary btn-block btn-lg">
+            <span class="glyphicon glyphicon-print"></span> Aperçu avant impression</a><p>  </p>
 </ul>
 
 {% endblock %}

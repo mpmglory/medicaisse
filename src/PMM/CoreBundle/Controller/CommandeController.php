@@ -4,7 +4,6 @@ namespace PMM\CoreBundle\Controller;
 
 use PMM\CoreBundle\Entity\Commande;
 use PMM\CoreBundle\Entity\Medicament;
-use PMM\CoreBundle\Entity\CommandeMedicament;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 

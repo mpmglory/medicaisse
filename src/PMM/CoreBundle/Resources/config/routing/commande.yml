@@ -28,6 +28,11 @@ commande_print:
     defaults: { _controller: "PMMCoreBundle:Commande:print" }
     methods:  [GET, POST]
     
+commande_pdf:
+    path:     /{id}/pdf
+    defaults: { _controller: "PMMCoreBundle:Print:commande" }
+    methods:  [GET, POST]
+    
 commande_custum-new:
     path:     /{id}/new
     defaults: { _controller: "PMMCoreBundle:Commande:custumNew" }
