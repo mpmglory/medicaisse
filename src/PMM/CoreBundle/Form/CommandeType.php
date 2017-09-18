@@ -32,6 +32,18 @@ class CommandeType extends AbstractType
             ->add('medoc1', Medoc1Type::class)
             ->add('medoc2', Medoc2Type::class)
             ->add('medoc3', Medoc3Type::class)
+            ->add('medoc4', Medoc4Type::class)
+            ->add('medoc5', Medoc5Type::class)
+            ->add('medoc6', Medoc6Type::class)
+            ->add('medoc7', Medoc7Type::class)
+            ->add('medoc8', Medoc8Type::class)
+            ->add('medoc9', Medoc9Type::class)
+            ->add('medoc10', Medoc10Type::class)
+            ->add('medoc11', Medoc11Type::class)
+            ->add('medoc12', Medoc12Type::class)
+            ->add('medoc13', Medoc13Type::class)
+            ->add('medoc14', Medoc14Type::class)
+            ->add('medoc15', Medoc15Type::class)
             ->add('submit', SubmitType::class, array('label' => 'Enregistrer'));
             
         $builder->addEventListener(

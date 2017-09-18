@@ -27,24 +27,124 @@
                 <th>Liste des médicaments</th>
                 <td>
                     <ul>
-                        <li>
-                            {% if commande.medoc1 %} 
-                            {{ commande.medoc1.medicament.name}} - 
+                        {% if commande.medoc1.price %} 
+                            <li>{{ commande.medoc1.medicament.name}} - 
                             {{ commande.medoc1.quantity}} * {{ commande.medoc1.medicament.price}} = {{ commande.medoc1.price}}
-                            {% endif %}
-                        </li>
+                            </li>
+                        {% endif %}
+                        {% if commande.medoc2.price %}
                         <li>
-                            {% if commande.medoc2 %} 
+                             
                             {{ commande.medoc2.medicament.name}} - 
                             {{ commande.medoc2.quantity}} * {{ commande.medoc2.medicament.price}} = {{ commande.medoc2.price}}
-                            {% endif %}
+                            
                         </li>
+                        {% endif %}
+                        {% if commande.medoc3.price %}
                         <li>
-                            {% if commande.medoc3 %} 
+                             
                             {{ commande.medoc3.medicament.name}} - 
                             {{ commande.medoc3.quantity}} * {{ commande.medoc3.medicament.price}} = {{ commande.medoc3.price}}
-                            {% endif %}
+                            
                         </li>
+                        {% endif %}
+                        {% if commande.medoc4.price %}
+                        <li>
+                             
+                            {{ commande.medoc4.medicament.name}} - 
+                            {{ commande.medoc4.quantity}} * {{ commande.medoc4.medicament.price}} = {{ commande.medoc4.price}}
+                            
+                        </li>
+                        {% endif %}
+                        {% if commande.medoc5.price %}
+                        <li>
+                             
+                            {{ commande.medoc5.medicament.name}} - 
+                            {{ commande.medoc5.quantity}} * {{ commande.medoc5.medicament.price}} = {{ commande.medoc5.price}}
+                            
+                        </li>
+                        {% endif %}
+                        {% if commande.medoc6.price %}
+                        <li>
+                             
+                            {{ commande.medoc6.medicament.name}} - 
+                            {{ commande.medoc6.quantity}} * {{ commande.medoc6.medicament.price}} = {{ commande.medoc6.price}}
+                            
+                        </li>
+                        {% endif %}
+                        {% if commande.medoc7.price %}
+                        <li>
+                            
+                            {{ commande.medoc7.medicament.name}} - 
+                            {{ commande.medoc7.quantity}} * {{ commande.medoc7.medicament.price}} = {{ commande.medoc7.price}}
+                            
+                        </li>
+                        {% endif %}
+                        {% if commande.medoc8.price %}
+                        <li>
+                            
+                            {{ commande.medoc8.medicament.name}} - 
+                            {{ commande.medoc8.quantity}} * {{ commande.medoc8.medicament.price}} = {{ commande.medoc8.price}}
+                            
+                        </li>
+                        {% endif %}
+                        {% if commande.medoc9.price %}
+                        <li>
+                            
+                            {{ commande.medoc9.medicament.name}} - 
+                            {{ commande.medoc9.quantity}} * {{ commande.medoc9.medicament.price}} = {{ commande.medoc9.price}}
+                            
+                        </li>
+                        {% endif %}
+                        {% if commande.medoc10.price %}
+                        <li>
+                            
+                            {{ commande.medoc10.medicament.name}} - 
+                            {{ commande.medoc10.quantity}} * {{ commande.medoc10.medicament.price}} = {{ commande.medoc10.price}}
+                            
+                        </li>
+                        {% endif %}
+                        {% if commande.medoc11.price %}
+                        <li>
+                            
+                            {{ commande.medoc11.medicament.name}} - 
+                            {{ commande.medoc11.quantity}} * {{ commande.medoc11.medicament.price}} = {{ commande.medoc11.price}}
+                            
+                        </li>
+                        {% endif %}
+                        {% if commande.medoc12.price %}
+                        <li>
+                            
+                            {{ commande.medoc12.medicament.name}} - 
+                            {{ commande.medoc12.quantity}} * {{ commande.medoc12.medicament.price}} = {{ commande.medoc12.price}}
+                           
+                        </li>
+                        {% endif %}
+                        {% if commande.medoc13.price %}
+                        <li>
+                            
+                            {{ commande.medoc13.medicament.name}} - 
+                            {{ commande.medoc13.quantity}} * {{ commande.medoc13.medicament.price}} = {{ commande.medoc13.price}}
+                           
+                        </li>
+                        {% endif %}
+                        {% if commande.medoc14.price %}
+                        <li>
+                             
+                            {{ commande.medoc14.medicament.name}} - 
+                            {{ commande.medoc14.quantity}} * {{ commande.medoc14.medicament.price}} = {{ commande.medoc14.price}}
+                            
+                        </li>
+                        {% endif %}
+                        {% if commande.medoc15.price %}
+                        <li>
+                             
+                            {{ commande.medoc15.medicament.name}} - 
+                            {{ commande.medoc15.quantity}} * {{ commande.medoc15.medicament.price}} = {{ commande.medoc15.price}}
+                            
+                        </li>
+                        {% endif %}
+                        
                     </ul>
                 </td>
             </tr>

@@ -35,7 +35,7 @@ class PatientType extends AbstractType
                 'multiple' => false,
             ))
             ->add('telephone', TextType::class, array('required' => false))
-            ->add('bloodGroup', ChoiceType::class, array(
+            /*->add('bloodGroup', ChoiceType::class, array(
                 'choices' => array(
                     'A-' => 'A-',
                     'A+' => 'A+',
@@ -50,7 +50,7 @@ class PatientType extends AbstractType
                 'expanded' => false,
                 'multiple' => false,
                 'placeholder' => 'Choisir le groupe sanguin du patient',
-            ))
+            ))*/
             ->add('submit', SubmitType::class, array('label' => 'Enregistrer'));
     }
     

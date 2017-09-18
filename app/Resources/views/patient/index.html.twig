@@ -50,14 +50,16 @@ Gestion des patients
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('bulletin_custum-new', { 'id': patient.id }) }} ">Créer bulletin</a>
-                        </li>
-                        <li>
                             <a href="{{ path('patient_show', { 'id': patient.id }) }}">Afficher infos</a>
+                        </li>
+                        {% if is_granted("ROLE_ADMIN") %}
+                        <li>
+                            <a href="{{ path('bulletin_custum-new', { 'id': patient.id }) }} ">Créer bulletin</a>
                         </li>
                         <li>
                             <a href="{{ path('patient_edit', { 'id': patient.id }) }}">Modifier</a>
                         </li>
+                        {% endif %}
                     </ul>
                 </td>
             </tr>
