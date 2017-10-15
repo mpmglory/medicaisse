@@ -21,7 +21,7 @@ class CommandeController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $commandes = $em->getRepository('PMMCoreBundle:Commande')->findAll();
+        $commandes = $em->getRepository('PMMCoreBundle:Commande')->myFindAll();
 
         return $this->render('commande/index.html.twig', array(
             'commandes' => $commandes,
@@ -187,11 +187,140 @@ class CommandeController extends Controller
             'form' => $form->createView(),
         ));
     }
-    
+    //************************************
     public function printAction(Commande $commande){
         
         return $this->render('commande/print.html.twig', array(
             'commande' => $commande,
+        ));
+    }
+    
+    //**********************************
+    public function etatAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $d1 = 20;
+        $m1 = 9;
+        $y1 = 2017;
+        
+        $d2 = 21;
+        $m2 = 9;
+        $y2 = 2017;
+        
+        /*$date1 = new DateTime();
+        $date1->setDate(2017, 9, 18);
+        
+        $date2 = new DateTime();
+        $date2->setDate(2017, 9, 20);*/
+        
+        $dd1 = "{$y1}-{$m1}-{$d1}";
+        $dd2 = "{$y2}-{$m2}-{$d2}";
+        
+        $date1 = new \Datetime($dd1);
+        $date2 = new \Datetime($dd2);
+
+        $commandes = $em->getRepository('PMMCoreBundle:Commande')
+                        ->getCommandesBetween($date1, $date2)
+                        //->getCommandesBetween($date1, $date2)
+                        ;
+
+        return $this->render('commande/etat.html.twig', array(
+            'commandes' => $commandes,
+            'date1' => $date1,
+            'date2' => $date2,
+        ));
+    }
+    
+        //**********************************
+    public function etat2Action($d1, $m1, $y1, $d2, $m2, $y2)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $dd1 = "{$y1}-{$m1}-{$d1}";
+        $dd2 = "{$y2}-{$m2}-{$d2}";
+        
+        $date1 = new \Datetime($dd1);
+        $date2 = new \Datetime($dd2);
+        
+        $interval = new \DateInterval('P10D');
+ 
+        $dte1 = new \Datetime();
+        
+        $dte2 = clone $dte1;
+        $dte2->sub($interval);
+        
+        $dte3 = clone $dte2;
+        $dte3->sub($interval);
+        
+        $dte4 = clone $dte3;
+        $dte4->sub($interval);
+        
+        $dte4 = clone $dte3;
+        $dte4->sub($interval);
+        
+        $lesdates[] = $dte1;
+        $lesdates[] = $dte2;
+        $lesdates[] = $dte3;
+        $lesdates[] = $dte4;
+        
+
+        $commandes = $em->getRepository('PMMCoreBundle:Commande')
+                        ->getCommandesBetween($date1, $date2)
+                        ;
+
+        return $this->render('commande/etat.html.twig', array(
+            'commandes' => $commandes,
+            'date1' => $date1,
+            'date2' => $date2,
+            'lesdates' => $lesdates,
+            'dte1' => $dte1,
+            'dte2' => $dte2,
+        ));
+    }
+    
+            //**********************************
+    public function etatglobalAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $interval = new \DateInterval('P10D');
+        
+        $dd1 = "2017-9-15";
+
+        $startdate = new \Datetime($dd1);
+        
+        $today = new \Datetime();
+        
+        $lesdates[0] = clone $startdate;
+         
+        $i=0;
+        
+        //for($i=0; $i<37; $i++){
+        while($lesdates[$i] <= $today){
+            
+            $date = clone $lesdates[$i];
+            $date->add($interval);
+
+            $lesdates[$i+1] = $date;
+            
+            $lesdates2[$i] = clone $lesdates[$i+1];
+            $lesdates2[$i]->sub( new \DateInterval('P1D') );
+            
+            $lescommandes[$i] = $em->getRepository('PMMCoreBundle:Commande')
+                        ->getCommandesBetween($lesdates[$i], $lesdates2[$i])
+                        ;
+            $i++;
+        }
+        
+        if( $lesdates[$i] )
+        
+        
+        return $this->render('commande/etatglobal.html.twig', array(
+            'lescommandes' => $lescommandes,
+            'lesdates' => $lesdates,
+            'lesdates2' => $lesdates2,
+            'today' => $today
         ));
     }
     

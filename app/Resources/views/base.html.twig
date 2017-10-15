@@ -1,135 +1,152 @@
-
-{#  (couche 1) #}
-
 <!DOCTYPE html>
+
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
-		<title>{% block title %}Medibix{% endblock %}</title>
-		
-		{% block stylesheets %}
-			<link rel="stylesheet" href="{{ asset('bundles/pmmcore/css/bootstrap.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('bundles/pmmcore/font-awesome/css/font-awesome.min.css') }}">
-			<style type="text/css">
-				body { padding-top: 70px; font-family: bookman old style; font-size: medium; }
-                .results tr[visible='false'],
-                .no-result{ display:none; }
 
-                .results tr[visible='true']{ display:table-row; }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-                .counter{ padding:8px; color:#ccc; }
-            </style>
+    <title>{% block title %}Medicaisse{% endblock %}</title>
 
-		{% endblock %}
+    {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/pmmcore/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/pmmcore/font-awesome/css/font-awesome.min.css') }}">
+    <style type="text/css">
+        body {
+            padding-top: 70px;
+            font-family: bookman old style;
+            font-size: medium;
+        }
         
-	</head>
-	
-	<body>
-		<div class="container">
-        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-			<div id="header" class="navbar navbar-inverse navbar-fixed-top">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="{{ path('patient_index') }}">Medibix</a>
-				</div>
-				<ul class="nav navbar-nav">
-                    {% if is_granted("ROLE_CAISSE") %}
-					
-                    <li>
-                        <a href="{{ path('patient_new') }}"> Facture nouveau patient</a>
-                    </li>
-                    {% endif %}
-                    {% if is_granted("ROLE_CAISSE") %}
+        .results tr[visible='false'],
+        .no-result {
+            display: none;
+        }
+        
+        .results tr[visible='true'] {
+            display: table-row;
+        }
+        
+        .counter {
+            padding: 8px;
+            color: #ccc;
+        }
+    </style>
 
-                    <li>
-                        <a href="{{ path('commande_new') }}"> Facture patient enregistré</a>
-                    </li>
-                    {% endif %}
-                    
-                    {# <li><a href="{{ path('commande_new') }}">Facture Etats</a></li> #}
-                    <li><a href="#"> </a></li>
-                    <li><a href="#"> </a></li>
-				</ul>
-			</div>
-            
-            <div class="row" >
-                
-                <div class="alert alert-info col-md-4">
+    {% endblock %}
+
+</head>
+
+<body>
+    <div class="container">
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <div id="header" class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{ path('patient_index') }}">Medicaisse</a>
+            </div>
+            <ul class="nav navbar-nav">
+                {% if is_granted("ROLE_CAISSE") %}
+
+                <li>
+                    <a href="{{ path('patient_new') }}"> Facture nouveau patient</a>
+                </li>
+                {% endif %} {% if is_granted("ROLE_CAISSE") %}
+
+                <li>
+                    <a href="{{ path('commande_new') }}"> Facture patient enregistré</a>
+                </li>
+                {% endif %} {#
+                <li><a href="{{ path('commande_new') }}">Facture Etats</a></li> #}
+                <li>
+                    <a href="#"> </a>
+                </li>
+                <li>
+                    <a href="#"> </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="row">
+
+            <!--<div class="alert alert-info col-md-4">
                     Connecté en tant que <b>{{ app.user.username }}</b>
                                                        
-                </div>
-                <div class="alert alert-info col-md-4">
-                           -                      
-                </div>
-                <div class="alert alert-info col-md-4">
-                   <a href="{{ path('logout') }}" class=""> 
-                       <span class="glyphicon glyphicon-log-out"></span>
-                       Déconnexion</a>                                    
-                </div>
-                
+                </div>-->
+            <div class="alert alert-info col-md-7">
+                Bonjour <b>{{ app.user.name }}</b>
             </div>
+            <div class="alert alert-info col-md-5">
+                <a href="{{ path('logout') }}" class="">
+                    <span class="glyphicon glyphicon-log-out"></span> Déconnexion
+                </a>
+            </div>
+
+        </div>
         {% endif %}
-            
-			<div class="row">
-                <div class="col-md-12">
-				<h1 class="page-header"><i class="fa fa-hospital-o fa-2x"></i> Hôpital de District de Manjo / 
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-header"><i class="fa fa-hospital-o fa-2x"></i> Hôpital de District de Manjo / 
                     <small>{% block title2 %}{% endblock %}</small></h1>
-			     </div>
             </div>
-			
-			<div class="row">
-				<div id="menu" class="col-md-3">
-					{% block menu %}
-					{% endblock %}
-				</div>
-				<div id="content" class="col-md-9">
-					{% block body %}
-					{% endblock %}
-				</div>
-			</div>
-			
-			<hr>
-			
-			<footer>
-                </hr> <p>mPm Group | {{ 'now'|date('d-M-Y H:i') }} . </p>
-			</footer>
-		</div>
-		
-		{% block javascripts %}
-			<script src="{{ asset('bundles/pmmcore/js/bootstrap.js') }}"></script>
-			<script src="{{ asset('bundles/pmmcore/js/jquery-3.2.1.min.js') }}"></script>
-        
-        <script>
-            $(document).ready(function() {
-              $(".search").keyup(function () {
+        </div>
+
+        <div class="row">
+            <div id="menu" class="col-md-3">
+                {% block menu %} {% endblock %}
+            </div>
+            <div id="content" class="col-md-9">
+                {% block body %} {% endblock %}
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            </hr>
+            <p>mPm Group | {{ 'now'|date('d-M-Y H:i') }} . </p>
+        </footer>
+    </div>
+
+    {% block javascripts %}
+    <script src="{{ asset('bundles/pmmcore/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('bundles/pmmcore/js/jquery-3.2.1.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".search").keyup(function () {
                 var searchTerm = $(".search").val();
                 var listItem = $('.results tbody').children('tr');
                 var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
 
-              $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
-                    return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
-                }
-              });
+                $.extend($.expr[':'], {
+                    'containsi': function (elem, i, match, array) {
+                        return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+                    }
+                });
 
-              $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
-                $(this).attr('visible','false');
-              });
+                $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function (e) {
+                    $(this).attr('visible', 'false');
+                });
 
-              $(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
-                $(this).attr('visible','true');
-              });
+                $(".results tbody tr:containsi('" + searchSplit + "')").each(function (e) {
+                    $(this).attr('visible', 'true');
+                });
 
-              var jobCount = $('.results tbody tr[visible="true"]').length;
+                var jobCount = $('.results tbody tr[visible="true"]').length;
                 $('.counter').text(jobCount + ' resultat(s)');
 
-              if(jobCount == '0') {$('.no-result').show();}
-                else {$('.no-result').hide();}
-                      });
+                if (jobCount == '0') {
+                    $('.no-result').show();
+                } else {
+                    $('.no-result').hide();
+                }
             });
-        </script>
-    
-		{% endblock %}
-        
-	</body>
+        });
+    </script>
+
+    {% endblock %}
+
+</body>
+
 </html>

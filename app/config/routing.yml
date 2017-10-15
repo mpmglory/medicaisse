@@ -1,6 +1,6 @@
-pmm_user:
-    resource: "@PMMUserBundle/Resources/config/routing.yml"
-    prefix:   /
+#pmm_user:
+    #resource: "@PMMUserBundle/Resources/config/routing.yml"
+    #prefix:   /
 
 pmm_labo:
     resource: "@PMMLaboBundle/Resources/config/routing.yml"

@@ -117,9 +117,6 @@ class Commande
      */
     private $date;
     
-    //$this->date = new \Datetime();
-    //$this->setAmount(0);
-
 
     /**
      * Constructor

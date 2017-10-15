@@ -37,3 +37,18 @@ commande_custum-new:
     path:     /{id}/new
     defaults: { _controller: "PMMCoreBundle:Commande:custumNew" }
     methods:  [GET, POST]
+    
+commande_etat:
+    path:     /etat
+    defaults: { _controller: "PMMCoreBundle:Commande:etat" }
+    methods:  GET
+    
+commande_etat2:
+    path:     /etat2/{d1}/{m1}/{y1}/{d2}/{m2}/{y2}
+    defaults: { _controller: "PMMCoreBundle:Commande:etat2" }
+    methods:  GET
+    
+commande_global:
+    path:     /etatglobal
+    defaults: { _controller: "PMMCoreBundle:Commande:etatglobal" }
+    methods:  GET

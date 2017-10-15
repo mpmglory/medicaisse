@@ -1,46 +1,71 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} 
+
+{% block menu %}
+
+
+<div class="alert alert-danger">
+    <h3><center>Vendre des médicaments à ...</center></h3>
+</div>
+
+<a href="{{ path('patient_new') }}" class="btn btn-primary btn-block btn-lg">
+    <span class="glyphicon glyphicon-plus"></span>... un ouveau patient</a>
+<p> </p>
+
+<a href="{{ path('commande_new') }}" class="btn btn-primary btn-block btn-lg">
+    <span class="glyphicon glyphicon-plus"></span>... un patient enregistré</a>
+<p> </p>
+
+{% endblock %} 
 
 {% block body %}
-    <h1>Liste de toute les factures</h1>
 
-    <table class="table table-bordered table-hover table-striped results">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Patient</th>
-                <th>Montant</th>
-                <th>Date</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+<div class="row">
+    <div class="form-group pull-right">
+        <input type="text" class="search form-control" placeholder="Que recherchez-vous?">
+    </div>
+    <span class="counter pull-right"></span>
+</div>
+
+<h4>Liste de toute les factures</h4>
+
+<table class="table table-bordered table-hover table-striped results">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Patient</th>
+            <th>Montant</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
         {% for commande in commandes %}
-            <tr>
-                <td><a href="{{ path('commande_show', { 'id': commande.id }) }}">{{ commande.id }}</a></td>
-                <td>{{ commande.patient.name }}</td>
-                <td>{{ commande.amount }}</td>
-                <td>{% if commande.date %}{{ commande.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('commande_show', { 'id': commande.id }) }}">Afficher</a>
-                        </li>
-                        {% if is_granted("ROLE_ADMIN") %}
-                        <li>
-                            <a href="{{ path('commande_edit', { 'id': commande.id }) }}">edit</a>
-                        </li>
-                        {% endif %}
-                    </ul>
-                </td>
-            </tr>
+        <tr>
+            <td><a href="{{ path('commande_show', { 'id': commande.id }) }}">{{ commande.id }}</a></td>
+            <td>{{ commande.patient.name }}</td>
+            <td>{{ commande.amount }}</td>
+            <td>{% if commande.date %}{{ commande.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('commande_show', { 'id': commande.id }) }}">Afficher</a>
+                    </li>
+                    {% if is_granted("ROLE_ADMIN") %}
+                    <li>
+                        <a href="{{ path('commande_edit', { 'id': commande.id }) }}">edit</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </td>
+        </tr>
         {% endfor %}
-        </tbody>
-    </table>
+    </tbody>
+</table>
 
-    <ul>
-        <li>
-            <a href="{{ path('commande_new') }}" class="btn btn-primary btn-block btn-lg">
-            <span class="glyphicon glyphicon-plus"></span> Vendre des médicaments</a><p>  </p>
-        </li>
-    </ul>
+<div class="row">
+    
+    
+    
+</div>
+
 {% endblock %}

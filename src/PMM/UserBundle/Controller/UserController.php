@@ -5,6 +5,7 @@ namespace PMM\UserBundle\Controller;
 use PMM\UserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Sension\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * User controller.
@@ -12,10 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class UserController extends Controller
 {
-    /**
-     * Lists all user entities.
-     *
-     */
+
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -27,28 +25,30 @@ class UserController extends Controller
         ));
     }
 
-    /**
-     * Creates a new user entity.
-     *
-     */
+    
     public function newAction(Request $request)
     {
-        $user = new User();
-        $form = $this->createForm('PMM\UserBundle\Form\UserType', $user);
-        $form->handleRequest($request);
+        if(!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')){
+            $user = new User();
+            $form = $this->createForm('PMM\UserBundle\Form\UserType', $user);
+            $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
+            if ($form->isSubmitted() && $form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
 
-            return $this->redirectToRoute('user_show', array('id' => $user->getId()));
+                return $this->redirectToRoute('user_show', array('id' => $user->getId()));
+            }
+
+            return $this->render('user/new.html.twig', array(
+                'user' => $user,
+                'form' => $form->createView(),
+            ));
+            
+            throw new AccessDeniedException('Accès limité aux administrateurs.');
+
         }
-
-        return $this->render('user/new.html.twig', array(
-            'user' => $user,
-            'form' => $form->createView(),
-        ));
     }
 
     /**
