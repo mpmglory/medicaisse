@@ -385,40 +385,28 @@ class PrintController extends Controller
         
         $pdf = new \FPDF();
         $pdf->AddPage();
-        
-        
-        //************************
-        //ENTETE
-        //***********************
-        /*$pdf->SetXY( 15, 10 ); $pdf->SetFont('Arial','',10); $pdf->Cell( 50, 8, "MINISTERE DE LA SANTE PUBLIQUE", 0, 0, 'C');
-        $pdf->SetXY( 15, 15 ); $pdf->SetFont('Arial','',10); $pdf->Cell( 50, 8, "DELEGATION REGIONALE DU LITTORAL", 0, 0, 'C');
-        $pdf->SetXY( 15, 20 ); $pdf->SetFont('Arial','',10); $pdf->Cell( 50, 8, "DISTRICT DE SANTE DE MANJO", 0, 0, 'C');
-        $pdf->SetXY( 15, 25 ); $pdf->SetFont('Arial','B',10); $pdf->Cell( 50, 8, "HOPITAL DE DISTRICT DE MANJO", 0, 0, 'C');
-        $pdf->SetXY( 15, 30 ); $pdf->SetFont('Arial','',8); $pdf->Cell( 50, 8, "B.P: 05 Manjo  Tel: 243 25 98 00", 0, 0, 'C');
-        $pdf->SetXY( 15, 33 ); $pdf->SetFont('Arial','',8); $pdf->Cell( 50, 8, "E-mail: hdmanjo@gmail.com", 0, 0, 'C');
-        
-        $pdf->SetXY( 145, 10 ); $pdf->SetFont('Arial','',10); $pdf->Cell( 50, 8, "REPUBLIQUE DU CAMEROUN", 0, 0, 'C');
-        $pdf->SetXY( 145, 15 ); $pdf->SetFont('Arial','',10); $pdf->Cell( 50, 8, "PAIX - TRAVAIL - PATRIE", 0, 0, 'C');*/
-        
-        // logo : 80 de largeur et 55 de hauteur
-        //$pdf->Image('logo_societe.png', 10, 10, 80, 55);
 
-        //************************
-        //Infos de la facture
-        //***********************
-        
         $y = 27;
         $yd = 20;
         $yf = 0;
         
-        $pdf->SetXY( 5, 10+$yd ); $pdf->SetFont('Arial','',12); $pdf->Cell( 80, 8, "Recu numero ", 0, 0, 'L');
-        $pdf->SetXY( 32, 10+$yd ); $pdf->SetFont('Arial','B',12); $pdf->Cell( 20, 8, $commande->getId(), 0, 0, 'L');
-        $pdf->SetXY( 38, 10+$yd ); $pdf->SetFont('Arial','',12); $pdf->Cell( 50, 8, "du", 0, 0, 'L');
-        $pdf->SetXY( 45, 10+$yd ); $pdf->SetFont('Arial','',12); $pdf->Cell( 50, 8, date_format($commande->getDate(),"Y/m/d H:i:s"), 0, 0, 'L');
+        $pdf->SetXY( 15, 10 ); $pdf->SetFont('Arial','',10); $pdf->Cell( 50, 8, "MINISTERE DE LA SANTE PUBLIQUE", 0, 0, 'C');
+
+        $pdf->SetXY( 15, 15 ); $pdf->SetFont('Arial','B',10); $pdf->Cell( 50, 8, "HOPITAL DE DISTRICT DE MANJO", 0, 0, 'C');
+        $pdf->SetXY( 15, 20 ); $pdf->SetFont('Arial','',8); $pdf->Cell( 50, 8, "B.P: 05 Manjo  Tel: 243 25 98 00", 0, 0, 'C');
+
+        $pdf->SetXY( 145, 10 ); $pdf->SetFont('Arial','',10); $pdf->Cell( 50, 8, "REPUBLIQUE DU CAMEROUN", 0, 0, 'C');
+        $pdf->SetXY( 145, 15 ); $pdf->SetFont('Arial','',10); $pdf->Cell( 50, 8, "PAIX - TRAVAIL - PATRIE", 0, 0, 'C');
+        $pdf->SetXY( 145, 18 ); $pdf->SetFont('Arial','',10); $pdf->Cell( 50, 8, "-----", 0, 0, 'C');
+        
+        $pdf->SetXY( 75, 10+$yd ); $pdf->SetFont('Arial','I',10); $pdf->Cell( 80, 8, "Recu numero ", 0, 0, 'L');
+        $pdf->SetXY( 100, 10+$yd ); $pdf->SetFont('Arial','B',10); $pdf->Cell( 20, 8, $commande->getId(), 0, 0, 'L');
+        $pdf->SetXY( 110, 10+$yd ); $pdf->SetFont('Arial','I',10); $pdf->Cell( 50, 8, "du", 0, 0, 'L');
+        $pdf->SetXY( 115, 10+$yd ); $pdf->SetFont('Arial','I',10); $pdf->Cell( 50, 8, date_format($commande->getDate(),"d/m/Y H:i:s"), 0, 0, 'L');
         
         $pdf->SetXY( 5, 15+$yd ); $pdf->SetFont('Arial','B',10); $pdf->Cell( 100, 8, "Nom patient: ", 0, 0, 'L');
         $pdf->SetXY( 160, 15+$yd ); $pdf->SetFont('Arial','B',10); $pdf->Cell( 50, 8, "Sexe: ", 0, 0, 'L');
-        $pdf->SetXY( 5, 20+$yd ); $pdf->SetFont('Arial','B',10); $pdf->Cell( 100, 8, "Contact: ", 0, 0, 'L');
+        $pdf->SetXY( 5, 20+$yd ); $pdf->SetFont('Arial','B',10); $pdf->Cell( 100, 8, "Telephone: ", 0, 0, 'L');
         
         
         
@@ -427,23 +415,10 @@ class PrintController extends Controller
             
             $pdf->SetXY( 27, 15+$yd ); $pdf->SetFont('Arial','',12); $pdf->Cell( 140, 8, $commande->getPatient()->getName(), 0, 0, 'L');
             $pdf->SetXY( 170, 15+$yd ); $pdf->SetFont('Arial','',12); $pdf->Cell( 140, 8, $commande->getPatient()->getSex(), 0, 0, 'L');
-            $pdf->SetXY( 25, 15+$yd ); $pdf->SetFont('Arial','',12); $pdf->Cell( 140, 8, $commande->getPatient()->getTelephone(), 0, 0, 'L');
+            $pdf->SetXY( 25, 20+$yd ); $pdf->SetFont('Arial','',12); $pdf->Cell( 140, 8, $commande->getPatient()->getTelephone(), 0, 0, 'L');
             
         }
-        
-        //$pdf->Rect(5, 70, 200, 20, "D");
-        
-        
-        // ***********************
-        // le cadre des articles
-        // ***********************
-        // cadre avec 18 lignes max ! et 118 de hauteur --> 95 + 118 = 213 pour les traits verticaux
-        
-        //$pdf->Line(5, 27+$yd, 5, 27+$yd);
-        // cadre titre des colonnes
-        //$pdf->Line(5, 105, 205, 105);
-        // les traits verticaux colonnes
-        //$pdf->Line(145, 95, 145, 213); $pdf->Line(158, 95, 158, 213); $pdf->Line(176, 95, 176, 213); 
+
         // titre colonne
         $pdf->SetXY( 10, 27+$yd ); $pdf->SetFont('Arial','B',8); $pdf->Cell( 140, 8, "Libelle", 0, 0, '');
         $pdf->SetXY( 145, 27+$yd ); $pdf->SetFont('Arial','B',8); $pdf->Cell( 13, 8, "Qte", 0, 0, 'R');
@@ -741,11 +716,7 @@ class PrintController extends Controller
   
         $pdf->SetLineWidth(0.1); 
         $pdf->Rect(5, 27+$yd, 200, $y-31+$yd, "D");
-        
-        // le detail des totaux, demarre a 221 après le cadre des totaux
-        //$pdf->SetLineWidth(0.1); $pdf->Rect(5, 221, 200, 10, "D");
-        // les traits verticaux
-        //$pdf->Line(5, 221, 75, 231);
+
         // les titres
         $pdf->Line(5, $y+24+$yd, 205, $y+24+$yd);
         $pdf->SetFont('Arial','B',12); 
@@ -757,24 +728,171 @@ class PrintController extends Controller
         $pdf->SetFont('Arial','',8);
         
         $pdf->SetXY( 5, 155+$yd ); $pdf->SetFont('Arial','',10);
-        //$pdf->Cell( $pdf->GetPageWidth(), 7, "La caissiere", 0, 0, 'L');
-        
-        /*$pdf->SetXY( 135, 175 ); $pdf->SetFont('Arial','',10);
-        $pdf->Cell( $pdf->GetPageWidth(), 7, "Destination", 0, 0, 'L');*/
+  
+        return new Response($pdf->Output(), 200, array(
+            'Content-Type' => 'application/pdf'
+        ));
 
+    }
+    
+        public function ticketbulletinAction($id, Request $request){
+        
+        $bulletin = $this->getDoctrine()->getManager()->getRepository('PMMLaboBundle:Bulletin')->find($id);
+        
+        $pdf = new \FPDF();
+        $pdf->AddPage();
+
+        $y = 27;
+        $yd = 20;
+        $yf = 0;
+        
+        $pdf->SetXY( 15, 10 ); $pdf->SetFont('Arial','',10); $pdf->Cell( 50, 8, "MINISTERE DE LA SANTE PUBLIQUE", 0, 0, 'C');
+
+        $pdf->SetXY( 15, 15 ); $pdf->SetFont('Arial','B',10); $pdf->Cell( 50, 8, "HOPITAL DE DISTRICT DE MANJO", 0, 0, 'C');
+        $pdf->SetXY( 15, 20 ); $pdf->SetFont('Arial','',8); $pdf->Cell( 50, 8, "B.P: 05 Manjo  Tel: 243 25 98 00", 0, 0, 'C');
+
+        $pdf->SetXY( 145, 10 ); $pdf->SetFont('Arial','',10); $pdf->Cell( 50, 8, "REPUBLIQUE DU CAMEROUN", 0, 0, 'C');
+        $pdf->SetXY( 145, 15 ); $pdf->SetFont('Arial','',10); $pdf->Cell( 50, 8, "PAIX - TRAVAIL - PATRIE", 0, 0, 'C');
+        $pdf->SetXY( 145, 18 ); $pdf->SetFont('Arial','',10); $pdf->Cell( 50, 8, "-----", 0, 0, 'C');
+        
+        $pdf->SetXY( 75, 10+$yd ); $pdf->SetFont('Arial','I',10); $pdf->Cell( 80, 8, "Recu numero ", 0, 0, 'L');
+        $pdf->SetXY( 100, 10+$yd ); $pdf->SetFont('Arial','B',10); $pdf->Cell( 20, 8, $bulletin->getId(), 0, 0, 'L');
+        $pdf->SetXY( 105, 10+$yd ); $pdf->SetFont('Arial','B',10); $pdf->Cell( 50, 8, "/bul ", 0, 0, 'L');
+        $pdf->SetXY( 115, 10+$yd ); $pdf->SetFont('Arial','I',10); $pdf->Cell( 50, 8, "du", 0, 0, 'L');
+        $pdf->SetXY( 120, 10+$yd ); $pdf->SetFont('Arial','I',10); $pdf->Cell( 50, 8, date_format($bulletin->getDate(),"d/m/Y H:i:s"), 0, 0, 'L');
+        
+        $pdf->SetXY( 5, 15+$yd ); $pdf->SetFont('Arial','B',10); $pdf->Cell( 100, 8, "Nom patient: ", 0, 0, 'L');
+        $pdf->SetXY( 160, 15+$yd ); $pdf->SetFont('Arial','B',10); $pdf->Cell( 50, 8, "Sexe: ", 0, 0, 'L');
+        $pdf->SetXY( 5, 20+$yd ); $pdf->SetFont('Arial','B',10); $pdf->Cell( 100, 8, "Telephone: ", 0, 0, 'L');
         
         
-        // **************************
-        // pied de page
-        // **************************
-       /* $pdf->SetLineWidth(0.1); $pdf->Rect(5, 265, 200, 6, "D");
-        $pdf->SetXY( 7, 265 ); $pdf->SetFont('Arial','',7);
-        $pdf->Cell( $pdf->GetPageWidth(), 7, "HOPITAL DE DISTRICT DE MANJO. Les marchandises vendues ne sont ni retournees, ni reprisees.", 0, 0, 'L');
         
-        $date = new \Datetime();
-        $pdf->SetXY( 120, 265 ); $pdf->SetFont('Arial','',7); $pdf->Cell( $pdf->GetPageWidth(), 7, "Date impressiom: ", 0, 0, 'L');
-        $pdf->SetXY( 145, 265 ); $pdf->SetFont('Arial','',7); $pdf->Cell( $pdf->GetPageWidth(), 7, date_format($date,"d/m/Y H:i:s"), 0, 0, 'L');
-        */
+        
+        if( null !== $bulletin->getPatient() ){
+            
+            $pdf->SetXY( 27, 15+$yd ); $pdf->SetFont('Arial','',12); $pdf->Cell( 140, 8, $bulletin->getPatient()->getName(), 0, 0, 'L');
+            $pdf->SetXY( 170, 15+$yd ); $pdf->SetFont('Arial','',12); $pdf->Cell( 140, 8, $bulletin->getPatient()->getSex(), 0, 0, 'L');
+            $pdf->SetXY( 25, 20+$yd ); $pdf->SetFont('Arial','',12); $pdf->Cell( 140, 8, $bulletin->getPatient()->getTelephone(), 0, 0, 'L');
+            
+        }
+
+        // titre colonne
+        $pdf->SetXY( 10, 27+$yd ); $pdf->SetFont('Arial','B',8); $pdf->Cell( 140, 8, "Libelle", 0, 0, '');
+        $pdf->SetXY( 145, 27+$yd ); $pdf->SetFont('Arial','B',8); $pdf->Cell( 13, 8, "Qte", 0, 0, 'R');
+        $pdf->SetXY( 156, 27+$yd ); $pdf->SetFont('Arial','B',8); $pdf->Cell( 22, 8, "PU TTC", 0, 0, 'R');
+        $pdf->SetXY( 178, 27+$yd ); $pdf->SetFont('Arial','B',8); $pdf->Cell( 22, 8, "Montant TTC", 0, 0, 'R');
+        $pdf->Line(5, 35+$yd, 205, 35+$yd);
+        
+        
+        // les articles
+        $pdf->SetFont('Arial','',11);
+            
+            
+        if( null !== $bulletin->getPcvPu()->getEtatCol()  ){
+            // libelle
+            $pdf->SetXY( 7, $y+9+$yd ); $pdf->Cell( 140, 5, strtoupper($bulletin->getPcvPu()->getEtatCol()), 0, 0, 'L');
+            // qte
+            $pdf->SetXY( 145, $y+9+$yd ); $pdf->Cell( 13, 5, "1", 0, 0, 'R');
+            // PU
+            $nombre_format_francais = number_format($bulletin->getPcvPu()->getPrice(), 0, ',', ' ');
+            $pdf->SetXY( 158, $y+9+$yd ); $pdf->Cell( 18, 5, $nombre_format_francais, 0, 0, 'R');
+            // total
+            $pdf->SetXY( 187, $y+9+$yd ); $pdf->Cell( 18, 5, $nombre_format_francais, 0, 0, 'R');
+            
+        }
+                        
+                
+          /*      {% if bulletin.pcvPu.etatCol is not null %}
+                            <li>PCV ou PU</li>
+                        {% endif %}
+                        
+                        {% if bulletin.ecbuCu.aspect is not null %}
+                            <li>{{ bulletin.ecbuCu.aspect|upper }}</li>
+                        {% endif %}
+                        
+                        {% if bulletin.hematologie is not null and bulletin.hematologie.globulesBlancs %}
+                            <li>Hematologie</li>
+                        {% endif %} 
+                        
+                        {% if bulletin.formuleLeucocytaire is not null and bulletin.formuleLeucocytaire.neutrophiles %}
+                            <li>Formule leucocytaire</li>
+                        {% endif %}
+                        
+                        {% if bulletin.biochimie is not null and bulletin.biochimie.uree %}
+                            <li>Biochimie</li>
+                        {% endif %}
+                        
+                        {% if bulletin.urineLrc is not null and bulletin.urineLrc.ph %}
+                            <li>{{ bulletin.urineLrc.ph|upper }}</li>
+                        {% endif %}
+                        
+                        {% if bulletin.serologie.vih is not null %}
+                            <li>VIH</li>                 
+                        {% endif %}
+
+                        {% if bulletin.serologie.also is not null %}                    
+                            <li>ALSO</li>                    
+                        {% endif %}
+
+                        {% if bulletin.serologie.crp is not null %}                 
+                            <li>CRP</li>                      
+                        {% endif %} 
+
+                        {% if bulletin.serologie.tpha is not null %}                     
+                            <li>TPHA</li>                   
+                        {% endif %}   
+                        {% if bulletin.serologie.vdrl is not null %}                    
+                            <li>VDRL</li>                       
+                        {% endif %} 
+
+                        {% if bulletin.serologie.agHbs is not null %}                      
+                            <li>Ag Hbs</li>                      
+                        {% endif %}  
+
+                        {% if bulletin.serologie.toxoIgg is not null %}                      
+                            <li>TOXO IgG</li>                      
+                        {% endif %} 
+
+                        {% if bulletin.serologie.widalTest is not null %}                       
+                            <li>WIDAL Test</li>                    
+                        {% endif %}  
+
+                        {% if bulletin.serologie.rubeole is not null %}                     
+                            <li>Rubeole</li>   
+                        {% endif %}   
+
+                        {% if bulletin.serologie.hcv is not null %}                     
+                            <li>HCV</li>
+                        {% endif %} 
+
+                        {% if bulletin.serologie.chlamydia is not null %}                    
+                            <li>Chlamydia</li> 
+                        {% endif %} 
+
+                        {% if bulletin.serologie.fr is not null %}                      
+                            <li>FR</li>   
+                        {% endif %}  
+
+                        {% if bulletin.serologie.selles is not null %}
+                            <li>SELLES</li>
+                        {% endif %}*/
+                        
+  
+        $pdf->SetLineWidth(0.1); 
+        $pdf->Rect(5, 27+$yd, 200, $y-31+$yd, "D");
+
+        // les titres
+        $pdf->Line(5, $y+24+$yd, 205, $y+24+$yd);
+        $pdf->SetFont('Arial','B',12); 
+        $pdf->SetXY( 30, $y+18+$yd ); $pdf->Cell( 24, 6, "TOTAL", 0, 0, 'C');
+        $nombre_format_francais = number_format($bulletin->getAmount(), 0, ',', ' ');
+        $pdf->SetFont('Arial','B',14); 
+        $pdf->SetXY( 105, $y+18+$yd ); $pdf->Cell( 24, 6, $nombre_format_francais, 0, 0, 'C');
+        $pdf->SetXY( 140, $y+18+$yd ); $pdf->Cell( 24, 6, "Francs CFA", 0, 0, 'C');
+        $pdf->SetFont('Arial','',8);
+        
+        $pdf->SetXY( 5, 155+$yd ); $pdf->SetFont('Arial','',10);
+  
         return new Response($pdf->Output(), 200, array(
             'Content-Type' => 'application/pdf'
         ));

@@ -37,3 +37,8 @@ bulletin_print:
     path:     /{id}/print
     defaults: { _controller: "PMMLaboBundle:Bulletin:print" }
     methods:  GET
+    
+bulletin_ticket:
+    path:     /{id}/ticket
+    defaults: { _controller: "PMMCoreBundle:Print:ticketbulletin" }
+    methods:  [GET, POST]

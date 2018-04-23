@@ -10,4 +10,5 @@ namespace PMM\CoreBundle\Repository;
  */
 class Medoc1Repository extends \Doctrine\ORM\EntityRepository
 {
+    
 }

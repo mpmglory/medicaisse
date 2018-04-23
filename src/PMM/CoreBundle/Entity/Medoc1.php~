@@ -19,6 +19,11 @@ class Medoc1
     private $medicament;
     
     /**
+     * @ORM\OneToOne(targetEntity="PMM\CoreBundle\Entity\Commande", inversedBy="medoc1")
+     */
+    private $commande;
+    
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -56,4 +61,109 @@ class Medoc1
     }
 
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set quantity
+     *
+     * @param integer $quantity
+     *
+     * @return Medoc1
+     */
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * Get quantity
+     *
+     * @return integer
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * Set price
+     *
+     * @param integer $price
+     *
+     * @return Medoc1
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return integer
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Medoc1
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set medicament
+     *
+     * @param \PMM\CoreBundle\Entity\Medicament $medicament
+     *
+     * @return Medoc1
+     */
+    public function setMedicament(\PMM\CoreBundle\Entity\Medicament $medicament = null)
+    {
+        $this->medicament = $medicament;
+
+        return $this;
+    }
+
+    /**
+     * Get medicament
+     *
+     * @return \PMM\CoreBundle\Entity\Medicament
+     */
+    public function getMedicament()
+    {
+        return $this->medicament;
+    }
 }

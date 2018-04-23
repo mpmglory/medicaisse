@@ -4,6 +4,7 @@ namespace PMM\CoreBundle\Controller;
 
 use PMM\CoreBundle\Entity\Commande;
 use PMM\CoreBundle\Entity\Medicament;
+use PMM\CoreBundle\Entity\Medoc1;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -60,9 +61,9 @@ class CommandeController extends Controller
      *
      */
     public function custumNewAction($id, Request $request){
-        
+      
         $commande = new Commande();
-        
+
         $em = $this->getDoctrine()->getManager();
         
         $patient = $em
@@ -70,7 +71,6 @@ class CommandeController extends Controller
     				->find($id);
         
         $commande->setPatient($patient);
-        
         
         $form = $this->createForm('PMM\CoreBundle\Form\CommandeType', $commande);
         $form->handleRequest($request);

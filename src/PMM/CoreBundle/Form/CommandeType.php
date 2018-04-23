@@ -58,7 +58,8 @@ class CommandeType extends AbstractType
             
                 if(null !== $commande->getPatient()){
                     $event->getForm()->remove('patient');
-                }            
+                }
+             
             }
         );
     }

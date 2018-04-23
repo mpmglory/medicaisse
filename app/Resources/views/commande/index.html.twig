@@ -4,15 +4,15 @@
 
 
 <div class="alert alert-danger">
-    <h4><center>Créer facture vente pour ...</center></h4>
+    <h4><center>Créer facture vente</center></h4>
 </div>
 
 <a href="{{ path('patient_new') }}" class="btn btn-primary btn-block btn-lg">
-    <span class="glyphicon glyphicon-plus"></span>... nouveau patient</a>
+    <span class="glyphicon glyphicon-plus"></span> Facture nouveau patient</a>
 <p> </p>
 
 {# <a href="{{ path('commande_new') }}" class="btn btn-primary btn-block btn-lg">
-    <span class="glyphicon glyphicon-plus"></span>... un patient enregistré</a>
+    <span class="glyphicon glyphicon-plus"></span> Facture patient enregistré</a>
 <p> </p> #}
 
 {% endblock %} 
@@ -41,7 +41,7 @@
     <tbody>
         {% for commande in commandes %}
         <tr>
-            <td><a href="{{ path('commande_show', { 'id': commande.id }) }}">{{ commande.id }}</a></td>
+            <td>{{ commande.id }}</td>
             <td>{{ commande.patient.name }}</td>
             <td>{{ commande.amount }}</td>
             <td>{% if commande.date %}{{ commande.date|date('d-m-Y H:i:s') }}{% endif %}</td>

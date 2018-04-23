@@ -19,6 +19,11 @@ class Medoc1
     private $medicament;
     
     /**
+     * @ORM\OneToOne(targetEntity="PMM\CoreBundle\Entity\Commande", mappedBy="medoc1")
+     */
+    private $commande;
+    
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -160,5 +165,29 @@ class Medoc1
     public function getMedicament()
     {
         return $this->medicament;
+    }
+
+    /**
+     * Set commande
+     *
+     * @param \PMM\CoreBundle\Entity\Commande $commande
+     *
+     * @return Medoc1
+     */
+    public function setCommande(\PMM\CoreBundle\Entity\Commande $commande = null)
+    {
+        $this->commande = $commande;
+
+        return $this;
+    }
+
+    /**
+     * Get commande
+     *
+     * @return \PMM\CoreBundle\Entity\Commande
+     */
+    public function getCommande()
+    {
+        return $this->commande;
     }
 }

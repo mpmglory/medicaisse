@@ -14,6 +14,8 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 
+use PMM\CoreBundle\Repository\MedicamentRepository;
+
 class Medoc1Type extends AbstractType
 {
     /**
@@ -21,12 +23,19 @@ class Medoc1Type extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+      
+        //$thechoice = 'medoc';
+        
+        
         $builder
             ->add('medicament', EntityType::class, array(
                 'class' => 'PMMCoreBundle:Medicament',
                 'choice_label' => 'name',
                 'multiple' => false,
                 'expanded' => false,
+                /*'query_builder' => function(MedicamentRepository $repository) use($thechoice) {
+                    return $repository->getActes($thechoice);
+                }*/
             ))
             ->add('quantity')
             ;

@@ -4,8 +4,10 @@
 
 <ul class="nav nav-pills nav-stacked">
 
-        <a href="{{ path('commande_ticket', {'id': commande.id}) }}" class="btn btn-primary btn-block btn-lg">
-            <span class="glyphicon glyphicon-print"></span> Aperçu avant impression</a><p>  </p>
+        <a href="{{ path('commande_ticket', {'id': commande.id}) }}" class="btn btn-primary btn-block btn-lg" onclick="window.open(this.href); return false;">
+            <span class="glyphicon glyphicon-print"></span> Imprimer ticket</a><p>  </p>
+        <a href="{{ path('patient_new') }}" class="btn btn-primary btn-block btn-lg">
+            <span class="glyphicon glyphicon-chevron-left"></span> Facture nouveau patient</a><p>  </p>
 </ul>
 
 {% endblock %}

@@ -10,4 +10,12 @@ namespace PMM\CoreBundle\Repository;
  */
 class MedicamentRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getActes($choice)
+    {
+        return $this
+            ->createQueryBuilder('m')
+            ->where('m.category = :med')
+            ->setParameter(':med', $choice)
+            ;
+    }
 }

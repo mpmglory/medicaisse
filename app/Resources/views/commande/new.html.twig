@@ -11,6 +11,19 @@ Nouvelle Facture /
             <a href="{{ path('commande_index') }}" class="btn btn-primary btn-block btn-lg">
             <span class="glyphicon glyphicon-chevron-left"></span>Retour à l'accueil </a><p>  </p>
         </li>
+        <li> .</li><li>. </li><li>. </li><li>. </li><li>. </li><li> .</li>
+        <li> .</li><li>. </li><li>. </li><li>. </li><li>. </li><li> .</li>
+
+
+        <li>
+            
+                {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary btn-block btn-lg'}}) }}
+            
+        </li>
+        <div class="row">
+            <div class="">
+            </div>
+        </div>
     </ul>
 {% endblock %}
 
@@ -305,9 +318,6 @@ Nouvelle Facture /
 {{ form_end(form) }}
 
 {% endblock %}
-
-{# On charge la bibliothèque jQuery. Ici, je la prends depuis le CDN google
-   mais si vous l'avez en local, changez simplement l'adresse. #}
 
 
 

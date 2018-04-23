@@ -19,7 +19,8 @@ class Commande
     private $patient;
     
     /**
-     * @ORM\OneToOne(targetEntity="PMM\CoreBundle\Entity\Medoc1", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="PMM\CoreBundle\Entity\Medoc1", cascade={"persist"}, inversedBy="commande")
+     *
      */
     private $medoc1;
     
@@ -116,6 +117,13 @@ class Commande
      * @ORM\Column(name="date", type="datetime")
      */
     private $date;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=255, nullable=true)
+     */
+    private $type;
     
 
     /**
@@ -569,5 +577,29 @@ class Commande
     public function getMedoc15()
     {
         return $this->medoc15;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     *
+     * @return Commande
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }
