@@ -1,8 +1,6 @@
 {% extends 'base.html.twig' %} 
 
 {% block menu %}
-
-
 {% endblock %} 
 
 {% block body %}
@@ -18,8 +16,10 @@
 {% for lescom in lescommandes  %}
 <div class="row">
     {% set total = 0 %}
+    
+    {% set date2 = date(lesdates2[i]) %}
    
-<h4>Factures du {{ lesdates[i]|date('d-m-Y') }} au {{ lesdates2[i]|date('d-m-Y') }}</h4>
+<h4>Decade {{ i+1 }} du {{ lesdates[i]|date('d-m-Y') }} au {{ lesdates2[i]|date_modify("-1 day")|date('d-m-Y') }} </h4>
 
 <table class="table table-bordered table-hover table-striped results">
     <thead>
@@ -45,7 +45,7 @@
         
         <tr>
             <td><h5>Total<h5></td>
-            <td><h5>Décade du {{ lesdates[i]|date('d-m-Y') }} au {{ lesdates2[i]|date('d-m-Y') }}<h5></td>
+            <td><h5>Décade du {{ lesdates[i]|date('d-m-Y') }} au {{ lesdates2[i]|date_modify("-1 day")|date('d-m-Y') }}<h5></td>
             <td><h4>{{ total | number_format(0, ',', '.') }} F CFA</h4></td>
         </tr>
         

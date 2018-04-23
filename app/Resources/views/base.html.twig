@@ -42,7 +42,7 @@
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
         <div id="header" class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-header">
-                <a class="navbar-brand" href="{{ path('patient_index') }}">Medicaisse</a>
+                <a class="navbar-brand" href="{{ path('commande_index') }}">Medicaisse</a>
             </div>
             <ul class="nav navbar-nav">
                 {% if is_granted("ROLE_CAISSE") %}
@@ -50,13 +50,17 @@
                 <li>
                     <a href="{{ path('patient_new') }}"> Facture nouveau patient</a>
                 </li>
-                {% endif %} {% if is_granted("ROLE_CAISSE") %}
+                {% endif %} 
+                                
+                {#
+                
+                {% if is_granted("ROLE_CAISSE") %}
 
-                <li>
+                 <li>
                     <a href="{{ path('commande_new') }}"> Facture patient enregistré</a>
                 </li>
-                {% endif %} {#
-                <li><a href="{{ path('commande_new') }}">Facture Etats</a></li> #}
+                {% endif %} 
+                 <li><a href="{{ path('commande_new') }}">Facture Etats</a></li> #}
                 <li>
                     <a href="#"> </a>
                 </li>

@@ -52,3 +52,8 @@ commande_global:
     path:     /etatglobal
     defaults: { _controller: "PMMCoreBundle:Commande:etatglobal" }
     methods:  GET
+    
+commande_ticket:
+    path:     /{id}/ticket
+    defaults: { _controller: "PMMCoreBundle:Print:ticketcommande" }
+    methods:  [GET, POST]

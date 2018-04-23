@@ -22,6 +22,7 @@ class CommandeRepository extends \Doctrine\ORM\EntityRepository
     public function getCommandesBetween(\Datetime $date1, \Datetime $date2)
     {
     
+        //$date2->add( new \DateInterval('P1D') );
         
         return $this->createQueryBuilder('c')
                     ->Where('c.date BETWEEN :start AND :end')

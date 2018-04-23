@@ -305,7 +305,7 @@ class CommandeController extends Controller
             $lesdates[$i+1] = $date;
             
             $lesdates2[$i] = clone $lesdates[$i+1];
-            $lesdates2[$i]->sub( new \DateInterval('P1D') );
+            //$lesdates2[$i]->sub( new \DateInterval('P1D') );
             
             $lescommandes[$i] = $em->getRepository('PMMCoreBundle:Commande')
                         ->getCommandesBetween($lesdates[$i], $lesdates2[$i])
@@ -313,7 +313,7 @@ class CommandeController extends Controller
             $i++;
         }
         
-        if( $lesdates[$i] )
+        //if( $lesdates[$i] )
         
         
         return $this->render('commande/etatglobal.html.twig', array(

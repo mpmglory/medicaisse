@@ -52,6 +52,37 @@ class BulletinController extends Controller
             'form' => $form->createView(),
         ));
     }
+    
+    public function custumNewAction($id, Request $request){
+            
+    	$bulletin = new Bulletin();
+        
+        $em = $this->getDoctrine()->getManager();
+        
+        $patient = $em
+    				->getRepository('PMMCoreBundle:Patient')
+    				->find($id);
+        
+        $bulletin->setPatient($patient);
+            
+    	$form = $this->createForm('PMM\LaboBundle\Form\BulletinType', $bulletin);
+			
+		if($request->isMethod('POST') && $form->handleRequest($request)->isValid()){
+        
+			$em->persist($bulletin);
+			$em->flush();
+            
+			$request->getSession()->getFlashBag()
+					->add('notice', 'Bulletin enregistré avec succès.');
+		
+			return $this->redirectToRoute('bulletin_show', array('id' => $bulletin->getId()));
+		}
+        
+        return $this->render('bulletin/new.html.twig', array(
+            'bulletin' => $bulletin,
+            'form' => $form->createView(),
+        ));
+    }
 
     /**
      * Finds and displays a bulletin entity.
@@ -146,36 +177,7 @@ class BulletinController extends Controller
         ));
     }
     
-    public function custumNewAction($id, Request $request){
-            
-    	$bulletin = new Bulletin();
-        
-        $em = $this->getDoctrine()->getManager();
-        
-        $patient = $em
-    				->getRepository('PMMCoreBundle:Patient')
-    				->find($id);
-        
-        $bulletin->setPatient($patient);
-            
-    	$form = $this->createForm('PMM\LaboBundle\Form\BulletinType', $bulletin);
-			
-		if($request->isMethod('POST') && $form->handleRequest($request)->isValid()){
-        
-			$em->persist($bulletin);
-			$em->flush();
-            
-			$request->getSession()->getFlashBag()
-					->add('notice', 'Bulletin enregistré avec succès.');
-		
-			return $this->redirectToRoute('bulletin_index');
-		}
-        
-        return $this->render('bulletin/new.html.twig', array(
-            'bulletin' => $bulletin,
-            'form' => $form->createView(),
-        ));
-    }
+    
     
     public function printAction(Bulletin $bulletin){
         

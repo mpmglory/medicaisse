@@ -4,16 +4,16 @@
 
 
 <div class="alert alert-danger">
-    <h3><center>Vendre des médicaments à ...</center></h3>
+    <h4><center>Créer facture vente pour ...</center></h4>
 </div>
 
 <a href="{{ path('patient_new') }}" class="btn btn-primary btn-block btn-lg">
-    <span class="glyphicon glyphicon-plus"></span>... un ouveau patient</a>
+    <span class="glyphicon glyphicon-plus"></span>... nouveau patient</a>
 <p> </p>
 
-<a href="{{ path('commande_new') }}" class="btn btn-primary btn-block btn-lg">
+{# <a href="{{ path('commande_new') }}" class="btn btn-primary btn-block btn-lg">
     <span class="glyphicon glyphicon-plus"></span>... un patient enregistré</a>
-<p> </p>
+<p> </p> #}
 
 {% endblock %} 
 
@@ -26,7 +26,7 @@
     <span class="counter pull-right"></span>
 </div>
 
-<h4>Liste de toute les factures</h4>
+<h4>Liste de toutes les factures</h4>
 
 <table class="table table-bordered table-hover table-striped results">
     <thead>
@@ -44,7 +44,7 @@
             <td><a href="{{ path('commande_show', { 'id': commande.id }) }}">{{ commande.id }}</a></td>
             <td>{{ commande.patient.name }}</td>
             <td>{{ commande.amount }}</td>
-            <td>{% if commande.date %}{{ commande.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{% if commande.date %}{{ commande.date|date('d-m-Y H:i:s') }}{% endif %}</td>
             <td>
                 <ul>
                     <li>

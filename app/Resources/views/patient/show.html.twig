@@ -6,12 +6,22 @@ Informations sur un petient
 
 {% block menu %}
 
+<div class="alert alert-danger">
+    <h4><center>Que voulez-vous vendre?</center></h4>
+</div>
+
  <ul class="nav nav-pills nav-stacked">
         <a href="{{ path('commande_custum-new', {'id': patient.id}) }}" class="btn btn-primary btn-block btn-lg">
-            <span class="glyphicon glyphicon-plus"></span>Vendre des médicaments</a><p>  </p><p>  </p>
+            <span class="glyphicon glyphicon-plus"></span> Médicaments</a><p>  </p><p>  </p>
+     
+        <a href="{{ path('commande_custum-new', {'id': patient.id}) }}" class="btn btn-info btn-block btn-lg">
+            <span class="glyphicon glyphicon-plus"></span>Actes médico-chirurgicaux</a><p>  </p><p>  </p>
         
-        <a href="{{ path('patient_edit', {'id': patient.id}) }}" class="btn btn-primary btn-block btn-lg">
-            <span class="glyphicon glyphicon-edit"></span> Modifier</a><p>  </p>
+        <a href="{{ path('bulletin_custum-new', {'id': patient.id}) }}" class="btn btn-primary btn-block btn-lg">
+            <span class="glyphicon glyphicon-plus"></span> Examens</a><p>  </p><p>  </p>
+        
+        <a href="{{ path('patient_edit', {'id': patient.id}) }}" class="btn btn-info btn-block btn-lg">
+            <span class="glyphicon glyphicon-edit"></span> Modifier données patient</a><p>  </p>
 </ul>
 
 {% endblock %}
